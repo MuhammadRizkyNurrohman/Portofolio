@@ -1,0 +1,2353 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d1b">
+  <meta name="description" content="Portofolio Muhammad Rizky Nurrohman, mahasiswa Sistem Informasi, SEO Intern di Berkah Solo Web, UI/UX Designer, dan calon developer.">
+  <meta name="author" content="Muhammad Rizky Nurrohman">
+  <title>Rizky Nurrohman — Portfolio & CV</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080d1b;
+      --surface: #10182b;
+      --surface2: #141f36;
+      --text: #f3f6ff;
+      --muted: #9aa9c3;
+      --blue: #4d8dff;
+      --cyan: #63e5ff;
+      --line: rgba(151, 179, 230, .15);
+      --gradient: linear-gradient(120deg, #4385ff, #6c5cff 55%, #4de0f5);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+
+    /* Custom Luxury Blue Cursor */
+    .cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #63e5ff;
+      box-shadow: 0 0 14px #63e5ff, 0 0 25px rgba(77, 141, 255, 0.9);
+      pointer-events: none;
+      z-index: 100000;
+      transform: translate(-50%, -50%);
+      transition: width 0.15s ease, height 0.15s ease, background 0.15s ease;
+      opacity: 0;
+    }
+
+    .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(99, 229, 255, 0.75);
+      background: radial-gradient(circle, rgba(77, 141, 255, 0.2), transparent 70%);
+      box-shadow: 0 0 20px rgba(77, 141, 255, 0.4), inset 0 0 10px rgba(99, 229, 255, 0.25);
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                  height 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                  border-color 0.2s ease, 
+                  background 0.2s ease;
+      opacity: 0;
+    }
+
+    .cursor-ring.cursor-hover {
+      width: 58px;
+      height: 58px;
+      border-color: #63e5ff;
+      background: radial-gradient(circle, rgba(99, 229, 255, 0.3), transparent 75%);
+      box-shadow: 0 0 32px rgba(99, 229, 255, 0.7), inset 0 0 16px rgba(99, 229, 255, 0.35);
+    }
+
+    .cursor-dot.cursor-hover {
+      width: 6px;
+      height: 6px;
+      background: #ffffff;
+      box-shadow: 0 0 18px #63e5ff;
+    }
+
+    #sparkle-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 99998;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1120px, 90%); margin: auto; }
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .eyebrow {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: .76rem;
+      font-weight: 700;
+    }
+    h1, h2, h3 { font-family: "Space Grotesk", sans-serif; line-height: 1.2; }
+    h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 10px 0 16px; }
+    p { color: var(--muted); }
+    section { padding: 95px 0; }
+    .section-head { max-width: 650px; margin-bottom: 38px; }
+
+    /* Navigation */
+    header {
+      position: fixed; inset: 0 0 auto; z-index: 50;
+      background: rgba(8, 13, 27, .82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav {
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .logo { font: 700 1.35rem "Space Grotesk"; letter-spacing: -1px; }
+    .logo span { color: var(--cyan); }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a { color: var(--muted); font-size: .88rem; transition: .2s; }
+    .nav-links a:hover { color: white; }
+    .menu-btn {
+      display: none; border: 1px solid var(--line); color: white;
+      background: var(--surface); border-radius: 10px; padding: 7px 12px;
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; justify-content: center; align-items: center;
+      gap: 9px; padding: 12px 19px; border-radius: 12px;
+      font-weight: 700; font-size: .9rem; border: 1px solid var(--line);
+      transition: transform .25s, box-shadow .25s, background .25s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary {
+      color: #fff; border: 0; background: var(--gradient);
+      box-shadow: 0 8px 30px rgba(77, 141, 255, .2);
+    }
+    .btn-secondary { background: rgba(255,255,255,.035); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; padding-top: 125px; overflow: hidden;
+    }
+    .hero::before {
+      content: ""; position: absolute; width: 530px; height: 530px;
+      background: #315bff; filter: blur(160px); opacity: .20;
+      border-radius: 50%; right: -130px; top: 10%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ""; position: absolute; width: 300px; height: 300px;
+      background: #00d9ff; filter: blur(160px); opacity: .12;
+      left: -120px; bottom: 0; pointer-events: none;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.3fr .7fr;
+      align-items: center; gap: 65px; position: relative; z-index: 1;
+    }
+    .availability {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 7px 12px; border: 1px solid var(--line);
+      border-radius: 30px; font-size: .78rem; color: #c4d4f0;
+      background: rgba(255,255,255,.035);
+    }
+    .dot {
+      width: 8px; height: 8px; background: #4ce6a0;
+      border-radius: 50%; box-shadow: 0 0 12px #4ce6a0;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 6.5vw, 5.5rem);
+      letter-spacing: -4px; margin: 24px 0 18px;
+    }
+    .hero h1 span { display: block; }
+    .hero-copy { max-width: 590px; font-size: 1.03rem; }
+    .hero-meta { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 26px; }
+    .hero-meta span { color: var(--muted); font-size: .82rem; }
+    .portrait-wrap { position: relative; max-width: 360px; margin: auto; width: 100%; }
+    .portrait {
+      aspect-ratio: 4/5; border: 1px solid rgba(111,164,255,.4);
+      border-radius: 28px; padding: 12px;
+      background: linear-gradient(145deg, rgba(77,141,255,.3), rgba(255,255,255,.025));
+      transform: rotate(2deg); animation: float 6s ease-in-out infinite;
+      box-shadow: 0 30px 100px rgba(0,0,0,.25);
+    }
+    .portrait-inner {
+      width: 100%; height: 100%; border-radius: 19px;
+      display: grid; place-items: center; text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(99,229,255,.18), transparent 55%),
+        linear-gradient(160deg, #1a3155, #0d1427);
+      overflow: hidden;
+    }
+    .initials {
+      width: 145px; height: 145px; display: grid; place-items: center;
+      border-radius: 50%; font: 700 3.4rem "Space Grotesk";
+      color: white; background: var(--gradient);
+      border: 5px solid rgba(255,255,255,.15);
+      box-shadow: 0 0 60px rgba(77,141,255,.3);
+    }
+    .portrait-inner p { margin-top: 20px; color: #d9e6ff; }
+    .float-card {
+      position: absolute; background: #111c31;
+      border: 1px solid var(--line); border-radius: 14px;
+      padding: 13px 16px; box-shadow: 0 15px 40px #0004;
+      font-size: .83rem;
+    }
+    .float-card strong { display: block; color: white; }
+    .float-card small { color: var(--muted); }
+    .card-one { top: 15%; left: -48px; }
+    .card-two { bottom: 12%; right: -38px; }
+
+    /* General cards */
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .panel {
+      background: linear-gradient(145deg, rgba(20,31,54,.88), rgba(13,20,38,.88));
+      border: 1px solid var(--line); border-radius: 20px; padding: 25px;
+      transition: transform .3s, border-color .3s;
+    }
+    .panel:hover { transform: translateY(-6px); border-color: rgba(99,229,255,.4); }
+    .icon {
+      width: 45px; height: 45px; display: grid; place-items: center;
+      border-radius: 13px; background: rgba(77,141,255,.13);
+      color: var(--cyan); font-size: 1.25rem; margin-bottom: 19px;
+    }
+    .panel h3 { font-size: 1.13rem; margin-bottom: 10px; }
+    .panel p { font-size: .9rem; }
+
+    /* Experience */
+    .timeline { border-left: 1px solid rgba(99,229,255,.35); margin-left: 8px; }
+    .timeline-item { padding: 0 0 32px 28px; position: relative; }
+    .timeline-item::before {
+      content: ""; position: absolute; width: 11px; height: 11px;
+      left: -6px; top: 6px; background: var(--cyan); border-radius: 50%;
+      box-shadow: 0 0 15px rgba(99,229,255,.45);
+    }
+    .timeline-item h3 { font-size: 1.12rem; }
+    .timeline-item .date { color: var(--cyan); font-size: .82rem; margin: 6px 0; }
+    .timeline-item p { font-size: .92rem; }
+
+    /* Projects */
+    .project-card { overflow: hidden; padding: 0; }
+    .project-visual {
+      min-height: 155px; display: grid; place-items: center;
+      background: radial-gradient(ellipse at top, #294d94, #10182b 70%);
+      font: 700 2.4rem "Space Grotesk"; color: #d8e6ff;
+      border-bottom: 1px solid var(--line);
+    }
+    .project-content { padding: 23px; }
+    .project-content h3 { margin-bottom: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 16px 0; }
+    .tag {
+      font-size: .72rem; color: #b9d9ff; padding: 5px 9px;
+      border: 1px solid rgba(99,229,255,.2); border-radius: 8px;
+      background: rgba(77,141,255,.07);
+    }
+    .project-link { color: var(--cyan); font-size: .86rem; font-weight: 700; }
+
+    /* Skills */
+    .skills { display: flex; flex-wrap: wrap; gap: 12px; }
+    .skill {
+      padding: 12px 16px; border: 1px solid var(--line);
+      background: var(--surface); border-radius: 12px;
+      color: #d5e2f9; transition: .2s;
+    }
+    .skill:hover { border-color: var(--cyan); transform: translateY(-3px); }
+
+    /* Contact & footer */
+    .contact-box {
+      padding: clamp(28px, 6vw, 60px);
+      text-align: center;
+      border: 1px solid rgba(99, 229, 255, .25);
+      border-radius: 26px;
+      background: radial-gradient(ellipse at top, rgba(77, 141, 255, .18), transparent 70%), linear-gradient(160deg, #101a30, #090e1d);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+    .contact-box p.contact-desc { max-width: 600px; margin: 0 auto 36px; font-size: 0.98rem; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 25px;
+      text-align: left;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 20px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(20, 31, 54, 0.85), rgba(12, 18, 34, 0.85));
+      border: 1px solid var(--line);
+      color: var(--text);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(99, 229, 255, 0.5);
+      background: linear-gradient(145deg, rgba(26, 40, 70, 0.95), rgba(16, 25, 46, 0.95));
+      box-shadow: 0 12px 28px rgba(77, 141, 255, 0.16);
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(77, 141, 255, 0.14);
+      border: 1px solid rgba(99, 229, 255, 0.25);
+      color: var(--cyan);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .contact-card:hover .contact-icon {
+      background: rgba(99, 229, 255, 0.2);
+      border-color: var(--cyan);
+      color: #fff;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .contact-info small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 3px;
+    }
+
+    .contact-info strong {
+      display: block;
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .contact-arrow {
+      color: var(--cyan);
+      font-size: 1.1rem;
+      transition: transform 0.25s ease, color 0.25s ease;
+      margin-left: auto;
+    }
+
+    .contact-card:hover .contact-arrow {
+      color: #fff;
+      transform: translate(3px, -3px);
+    }
+
+    .contact-card.highlight-card {
+      border-color: rgba(99, 229, 255, 0.4);
+      background: linear-gradient(145deg, rgba(28, 45, 80, 0.9), rgba(16, 26, 48, 0.9));
+    }
+
+    footer { padding: 28px 0; border-top: 1px solid var(--line); }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer p, footer a { font-size: .8rem; }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(22px); transition: .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(2deg); } 50% { transform: translateY(-12px) rotate(0); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 1024px) {
+      .container { width: 92%; }
+      .hero-grid { gap: 40px; }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 45px; text-align: center; }
+      .hero-copy { max-width: 680px; margin-inline: auto; }
+      .availability { margin-inline: auto; }
+      .hero-meta { justify-content: center; }
+      .btn-row { justify-content: center; }
+      .portrait-wrap { width: min(290px, 85%); margin-top: 15px; }
+      .card-one { left: -10px; }
+      .card-two { right: -10px; }
+      .hero h1 { letter-spacing: -2px; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 75px 0; }
+      .section-head { margin-bottom: 28px; }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .certificates-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .timeline-item { padding: 0 0 28px 24px; }
+      .contact-box { padding: 35px 24px; }
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 60px 0; }
+      nav { min-height: 65px; }
+      .menu-btn { display: block; }
+      .nav-links {
+        display: none; position: absolute; top: 68px; left: 4%; right: 4%;
+        padding: 16px; border: 1px solid var(--line);
+        border-radius: 18px; background: rgba(16, 24, 43, 0.98);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        flex-direction: column; align-items: stretch; gap: 4px;
+        z-index: 100;
+      }
+      .nav-links.open { display: flex; animation: navFadeIn 0.25s ease; }
+      .nav-links a {
+        padding: 12px 14px;
+        border-radius: 10px;
+        font-size: 0.95rem;
+      }
+      .nav-links a:hover {
+        background: rgba(77, 141, 255, 0.1);
+        color: var(--cyan);
+      }
+      .hero { min-height: auto; padding-top: 110px; padding-bottom: 60px; }
+      .hero h1 { font-size: clamp(2.4rem, 11vw, 3.8rem); margin: 18px 0 14px; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .certificates-grid { grid-template-columns: 1fr; }
+      .panel { padding: 20px; }
+      .float-card {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+      }
+      .card-one { top: 12%; left: -8px; }
+      .card-two { bottom: 8%; right: -8px; }
+      .hero-meta { gap: 8px 14px; }
+      .hero-meta span { font-size: 0.78rem; }
+      .btn { width: 100%; justify-content: center; }
+      .btn-row { width: 100%; flex-direction: column; gap: 10px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-card { padding: 15px 16px; }
+      .contact-icon { width: 38px; height: 38px; font-size: 1.1rem; }
+      .skills { gap: 8px; }
+      .skill { padding: 9px 13px; font-size: 0.82rem; }
+    }
+
+    @keyframes navFadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 45px rgba(77, 141, 255, 0.3);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 60px rgba(99, 229, 255, 0.4);
+    }
+
+    .profile-fallback {
+      margin: auto;
+    }
+
+    @media (max-width: 640px) {
+      .profile-photo {
+        width: 150px;
+        height: 150px;
+      }
+    }
+    
+    /* =========================================
+      INTERACTIVE 3D PROFILE CARD
+      Muhammad Rizky Nurrohman
+      ========================================= */
+
+    /* Container kartu */
+    .portrait-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 310px;
+      margin-inline: auto;
+      perspective: 1200px;
+      isolation: isolate;
+    }
+
+    /* Kartu utama */
+    .flip-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      perspective: 1200px;
+      cursor: grab;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+      transform-origin: top center;
+      will-change: transform;
+    }
+
+    .flip-card.is-dragging {
+      cursor: grabbing;
+      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.45));
+    }
+
+    /* Mesin animasi 3D */
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: rotateY(0deg);
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(.2, .75, .25, 1);
+      filter: none;
+    }
+
+    /* Putar hanya ketika kartu diklik */
+    .flip-card.is-flipped .flip-card-inner {
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+    }
+
+    /* Jangan memicu efek putar saat hover */
+    .flip-card:hover .flip-card-inner {
+      filter: none;
+    }
+
+    /* Sisi depan dan belakang */
+    .flip-card-face {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border: 1px solid rgba(99, 229, 255, 0.35);
+      border-radius: 24px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    /* =========================================
+      LANYARD HANGER DECORATION
+      ========================================= */
+
+    /* Extra top room for the lanyard rope canvas + clip */
+    .portrait-wrap {
+      padding-top: 80px;
+    }
+
+    /* Canvas yang menggambar tali lanyard secara dinamis */
+    #lanyard-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Klip logam yang terpasang di ujung tali — ikut bergerak bersama kartu */
+    .lanyard-clip {
+      position: absolute;
+      /* posisi default tepat di atas lubang kartu; JS akan memperbaruinya tiap frame */
+      top: 77px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 22px;
+      height: 16px;
+      background: linear-gradient(135deg, #e0ecff, #8aacda, #f5f9ff);
+      border-radius: 4px 4px 5px 5px;
+      border: 1px solid rgba(200, 230, 255, 0.85);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.55), 0 0 12px rgba(99, 229, 255, 0.35);
+      z-index: 15;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    /* Kait bawah klip */
+    .lanyard-clip::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 7px;
+      border: 2px solid #b6cced;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+    }
+
+    /* Slot lubang ID Card — satu elemen, ditempel ke kartu via JS */
+    .id-card-slot {
+      position: absolute;
+      /* Disesuaikan di JS agar selalu di atas kartu */
+      top: 80px;           /* = padding-top portrait-wrap */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 34px;
+      height: 7px;
+      background: rgba(4, 10, 24, 0.85);
+      border: 1px solid rgba(99, 229, 255, 0.45);
+      border-radius: 10px;
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.9), 0 0 8px rgba(99,229,255,0.2);
+      z-index: 16;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    /* =========================================
+      FRONT CARD - FOTO PROFIL
+      ========================================= */
+
+    .flip-card-front {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px 20px 22px;
+      background: #102343;
+      transform: rotateY(0deg);
+      -webkit-transform: rotateY(0deg);
+    }
+
+    /* Foto memenuhi kartu */
+    .flip-card-front .profile-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: inherit;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-select: none;
+    }
+
+    /* Gradient agar tulisan tetap terbaca jelas di bagian bawah */
+    .flip-card-front::after {
+      content: "";
+      position: absolute;
+      inset: 40% 0 0;
+      z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(5, 12, 28, 0.96) 80%,
+        rgba(4, 9, 22, 0.99) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* Tata letak nama dan petunjuk pada bagian bawah kartu */
+    .flip-card-front .front-caption {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 0 0 4px;
+      text-align: center;
+      color: #ffffff;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .flip-card-front .front-caption span:not(.front-status) {
+      font-weight: 800;
+      color: #f8fafc;
+    }
+
+    .flip-card-front .flip-hint {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-size: 0.68rem;
+      line-height: 1.4;
+      color: #94a3b8;
+    }
+    
+    /* =========================================
+      BACK CARD - SPACING REFINEMENT
+      ========================================= */
+
+    .flip-card-back {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+
+      /* Ruang rapi dan proporsional untuk seluruh identitas */
+      padding: 24px 22px;
+
+      color: #f3f6ff;
+      background:
+        radial-gradient(
+          ellipse at top right,
+          rgba(77, 141, 255, 0.22),
+          transparent 55%
+        ),
+        linear-gradient(145deg, #14294b, #080d1b 80%);
+
+      transform: rotateY(180deg);
+      -webkit-transform: rotateY(180deg);
+    }
+
+    .back-top {
+      margin: 0;
+      text-align: center;
+    }
+
+    .back-label {
+      display: block;
+      margin-bottom: 10px;
+      color: #63e5ff;
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+    }
+
+    .back-avatar {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      margin: 0 auto 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 14px;
+      background: linear-gradient(135deg, #4385ff, #6c5cff, #4de0f5);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .back-top h3 {
+      margin: 0;
+      color: #fff;
+      font-size: 1.05rem;
+      line-height: 1.4;
+    }
+
+    .back-role {
+      margin: 6px 0 0;
+      color: #9bb7e7;
+      font-size: 0.7rem;
+      line-height: 1.5;
+    }
+
+    .identity-list {
+      display: grid;
+      gap: 9px;
+      width: 100%;
+    }
+
+    .identity-item {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      width: 100%;
+      min-width: 0;
+      padding: 10px 12px;
+      border: 1px solid rgba(151, 179, 230, 0.16);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.045);
+      text-decoration: none;
+    }
+
+    .identity-icon {
+      display: grid;
+      flex: 0 0 30px;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: rgba(77, 141, 255, 0.14);
+      color: #63e5ff;
+      font-size: 1rem;
+    }
+
+    .identity-item div {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .identity-item small {
+      display: block;
+      margin-bottom: 4px;
+      color: #91a9d3;
+      font-size: 0.65rem;
+    }
+
+    .identity-item strong {
+      display: block;
+      color: #fff;
+      font-size: 0.76rem;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+
+    .flip-card-back .flip-hint {
+      padding: 0;
+      margin-top: -3px;
+      color: #91a9d3;
+      font-size: 0.65rem;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .flip-card-back {
+        gap: 12px;
+        padding: 18px 16px;
+      }
+
+      .back-avatar {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 9px;
+      }
+
+      .back-top h3 {
+        font-size: 0.98rem;
+      }
+
+      .identity-list {
+        gap: 7px;
+      }
+
+      .identity-item {
+        gap: 9px;
+        padding: 8px 10px;
+      }
+    }
+
+    /* =========================================
+      FLOATING CARDS
+      ========================================= */
+
+    .float-card {
+      position: absolute;
+      z-index: 2;
+      padding: 13px;
+      border: 1px solid rgba(99, 229, 255, 0.12);
+      border-radius: 14px;
+      background: rgba(16, 29, 52, 0.96);
+      color: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      pointer-events: none;
+    }
+
+    .float-card strong,
+    .float-card small {
+      display: block;
+    }
+
+    .float-card strong {
+      margin-bottom: 5px;
+      font-size: 0.75rem;
+    }
+
+    .float-card small {
+      color: #91a9d3;
+      font-size: 0.65rem;
+    }
+
+    .card-one {
+      top: 17%;
+      left: -13%;
+    }
+
+    .card-two {
+      right: -11%;
+      bottom: 15%;
+    }
+
+    /* =========================================
+      RESPONSIVE - TABLET & MOBILE
+      ========================================= */
+
+    @media (max-width: 768px) {
+      .portrait-wrap {
+        max-width: 290px;
+      }
+
+      .card-one {
+        left: -5%;
+      }
+
+      .card-two {
+        right: -5%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .portrait-wrap {
+        max-width: 270px;
+      }
+
+      .flip-card-face {
+        border-radius: 20px;
+      }
+
+      .flip-card-back {
+        padding: 20px 14px;
+        gap: 12px;
+      }
+
+      .back-top {
+        margin-bottom: 8px;
+      }
+
+      .back-avatar {
+        width: 40px;
+        height: 40px;
+        margin: 4px auto 8px;
+        font-size: 0.95rem;
+      }
+
+      .back-top h3 {
+        font-size: 0.98rem;
+      }
+
+      .identity-list {
+        gap: 8px;
+      }
+
+      .identity-item {
+        gap: 9px;
+        padding: 8px 10px;
+      }
+
+      .identity-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+      }
+
+      .card-one {
+        left: -3%;
+      }
+
+      .card-two {
+        right: -3%;
+      }
+    }
+
+    /* Hormati preferensi pengguna untuk animasi minimal */
+    @media (prefers-reduced-motion: reduce) {
+      .flip-card-inner {
+        transition-duration: 0.01ms;
+      }
+    }
+
+    
+/* ==============================
+   SECTION SERTIFIKAT
+================================= */
+
+.certificates-section {
+    position: relative;
+    padding: 95px 0;
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
+}
+
+.certificate-card {
+    background: linear-gradient(145deg, rgba(20, 31, 54, .88), rgba(13, 20, 38, .88));
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.certificate-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(99, 229, 255, .4);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+}
+
+.certificate-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.cert-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: rgba(77, 141, 255, .13);
+    color: var(--cyan);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.cert-type-badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(99, 229, 255, .25);
+    background: rgba(77, 141, 255, .08);
+    color: var(--cyan);
+    letter-spacing: 0.5px;
+}
+
+.cert-type-badge.offline {
+    border-color: rgba(76, 230, 160, .3);
+    background: rgba(76, 230, 160, .08);
+    color: #4ce6a0;
+}
+
+.certificate-card h3 {
+    font-size: 1.1rem;
+    line-height: 1.45;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+.certificate-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+    font-size: 0.88rem;
+}
+
+.certificate-organizer {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 7px;
+    color: #c4d4f0;
+    line-height: 1.4;
+}
+
+.certificate-organizer span.icon-bullet {
+    color: var(--cyan);
+    font-size: 0.95rem;
+}
+
+.certificate-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+.certificate-date span.icon-bullet {
+    color: var(--blue);
+}
+
+.certificate-card-bottom {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.certificate-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--cyan);
+    font-size: 0.86rem;
+    font-weight: 700;
+    transition: color .2s, transform .2s;
+}
+
+.certificate-link:hover {
+    color: #fff;
+    transform: translateX(3px);
+}
+
+.certificate-cta-card {
+    background: radial-gradient(ellipse at top, rgba(77, 141, 255, .15), transparent 70%), linear-gradient(145deg, rgba(20, 31, 54, .92), rgba(13, 20, 38, .92));
+    border: 1px dashed rgba(99, 229, 255, .4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px;
+}
+
+.certificate-cta-card:hover {
+    border-color: var(--cyan);
+    border-style: solid;
+}
+
+.certificate-cta-card h3 {
+    margin-top: 10px;
+}
+
+.certificate-cta-card p {
+    font-size: 0.88rem;
+    margin-bottom: 18px;
+    color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .certificates-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .certificates-grid {
+        grid-template-columns: 1fr;
+    }
+}
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container" aria-label="Navigasi utama">
+      <a href="#home" class="logo">flexin<span>_</span>01</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">Tentang</a>
+      <a href="#experience">Pengalaman Kerja</a>
+      <a href="#education">Pendidikan</a>
+      <a href="#sertifikat">Sertifikat</a>
+      <a href="#projects">Proyek</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Kontak</a>
+    </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="availability"><span class="dot"></span> Mahasiswa SI · SEO Intern di BSW</div>
+          <p class="eyebrow" style="margin-top:28px">Hello, I'm</p>
+          <h1>Muhammad Rizky <span class="gradient-text">Nurrohman.</span></h1>
+          <p class="hero-copy">
+            Mahasiswa Sistem Informasi yang tertarik pada UI/UX Design,
+            pengembangan aplikasi, SEO, dan teknologi digital.
+            Senang belajar, membangun solusi, dan mengembangkan ide menjadi proyek nyata.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#projects">Jelajahi Proyek ↗</a>
+            <a class="btn btn-secondary" href="#contact">Hubungi Saya</a>
+          </div>
+          <div class="hero-meta">
+            <span>📍 Surakarta, Indonesia</span>
+            <span>🎓 UBSI PSDKU Solo</span>
+            <span>📈 IPK 3,96 (semester 1–4)</span>
+          </div>
+        </div>
+
+        <div class="portrait-wrap" id="portraitWrap">
+          <!-- Tali lanyard digambar oleh canvas dinamis -->
+          <canvas id="lanyard-canvas" aria-hidden="true"></canvas>
+
+          <!-- Klip logam (ikut bergerak saat kartu ditarik) -->
+          <div class="lanyard-clip" id="lanyardClip"></div>
+
+          <!-- Slot lubang kartu (ikut bergerak saat kartu ditarik) -->
+          <div class="id-card-slot" id="cardSlot"></div>
+
+          <div class="flip-card" id="profileCard"
+              role="button"
+              tabindex="0"
+              aria-label="Balik kartu profil"
+              aria-pressed="false">
+
+            <div class="flip-card-inner">
+
+              <!-- DEPAN: FOTO PROFIL -->
+              <div class="flip-card-face flip-card-front">
+                <img
+                  class="profile-photo"
+                  src="foto.jpeg"
+                  alt="Foto profil Muhammad Rizky Nurrohman"
+                  draggable="false"
+                >
+
+                <div class="front-caption">
+                  <span class="front-status"></span>
+                  <span>MUHAMMAD RIZKY NURROHMAN</span>
+                </div>
+
+                <div class="flip-hint">↻ Klik untuk melihat identitas</div>
+              </div>
+
+              <!-- BELAKANG: IDENTITAS -->
+              <div class="flip-card-face flip-card-back">
+                <div class="back-top">
+                  <div class="back-avatar">Rzk</div>
+                  <h3>Muhammad Rizky<br>Nurrohman</h3>
+                  <p class="back-role">Information Systems Student</p>
+                </div>
+
+                <div class="identity-list">
+                  <div class="identity-item">
+                    <span class="identity-icon">▤</span>
+                    <div>
+                      <small>NIM</small>
+                      <strong>19240401</strong>
+                    </div>
+                  </div>
+
+                  <div class="identity-item">
+                    <span class="identity-icon">⌂</span>
+                    <div>
+                      <small>Asal Kampus</small>
+                      <strong>UBSI Solo</strong>
+                    </div>
+                  </div>
+
+                  <a
+                    class="identity-item instagram-link"
+                    href="https://www.instagram.com/flexin_01/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Buka Instagram flexin_01"
+                  >
+                    <span class="identity-icon">◎</span>
+                    <div>
+                      <small>Instagram</small>
+                      <strong>@flexin_01 ↗</strong>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+            <div class="float-card card-one">
+            <strong>UI/UX Design</strong>
+            <small>Figma · Prototyping</small>
+          </div>
+
+          <div class="float-card card-two">
+            <strong>SEO Intern</strong>
+            <small>Berkah Solo Web</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">01 / About me</p>
+          <h2>Mengenal <span class="gradient-text">Rizky.</span></h2>
+          <p>
+            Saya mahasiswa semester 5 Program Studi Sistem Informasi di
+            Universitas Bina Sarana Informatika PSDKU Solo. Saya memiliki
+            minat pada desain antarmuka, pengembangan aplikasi, serta optimasi
+            mesin pencari. Saat ini saya menjalani magang di Berkah Solo Web
+            untuk memperluas pengalaman dan mengembangkan keterampilan di dunia kerja.
+          </p>
+        </div>
+        <div class="grid-3">
+          <article class="panel reveal">
+            <div class="icon">✦</div>
+            <h3>UI/UX & Design</h3>
+            <p>Menyusun user flow, wireframe, dan prototipe antarmuka yang berorientasi pada pengguna.</p>
+          </article>
+          <article class="panel reveal">
+            <div class="icon">⌘</div>
+            <h3>Application Development</h3>
+            <p>Mempelajari pengembangan aplikasi dengan Flutter, Dart, Supabase, dan basis data.</p>
+          </article>
+          <article class="panel reveal">
+            <div class="icon">↗</div>
+            <h3>SEO & Content</h3>
+            <p>Riset topik, penulisan artikel, dan optimasi konten agar lebih mudah ditemukan audiens.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    
+    <section id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">02 / Work Experience</p>
+          <h2>Pengalaman <span class="gradient-text">Kerja.</span></h2>
+          <p>Pengalaman profesional, magang, dan aktivitas kerja yang membangun keterampilan saya.</p>
+        </div>
+
+        <div class="timeline reveal">
+          <article class="timeline-item">
+            <h3>SEO Intern — Berkah Solo Web (BSW)</h3>
+            <div class="date">7 September – 11 Desember 2026</div>
+            <p>
+              Menjalani program magang pada bagian SEO, meliputi riset topik,
+              penyusunan artikel, optimasi konten website, serta mendukung
+              aktivitas pengelolaan konten digital.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Jurnalis & SEO — SoloHitz.com</h3>
+            <div class="date">Pengalaman penulisan konten</div>
+            <p>
+              Menulis artikel berita, melakukan riset topik, mengoptimalkan
+              SEO on-page, dan mengelola konten informatif sesuai kebutuhan website.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Usaha Retail Kecil — Token Listrik & Pulsa</h3>
+            <div class="date">Pengalaman usaha mandiri</div>
+            <p>
+              Melayani pelanggan, menangani transaksi, serta melakukan
+              pencatatan transaksi dan laporan keuangan sederhana.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Waiters / Pelayan Restoran</h3>
+            <div class="date">Pengalaman pelayanan</div>
+            <p>
+              Memberikan pelayanan kepada pelanggan, bekerja sama dalam tim,
+              serta menjaga kebersihan dan kenyamanan area kerja.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Freelance di Pabrik Kosmetik</h3>
+            <div class="date">Pengalaman operasional</div>
+            <p>
+              Membantu pekerjaan operasional dan pengemasan produk kosmetik
+              sesuai standar perusahaan.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Magang / PKL — Apotek Kimia Farma Gentan & Puskesmas Sangkrah</h3>
+            <div class="date">Pengalaman praktik kerja</div>
+            <p>
+              Mempelajari proses pelayanan kesehatan, manajemen obat,
+              dan administrasi di lingkungan apotek serta puskesmas.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">03 / Education</p>
+          <h2>Riwayat <span class="gradient-text">Pendidikan.</span></h2>
+          <p>Perjalanan akademik dan pendidikan yang telah saya tempuh.</p>
+        </div>
+
+        <div class="timeline reveal">
+          <article class="timeline-item">
+            <h3>Universitas Bina Sarana Informatika</h3>
+            <div class="date">2024 – Sekarang</div>
+            <p>
+              Program Studi Sistem Informasi, PSDKU Solo.
+              IPK semester 1–4: 3,96.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>SMK Muhammadiyah 4 Surakarta</h3>
+            <div class="date">2021 – 2024</div>
+            <p>Jurusan Farmasi.</p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>SMP Muhammadiyah 8 Surakarta</h3>
+            <div class="date">2018 – 2021</div>
+            <p>Pendidikan menengah pertama.</p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>SDI Sunan Kalijaga Baluwarti</h3>
+            <div class="date">2012 – 2018</div>
+            <p>Pendidikan sekolah dasar.</p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>TK Aisyiyah 48 Kemlayan</h3>
+            <div class="date">2010 – 2012</div>
+            <p>Pendidikan taman kanak-kanak.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+<!-- SECTION SERTIFIKAT -->
+    <section id="sertifikat" class="certificates-section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">04 / Certifications & Achievements</p>
+          <h2>Sertifikasi & <span class="gradient-text">Pencapaian.</span></h2>
+          <p>Daftar sertifikat keikutsertaan, pelatihan, dan uji kompetensi terverifikasi yang pernah saya ikuti.</p>
+        </div>
+
+        <div class="certificates-grid">
+
+          <!-- SERTIFIKAT 1 (Terbaru): 28 s/d 29 Juli 2026 -->
+          <article class="certificate-card reveal">
+            <div>
+              <div class="certificate-card-top">
+                <div class="cert-icon">🏆</div>
+                <span class="cert-type-badge">Online</span>
+              </div>
+              <h3>Kompetisi Pekan Inovasi Nasional UMB 2026</h3>
+              <div class="certificate-meta">
+                <div class="certificate-organizer">
+                  <span class="icon-bullet">🏛</span>
+                  <span>Universitas Mercu Buana</span>
+                </div>
+                <div class="certificate-date">
+                  <span class="icon-bullet">📅</span>
+                  <span>28 s/d 29 Juli 2026</span>
+                </div>
+              </div>
+            </div>
+            <div class="certificate-card-bottom">
+              <a
+                href="https://drive.google.com/file/d/1r7w-soSSwvSqDv6r1uxIHIlofNEsgse5/view?usp=drive_link"
+                class="certificate-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Buka Dokumen Drive <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- SERTIFIKAT 2: 29 s/d 30 Juni 2026 -->
+          <article class="certificate-card reveal">
+            <div>
+              <div class="certificate-card-top">
+                <div class="cert-icon">✓</div>
+                <span class="cert-type-badge">Online</span>
+              </div>
+              <h3>Sertifikasi Kompetensi Software Quality Assurance</h3>
+              <div class="certificate-meta">
+                <div class="certificate-organizer">
+                  <span class="icon-bullet">🏛</span>
+                  <span>PT. Tanjung Mulia Informatika</span>
+                </div>
+                <div class="certificate-date">
+                  <span class="icon-bullet">📅</span>
+                  <span>29 s/d 30 Juni 2026</span>
+                </div>
+              </div>
+            </div>
+            <div class="certificate-card-bottom">
+              <a
+                href="https://drive.google.com/file/d/1NZuC0DpO75y_n4klU5eD54e0HtNioI3l/view?usp=drive_link"
+                class="certificate-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Buka Dokumen Drive <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- SERTIFIKAT 3: 4 Februari s/d 4 Juni 2026 -->
+          <article class="certificate-card reveal">
+            <div>
+              <div class="certificate-card-top">
+                <div class="cert-icon">🔬</div>
+                <span class="cert-type-badge">Online</span>
+              </div>
+              <h3>Peserta Kompetensi Riset Perguruan Tinggi Kota Surakarta 2026</h3>
+              <div class="certificate-meta">
+                <div class="certificate-organizer">
+                  <span class="icon-bullet">🏛</span>
+                  <span>Badan Riset dan Inovasi Daerah (BRIDA) Kota Surakarta</span>
+                </div>
+                <div class="certificate-date">
+                  <span class="icon-bullet">📅</span>
+                  <span>4 Februari s/d 4 Juni 2026</span>
+                </div>
+              </div>
+            </div>
+            <div class="certificate-card-bottom">
+              <a
+                href="https://drive.google.com/file/d/1rq-w1q2trz6laEgixAi6gVs-CKRSiUqI/view?usp=drive_link"
+                class="certificate-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Buka Dokumen Drive <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- SERTIFIKAT 4: 9 April 2026 -->
+          <article class="certificate-card reveal">
+            <div>
+              <div class="certificate-card-top">
+                <div class="cert-icon">📑</div>
+                <span class="cert-type-badge">Online</span>
+              </div>
+              <h3>Pemakalah Seminar Nasional Inovatif 2026</h3>
+              <div class="certificate-meta">
+                <div class="certificate-organizer">
+                  <span class="icon-bullet">🏛</span>
+                  <span>BSI Convention Center UBSI Kaliabang</span>
+                </div>
+                <div class="certificate-date">
+                  <span class="icon-bullet">📅</span>
+                  <span>9 April 2026</span>
+                </div>
+              </div>
+            </div>
+            <div class="certificate-card-bottom">
+              <a
+                href="https://drive.google.com/file/d/1-LWta07jDIyz3sBLeRVTEaC9FvRfxj_s/view?usp=drive_link"
+                class="certificate-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Buka Dokumen Drive <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- SERTIFIKAT 5: 6 Maret 2026 -->
+          <article class="certificate-card reveal">
+            <div>
+              <div class="certificate-card-top">
+                <div class="cert-icon">🎖</div>
+                <span class="cert-type-badge offline">Offline</span>
+              </div>
+              <h3>Sertifikasi Uji Kompetensi LSP Database Administrator</h3>
+              <div class="certificate-meta">
+                <div class="certificate-organizer">
+                  <span class="icon-bullet">🏛</span>
+                  <span>Badan Nasional Sertifikasi Profesi (BNSP)</span>
+                </div>
+                <div class="certificate-date">
+                  <span class="icon-bullet">📅</span>
+                  <span>6 Maret 2026</span>
+                </div>
+              </div>
+            </div>
+            <div class="certificate-card-bottom">
+              <a
+                href="https://drive.google.com/file/d/1z_CuEbbfC68L0NlL2PLFJAXrrAAOPcr4/view?usp=drive_link"
+                class="certificate-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Buka Dokumen Drive <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- SERTIFIKAT 6: 26 s/d 28 November 2025 -->
+          <article class="certificate-card reveal">
+            <div>
+              <div class="certificate-card-top">
+                <div class="cert-icon">⚡</div>
+                <span class="cert-type-badge">Online</span>
+              </div>
+              <h3>Mini Bootcamp Kerja Remote</h3>
+              <div class="certificate-meta">
+                <div class="certificate-organizer">
+                  <span class="icon-bullet">🏛</span>
+                  <span>SGB VA Course</span>
+                </div>
+                <div class="certificate-date">
+                  <span class="icon-bullet">📅</span>
+                  <span>26 s/d 28 November 2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="certificate-card-bottom">
+              <a
+                href="https://drive.google.com/file/d/1JHjW4lPXXds4Dsp8YiEHtvS1d265oIfF/view?usp=drive_link"
+                class="certificate-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Buka Dokumen Drive <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- SERTIFIKAT 7: 25 Juni 2025 -->
+          <article class="certificate-card reveal">
+            <div>
+              <div class="certificate-card-top">
+                <div class="cert-icon">🗄</div>
+                <span class="cert-type-badge offline">Offline</span>
+              </div>
+              <h3>Uji Kompetensi Berbasis Industri Bidang Basis Data</h3>
+              <div class="certificate-meta">
+                <div class="certificate-organizer">
+                  <span class="icon-bullet">🏛</span>
+                  <span>Sadasa Academy</span>
+                </div>
+                <div class="certificate-date">
+                  <span class="icon-bullet">📅</span>
+                  <span>25 Juni 2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="certificate-card-bottom">
+              <a
+                href="https://drive.google.com/file/d/1qoswn7GoZAVNdIrVqjXibfBsG4caQPdZ/view?usp=drive_link"
+                class="certificate-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Buka Dokumen Drive <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- SERTIFIKAT 8 (Terlama): 27 Mei 2025 -->
+          <article class="certificate-card reveal">
+            <div>
+              <div class="certificate-card-top">
+                <div class="cert-icon">✦</div>
+                <span class="cert-type-badge offline">Offline</span>
+              </div>
+              <h3>Digital Entrepreneurship Academy</h3>
+              <div class="certificate-meta">
+                <div class="certificate-organizer">
+                  <span class="icon-bullet">🏛</span>
+                  <span>BPSDMP Yogyakarta</span>
+                </div>
+                <div class="certificate-date">
+                  <span class="icon-bullet">📅</span>
+                  <span>27 Mei 2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="certificate-card-bottom">
+              <a
+                href="https://drive.google.com/file/d/1wnoUVKA_aJetPZM9EVVRtpDZO6SVD09z/view?usp=drive_link"
+                class="certificate-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Buka Dokumen Drive <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- KARTU SERTIFIKAT LAINNYA / GOOGLE DRIVE PORTOFOLIO -->
+          <article class="certificate-card certificate-cta-card reveal">
+            <div>
+              <div class="cert-icon">📂</div>
+              <h3>Sertifikat & Portofolio Lainnya</h3>
+              <p>
+                Dokumentasi sertifikat, penghargaan akademik, pelatihan, dan arsip karya lengkap saya tersimpan di Google Drive.
+              </p>
+            </div>
+            <div class="certificate-card-bottom" style="width: 100%;">
+              <a
+                href="https://bit.ly/MuhammadRizky_portofolio"
+                class="certificate-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Buka Drive Portofolio Lengkap <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+    <!-- AKHIR SECTION SERTIFIKAT -->
+
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">05 / Selected work</p>
+          <h2>Proyek <span class="gradient-text">Pilihan.</span></h2>
+          <p>Beberapa proyek yang pernah dikerjakan. Detail dan tautan demo dapat ditambahkan setelah dipublikasikan.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="panel project-card reveal">
+            <div class="project-visual">01 / FACE ID</div>
+            <div class="project-content">
+              <h3>Aplikasi Absensi Karyawan</h3>
+              <p>Aplikasi absensi berbasis verifikasi wajah dan geofencing untuk membantu pencatatan kehadiran.</p>
+              <div class="tags"><span class="tag">Flutter</span><span class="tag">Supabase</span><span class="tag">Google ML Kit</span></div>
+            </div>
+          </article>
+
+          <article class="panel project-card reveal">
+            <div class="project-visual">02 / PAYROLL</div>
+            <div class="project-content">
+              <h3>Sistem Payroll Otomatis</h3>
+              <p>Konsep sistem penggajian dengan alur pengolahan data dan pembuatan dokumen PDF.</p>
+              <div class="tags"><span class="tag">Flutter</span><span class="tag">Supabase</span><span class="tag">PDF</span></div>
+            </div>
+          </article>
+
+          <article class="panel project-card reveal">
+            <div class="project-visual">03 / DESIGN</div>
+            <div class="project-content">
+              <h3>UI/UX Design Website</h3>
+              <p>Perancangan user flow, struktur halaman, dan prototipe desain antarmuka website.</p>
+              <div class="tags"><span class="tag">Figma</span><span class="tag">Wireframe</span><span class="tag">Prototype</span></div>
+            </div>
+          </article>
+
+          <article class="panel project-card reveal">
+            <div class="project-visual">04 / GREEN</div>
+            <div class="project-content">
+              <h3>Kota Bersih Surakarta</h3>
+              <p>Konsep smart waste management dengan fokus pada pengalaman pengguna dan rancangan sistem.</p>
+              <div class="tags"><span class="tag">UI/UX</span><span class="tag">System Prototype</span></div>
+            </div>
+          </article>
+
+          <article class="panel project-card reveal">
+            <div class="project-visual">05 / SEO</div>
+            <div class="project-content">
+              <h3>SEO & Content Workflow</h3>
+              <p>Pengalaman riset kata kunci, penyusunan artikel, dan optimasi konten untuk website.</p>
+              <div class="tags"><span class="tag">SEO</span><span class="tag">Content</span><span class="tag">WordPress</span></div>
+            </div>
+          </article>
+
+          <article class="panel project-card reveal">
+            <div class="project-visual">06 / MORE</div>
+            <div class="project-content">
+              <h3>Explore My Portfolio</h3>
+              <p>Lihat informasi portofolio lebih lanjut melalui tautan yang digunakan pada CV saya.</p>
+              <div class="tags"><span class="tag">Portfolio</span><span class="tag">Projects</span></div>
+              <a class="project-link" href="https://bit.ly/MuhammadRizky_portofolio" target="_blank" rel="noopener noreferrer">Buka portofolio ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">06 / Toolkit</p>
+          <h2>Skills & <span class="gradient-text">Tools.</span></h2>
+          <p>Teknologi dan keterampilan yang saya gunakan serta terus kembangkan.</p>
+        </div>
+        <div class="skills reveal">
+          <span class="skill">Figma / UI/UX</span>
+          <span class="skill">Flutter</span>
+          <span class="skill">Dart</span>
+          <span class="skill">Supabase</span>
+          <span class="skill">SQL Database</span>
+          <span class="skill">SEO On-Page</span>
+          <span class="skill">Keyword Research</span>
+          <span class="skill">Content Writing</span>
+          <span class="skill">WordPress</span>
+          <span class="skill">Microsoft Word</span>
+          <span class="skill">Microsoft Excel</span>
+          <span class="skill">Microsoft PowerPoint</span>
+          <span class="skill">Communication</span>
+          <span class="skill">Teamwork</span>
+          <span class="skill">Problem Solving</span>
+        </div>
+
+        <div class="section-head reveal" style="margin-top:55px;margin-bottom:25px">
+          <p class="eyebrow">07 / Beyond the classroom</p>
+          <h2>Organisasi & <span class="gradient-text">Leadership.</span></h2>
+        </div>
+        <div class="grid-3">
+          <article class="panel reveal">
+            <h3>HIMSI</h3>
+            <p>Bendahara Himpunan Mahasiswa Sistem Informasi · 2024–sekarang.</p>
+          </article>
+          <article class="panel reveal">
+            <h3>PR IPM</h3>
+            <p>Anggota Pimpinan Ranting Ikatan Pelajar Muhammadiyah Bidang PIP · 2022–2023.</p>
+          </article>
+          <article class="panel reveal">
+            <h3>PC IPM</h3>
+            <p>Anggota Pimpinan Cabang Ikatan Pelajar Muhammadiyah Bidang PIP pada 2023–2024.</p>
+          </article>
+          <article class="panel reveal">
+            <h3>Karang Taruna</h3>
+            <p>Anggota Karang Taruna pada 2023–2024.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box reveal">
+          <p class="eyebrow">08 / Let's connect</p>
+          <h2 style="margin-top:15px">Mari terhubung & membangun sesuatu <span class="gradient-text">bersama.</span></h2>
+          <p class="contact-desc">
+            Saya terbuka untuk diskusi kolaborasi proyek, peluang magang, freelance UI/UX Design, pengembangan aplikasi, hingga optimasi SEO.
+          </p>
+
+          <!-- Grid Kartu Kontak Interaktif -->
+          <div class="contact-grid">
+
+            <!-- EMAIL -->
+            <a href="mailto:mrizkynurrohman.mail@gmail.com" class="contact-card highlight-card" aria-label="Kirim Email">
+              <div class="contact-icon">✉</div>
+              <div class="contact-info">
+                <small>Email Resmi</small>
+                <strong>mrizkynurrohman.mail@gmail.com</strong>
+              </div>
+              <span class="contact-arrow">↗</span>
+            </a>
+
+            <!-- LINKEDIN -->
+            <a href="https://www.linkedin.com/in/muhammad-rizky-nurrohman-152962372/" target="_blank" rel="noopener noreferrer" class="contact-card" aria-label="Buka LinkedIn">
+              <div class="contact-icon">in</div>
+              <div class="contact-info">
+                <small>LinkedIn</small>
+                <strong>Muhammad Rizky Nurrohman</strong>
+              </div>
+              <span class="contact-arrow">↗</span>
+            </a>
+
+            <!-- GITHUB -->
+            <a href="https://github.com/MuhammadRizkyNurrohman" target="_blank" rel="noopener noreferrer" class="contact-card" aria-label="Buka GitHub">
+              <div class="contact-icon">⌘</div>
+              <div class="contact-info">
+                <small>GitHub</small>
+                <strong>MuhammadRizkyNurrohman</strong>
+              </div>
+              <span class="contact-arrow">↗</span>
+            </a>
+
+            <!-- INSTAGRAM -->
+            <a href="https://www.instagram.com/flexin_01/" target="_blank" rel="noopener noreferrer" class="contact-card" aria-label="Buka Instagram">
+              <div class="contact-icon">◎</div>
+              <div class="contact-info">
+                <small>Instagram</small>
+                <strong>@flexin_01</strong>
+              </div>
+              <span class="contact-arrow">↗</span>
+            </a>
+
+            <!-- WHATSAPP -->
+            <a href="https://wa.me/6285803543866" target="_blank" rel="noopener noreferrer" class="contact-card" aria-label="Chat WhatsApp">
+              <div class="contact-icon">💬</div>
+              <div class="contact-info">
+                <small>WhatsApp / Telepon</small>
+                <strong>+62 858-0354-3866</strong>
+              </div>
+              <span class="contact-arrow">↗</span>
+            </a>
+
+            <!-- LOKASI -->
+            <div class="contact-card" style="cursor: default;" aria-label="Lokasi Tempat Tinggal">
+              <div class="contact-icon">📍</div>
+              <div class="contact-info">
+                <small>Domisili / Lokasi</small>
+                <strong>Surakarta, Jawa Tengah</strong>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="btn-row" style="justify-content:center; margin-top: 36px;">
+            <a class="btn btn-primary" href="mailto:mrizkynurrohman.mail@gmail.com">Kirim Pesan Email ↗</a>
+            <a class="btn btn-secondary" href="https://wa.me/6285803543866" target="_blank" rel="noopener noreferrer">Chat WhatsApp ↗</a>
+            <a class="btn btn-secondary" href="https://bit.ly/MuhammadRizky_portofolio" target="_blank" rel="noopener noreferrer">Dokumen Portofolio ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <a href="#home" class="logo">flexin<span>_</span>01</a>
+      <p>© <span id="year"></span> Muhammad Rizky Nurrohman.</p>
+      <a href="#home">Kembali ke atas ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(open));
+      menuBtn.textContent = open ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    // Reveal sections when they enter the viewport
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const profileCard = document.getElementById("profileCard");
+
+    function flipProfileCard() {
+      const flipped = profileCard.classList.toggle("is-flipped");
+      profileCard.setAttribute("aria-pressed", String(flipped));
+    }
+
+    // =========================================
+    // RUBBER ELASTIC DRAG + LANYARD CANVAS ROPE
+    // =========================================
+    (function initRubberElasticCard() {
+      const lanyardClip  = document.getElementById("lanyardClip");
+      const cardSlot     = document.getElementById("cardSlot");
+      const lanyardCvs   = document.getElementById("lanyard-canvas");
+      const portraitWrap = document.getElementById("portraitWrap");
+      const lCtx = lanyardCvs ? lanyardCvs.getContext("2d") : null;
+
+      // ---- Canvas ukuran dinamis mengikuti portrait-wrap ----
+      function resizeLanyardCanvas() {
+        if (!lanyardCvs || !portraitWrap) return;
+        const w = portraitWrap.offsetWidth  || 220;
+        const h = portraitWrap.offsetHeight || 400;
+        lanyardCvs.width  = w;
+        lanyardCvs.height = h;
+        lanyardCvs.style.width  = w + "px";
+        lanyardCvs.style.height = h + "px";
+        lanyardCvs.style.top  = "0px";
+        lanyardCvs.style.left = "0px";
+        lanyardCvs.style.transform = "none";
+      }
+      resizeLanyardCanvas();
+      window.addEventListener("resize", resizeLanyardCanvas);
+
+      function getAnchorX() { return lanyardCvs ? lanyardCvs.width / 2 : 110; }
+      const ANCHOR_Y = 4;
+
+      // ---- Portrait-wrap layout ----
+      // padding-top: 80px  → kartu mulai dari y=80 px di dalam wrap
+      // Slot lubang: top 10px di dalam kartu → card-top + 10px + 3px (½ tinggi slot)
+      // Saat tidak bergerak, slot center = 80 + 10 + 3.5 = ~93.5 px dari atas wrap
+      const CARD_TOP   = 80;    // = portrait-wrap padding-top (px)
+      const SLOT_INSET = 10;    // = id-card-slot top di dalam kartu (px)
+      const SLOT_H     = 7;     // tinggi slot (px)
+
+      let isDragging = false;
+      let startX = 0, startY = 0;
+      let currentX = 0, currentY = 0;
+      let velocityX = 0, velocityY = 0;
+      let lastMoveTime = 0;
+      let animationId = null;
+
+      const stiffness = 0.14;
+      const damping   = 0.72;
+
+      /* ---- Gambar tali & update posisi aksesori ---- */
+      function updateLanyard(cardOffsetX, cardOffsetY, cardRot) {
+        if (!lCtx || !lanyardCvs) return;
+
+        const CW = lanyardCvs.width;
+        const CH = lanyardCvs.height;
+        const AX = getAnchorX();
+
+        // Canvas is positioned at left:0, top:0 inside portrait-wrap
+        // Canvas pixel coords == portrait-wrap coords directly
+        const holeX = CW / 2 + cardOffsetX;              // cx of wrap + card shift
+        const holeY = CARD_TOP + SLOT_INSET + SLOT_H / 2 + cardOffsetY;
+
+        // Gambar tali (kurva bezier melengkung)
+        lCtx.clearRect(0, 0, CW, CH);
+
+        lCtx.save();
+        lCtx.shadowColor = "rgba(77,141,255,0.25)";
+        lCtx.shadowBlur  = 6;
+
+        // Tali utama — garis tebal navy/biru
+        const cpX = AX + (holeX - AX) * 0.4;
+        const cpY = ANCHOR_Y + (holeY - ANCHOR_Y) * 0.55;
+
+        lCtx.beginPath();
+        lCtx.moveTo(AX, ANCHOR_Y);
+        lCtx.quadraticCurveTo(cpX, cpY, holeX, holeY);
+        lCtx.lineWidth   = 8;
+        lCtx.strokeStyle = "#1b3a6b";
+        lCtx.lineCap     = "round";
+        lCtx.stroke();
+
+        // Garis strip warna di tengah tali
+        lCtx.beginPath();
+        lCtx.moveTo(AX, ANCHOR_Y);
+        lCtx.quadraticCurveTo(cpX, cpY, holeX, holeY);
+        lCtx.lineWidth   = 3;
+        lCtx.strokeStyle = "rgba(99,229,255,0.55)";
+        lCtx.setLineDash([4, 6]);
+        lCtx.stroke();
+        lCtx.setLineDash([]);
+
+        lCtx.restore();
+
+        // ---- Posisi klip — tepat di atas lubang kartu ----
+        if (lanyardClip) {
+          const clipW  = 22;
+          const clipH  = 16;
+          // Klip bergerak bersama kartu secara horizontal, tetap di atas slot
+          lanyardClip.style.left      = holeX + "px";
+          lanyardClip.style.top       = (holeY - clipH) + "px";
+          lanyardClip.style.transform = `translateX(-50%)`;
+        }
+
+        // ---- Posisi slot lubang ----
+        if (cardSlot) {
+          cardSlot.style.top  = (CARD_TOP + SLOT_INSET + cardOffsetY) + "px";
+          // Horizontal: mengikuti pergeseran kartu
+          cardSlot.style.left = "50%";
+          cardSlot.style.transform = `translateX(calc(-50% + ${cardOffsetX}px))`;
+        }
+      }
+
+      /* ---- Terapkan posisi kartu + update lanyard ---- */
+      function applyTransform(x, y, rot) {
+        profileCard.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rot}deg)`;
+        updateLanyard(x, y, rot);
+      }
+
+      /* Gambar posisi awal (kartu diam) */
+      applyTransform(0, 0, 0);
+
+      function startDrag(e) {
+        if (e.target.closest("a")) return;
+        if (e.type === "mousedown") e.preventDefault();
+
+        isDragging = true;
+        profileCard.classList.add("is-dragging");
+        if (animationId) cancelAnimationFrame(animationId);
+
+        const point = e.touches ? e.touches[0] : e;
+        startX = point.clientX - currentX;
+        startY = point.clientY - currentY;
+        lastMoveTime = performance.now();
+        velocityX = 0;
+        velocityY = 0;
+      }
+
+      function onMove(e) {
+        if (!isDragging) return;
+        const point = e.touches ? e.touches[0] : e;
+        const rawX  = point.clientX - startX;
+        const rawY  = point.clientY - startY;
+
+        const dist   = Math.hypot(rawX, rawY);
+        const factor = 1 / (1 + dist * 0.006);
+        currentX = rawX * factor;
+        currentY = rawY * factor;
+
+        const angle = currentX * 0.12;
+        applyTransform(currentX, currentY, angle);
+
+        const now = performance.now();
+        const dt  = Math.max(1, now - lastMoveTime);
+        velocityX = (currentX / dt) * 16;
+        velocityY = (currentY / dt) * 16;
+        lastMoveTime = now;
+      }
+
+      function endDrag(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        profileCard.classList.remove("is-dragging");
+
+        const dragDistance = Math.hypot(currentX, currentY);
+        if (dragDistance < 6) {
+          flipProfileCard();
+          currentX = 0; currentY = 0;
+          applyTransform(0, 0, 0);
+          return;
+        }
+
+        let posX = currentX, posY = currentY;
+        let velX = velocityX * 0.4, velY = velocityY * 0.4;
+
+        function springBounce() {
+          velX = (velX - stiffness * posX) * damping;
+          velY = (velY - stiffness * posY) * damping;
+          posX += velX;
+          posY += velY;
+
+          const rot = posX * 0.14;
+          applyTransform(posX, posY, rot);
+
+          if (Math.abs(posX) < 0.2 && Math.abs(posY) < 0.2 &&
+              Math.abs(velX) < 0.2 && Math.abs(velY) < 0.2) {
+            currentX = 0; currentY = 0;
+            applyTransform(0, 0, 0);
+            cancelAnimationFrame(animationId);
+            return;
+          }
+          animationId = requestAnimationFrame(springBounce);
+        }
+        animationId = requestAnimationFrame(springBounce);
+      }
+
+      profileCard.addEventListener("mousedown",  startDrag);
+      window.addEventListener("mousemove",  onMove);
+      window.addEventListener("mouseup",    endDrag);
+      profileCard.addEventListener("touchstart", startDrag, { passive: false });
+      window.addEventListener("touchmove",  onMove, { passive: true });
+      window.addEventListener("touchend",   endDrag);
+      window.addEventListener("touchcancel",endDrag);
+    })();
+
+    profileCard.addEventListener("keydown", (event) => {
+      if (event.target.closest("a")) return;
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        flipProfileCard();
+      }
+    });
+
+    // =========================================
+    // LUXURY BLUE CURSOR & SPARKLE PARTICLES
+    // =========================================
+    (function initLuxuryCursor() {
+      const cursorDot = document.getElementById("cursorDot");
+      const cursorRing = document.getElementById("cursorRing");
+      const canvas = document.getElementById("sparkle-canvas");
+      if (!cursorDot || !cursorRing || !canvas) return;
+
+      const ctx = canvas.getContext("2d");
+      let mouseX = -100;
+      let mouseY = -100;
+      let ringX = -100;
+      let ringY = -100;
+      let isVisible = false;
+      let particles = [];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
+      class Sparkle {
+        constructor(x, y) {
+          this.x = x + (Math.random() - 0.5) * 8;
+          this.y = y + (Math.random() - 0.5) * 8;
+          this.size = Math.random() * 3 + 1.2;
+          this.alpha = 1;
+          this.decay = Math.random() * 0.03 + 0.02;
+          this.vx = (Math.random() - 0.5) * 1.5;
+          this.vy = (Math.random() - 0.5) * 1.5 - 0.2;
+          const colors = [
+            "rgba(99, 229, 255,",
+            "rgba(77, 141, 255,",
+            "rgba(147, 215, 255,",
+            "rgba(255, 255, 255,"
+          ];
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.spikes = Math.random() > 0.4 ? 4 : 0;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.alpha -= this.decay;
+          this.size *= 0.96;
+        }
+
+        draw(ctx) {
+          if (this.alpha <= 0) return;
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.fillStyle = `${this.color} ${this.alpha})`;
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = "#63e5ff";
+
+          if (this.spikes === 4) {
+            ctx.beginPath();
+            const s = this.size * 2;
+            ctx.moveTo(0, -s);
+            ctx.quadraticCurveTo(0, 0, s, 0);
+            ctx.quadraticCurveTo(0, 0, 0, s);
+            ctx.quadraticCurveTo(0, 0, -s, 0);
+            ctx.quadraticCurveTo(0, 0, 0, -s);
+            ctx.fill();
+          } else {
+            ctx.beginPath();
+            ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
+        }
+      }
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        if (!isVisible) {
+          cursorDot.style.opacity = "1";
+          cursorRing.style.opacity = "1";
+          ringX = mouseX;
+          ringY = mouseY;
+          isVisible = true;
+        }
+
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
+
+        // Buat partikel kerlip setiap kursor digerakkan
+        for (let i = 0; i < 2; i++) {
+          particles.push(new Sparkle(mouseX, mouseY));
+        }
+      });
+
+      document.addEventListener("mouseleave", () => {
+        cursorDot.style.opacity = "0";
+        cursorRing.style.opacity = "0";
+        isVisible = false;
+      });
+
+      document.addEventListener("mouseenter", () => {
+        cursorDot.style.opacity = "1";
+        cursorRing.style.opacity = "1";
+        isVisible = true;
+      });
+
+      // Hover efek pada elemen interaktif
+      const interactiveSelector = "a, button, [role='button'], .skill, .certificate-card, .panel, input, textarea";
+      document.querySelectorAll(interactiveSelector).forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          cursorRing.classList.add("cursor-hover");
+          cursorDot.classList.add("cursor-hover");
+        });
+        el.addEventListener("mouseleave", () => {
+          cursorRing.classList.remove("cursor-hover");
+          cursorDot.classList.remove("cursor-hover");
+        });
+      });
+
+      // Render loop untuk smooth follow & sparkle particles
+      function render() {
+        if (isVisible) {
+          ringX += (mouseX - ringX) * 0.18;
+          ringY += (mouseY - ringY) * 0.18;
+          cursorRing.style.left = `${ringX}px`;
+          cursorRing.style.top = `${ringY}px`;
+        }
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.update();
+          p.draw(ctx);
+          if (p.alpha <= 0) {
+            particles.splice(i, 1);
+          }
+        }
+
+        requestAnimationFrame(render);
+      }
+      requestAnimationFrame(render);
+    })();
+  </script>
+
+  <!-- Luxury Blue Cursor Elements -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+  <canvas id="sparkle-canvas" aria-hidden="true"></canvas>
+</body>
+</html>
