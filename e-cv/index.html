@@ -1,2342 +1,2018 @@
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080d1b">
-  <meta name="description" content="Portofolio Muhammad Rizky Nurrohman, mahasiswa Sistem Informasi, SEO Intern di Berkah Solo Web, UI/UX Designer, dan calon developer.">
-  <meta name="author" content="Muhammad Rizky Nurrohman">
-  <title>Rizky Nurrohman — Portfolio & CV</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #080d1b;
-      --surface: #10182b;
-      --surface2: #141f36;
-      --text: #f3f6ff;
-      --muted: #9aa9c3;
-      --blue: #4d8dff;
-      --cyan: #63e5ff;
-      --line: rgba(151, 179, 230, .15);
-      --gradient: linear-gradient(120deg, #4385ff, #6c5cff 55%, #4de0f5);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
-
-    /* Custom Luxury Blue Cursor */
-    .cursor-dot {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #63e5ff;
-      box-shadow: 0 0 14px #63e5ff, 0 0 25px rgba(77, 141, 255, 0.9);
-      pointer-events: none;
-      z-index: 100000;
-      transform: translate(-50%, -50%);
-      transition: width 0.15s ease, height 0.15s ease, background 0.15s ease;
-      opacity: 0;
-    }
-
-    .cursor-ring {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(99, 229, 255, 0.75);
-      background: radial-gradient(circle, rgba(77, 141, 255, 0.2), transparent 70%);
-      box-shadow: 0 0 20px rgba(77, 141, 255, 0.4), inset 0 0 10px rgba(99, 229, 255, 0.25);
-      pointer-events: none;
-      z-index: 99999;
-      transform: translate(-50%, -50%);
-      transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
-                  height 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
-                  border-color 0.2s ease, 
-                  background 0.2s ease;
-      opacity: 0;
-    }
-
-    .cursor-ring.cursor-hover {
-      width: 58px;
-      height: 58px;
-      border-color: #63e5ff;
-      background: radial-gradient(circle, rgba(99, 229, 255, 0.3), transparent 75%);
-      box-shadow: 0 0 32px rgba(99, 229, 255, 0.7), inset 0 0 16px rgba(99, 229, 255, 0.35);
-    }
-
-    .cursor-dot.cursor-hover {
-      width: 6px;
-      height: 6px;
-      background: #ffffff;
-      box-shadow: 0 0 18px #63e5ff;
-    }
-
-    #sparkle-canvas {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 99998;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: "DM Sans", sans-serif;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    .container { width: min(1120px, 90%); margin: auto; }
-    .gradient-text {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .eyebrow {
-      color: var(--cyan);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: .76rem;
-      font-weight: 700;
-    }
-    h1, h2, h3 { font-family: "Space Grotesk", sans-serif; line-height: 1.2; }
-    h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 10px 0 16px; }
-    p { color: var(--muted); }
-    section { padding: 95px 0; }
-    .section-head { max-width: 650px; margin-bottom: 38px; }
-
-    /* Navigation */
-    header {
-      position: fixed; inset: 0 0 auto; z-index: 50;
-      background: rgba(8, 13, 27, .82);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
-    }
-    nav {
-      min-height: 72px; display: flex; align-items: center;
-      justify-content: space-between; gap: 24px;
-    }
-    .logo { font: 700 1.35rem "Space Grotesk"; letter-spacing: -1px; }
-    .logo span { color: var(--cyan); }
-    .nav-links { display: flex; align-items: center; gap: 25px; }
-    .nav-links a { color: var(--muted); font-size: .88rem; transition: .2s; }
-    .nav-links a:hover { color: white; }
-    .menu-btn {
-      display: none; border: 1px solid var(--line); color: white;
-      background: var(--surface); border-radius: 10px; padding: 7px 12px;
-      cursor: pointer;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex; justify-content: center; align-items: center;
-      gap: 9px; padding: 12px 19px; border-radius: 12px;
-      font-weight: 700; font-size: .9rem; border: 1px solid var(--line);
-      transition: transform .25s, box-shadow .25s, background .25s;
-      cursor: pointer;
-    }
-    .btn:hover { transform: translateY(-3px); }
-    .btn-primary {
-      color: #fff; border: 0; background: var(--gradient);
-      box-shadow: 0 8px 30px rgba(77, 141, 255, .2);
-    }
-    .btn-secondary { background: rgba(255,255,255,.035); }
-    .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-
-    /* Hero */
-    .hero {
-      min-height: 100vh; display: flex; align-items: center;
-      position: relative; padding-top: 125px; overflow: hidden;
-    }
-    .hero::before {
-      content: ""; position: absolute; width: 530px; height: 530px;
-      background: #315bff; filter: blur(160px); opacity: .20;
-      border-radius: 50%; right: -130px; top: 10%;
-      pointer-events: none;
-    }
-    .hero::after {
-      content: ""; position: absolute; width: 300px; height: 300px;
-      background: #00d9ff; filter: blur(160px); opacity: .12;
-      left: -120px; bottom: 0; pointer-events: none;
-    }
-    .hero-grid {
-      display: grid; grid-template-columns: 1.3fr .7fr;
-      align-items: center; gap: 65px; position: relative; z-index: 1;
-    }
-    .availability {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 7px 12px; border: 1px solid var(--line);
-      border-radius: 30px; font-size: .78rem; color: #c4d4f0;
-      background: rgba(255,255,255,.035);
-    }
-    .dot {
-      width: 8px; height: 8px; background: #4ce6a0;
-      border-radius: 50%; box-shadow: 0 0 12px #4ce6a0;
-    }
-    .hero h1 {
-      font-size: clamp(3rem, 6.5vw, 5.5rem);
-      letter-spacing: -4px; margin: 24px 0 18px;
-    }
-    .hero h1 span { display: block; }
-    .hero-copy { max-width: 590px; font-size: 1.03rem; }
-    .hero-meta { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 26px; }
-    .hero-meta span { color: var(--muted); font-size: .82rem; }
-    .portrait-wrap { position: relative; max-width: 360px; margin: auto; width: 100%; }
-    .portrait {
-      aspect-ratio: 4/5; border: 1px solid rgba(111,164,255,.4);
-      border-radius: 28px; padding: 12px;
-      background: linear-gradient(145deg, rgba(77,141,255,.3), rgba(255,255,255,.025));
-      transform: rotate(2deg); animation: float 6s ease-in-out infinite;
-      box-shadow: 0 30px 100px rgba(0,0,0,.25);
-    }
-    .portrait-inner {
-      width: 100%; height: 100%; border-radius: 19px;
-      display: grid; place-items: center; text-align: center;
-      background:
-        radial-gradient(ellipse at 50% 20%, rgba(99,229,255,.18), transparent 55%),
-        linear-gradient(160deg, #1a3155, #0d1427);
-      overflow: hidden;
-    }
-    .initials {
-      width: 145px; height: 145px; display: grid; place-items: center;
-      border-radius: 50%; font: 700 3.4rem "Space Grotesk";
-      color: white; background: var(--gradient);
-      border: 5px solid rgba(255,255,255,.15);
-      box-shadow: 0 0 60px rgba(77,141,255,.3);
-    }
-    .portrait-inner p { margin-top: 20px; color: #d9e6ff; }
-    .float-card {
-      position: absolute; background: #111c31;
-      border: 1px solid var(--line); border-radius: 14px;
-      padding: 13px 16px; box-shadow: 0 15px 40px #0004;
-      font-size: .83rem;
-    }
-    .float-card strong { display: block; color: white; }
-    .float-card small { color: var(--muted); }
-    .card-one { top: 15%; left: -48px; }
-    .card-two { bottom: 12%; right: -38px; }
-
-    /* General cards */
-    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
-    .panel {
-      background: linear-gradient(145deg, rgba(20,31,54,.88), rgba(13,20,38,.88));
-      border: 1px solid var(--line); border-radius: 20px; padding: 25px;
-      transition: transform .3s, border-color .3s;
-    }
-    .panel:hover { transform: translateY(-6px); border-color: rgba(99,229,255,.4); }
-    .icon {
-      width: 45px; height: 45px; display: grid; place-items: center;
-      border-radius: 13px; background: rgba(77,141,255,.13);
-      color: var(--cyan); font-size: 1.25rem; margin-bottom: 19px;
-    }
-    .panel h3 { font-size: 1.13rem; margin-bottom: 10px; }
-    .panel p { font-size: .9rem; }
-
-    /* Experience */
-    .timeline { border-left: 1px solid rgba(99,229,255,.35); margin-left: 8px; }
-    .timeline-item { padding: 0 0 32px 28px; position: relative; }
-    .timeline-item::before {
-      content: ""; position: absolute; width: 11px; height: 11px;
-      left: -6px; top: 6px; background: var(--cyan); border-radius: 50%;
-      box-shadow: 0 0 15px rgba(99,229,255,.45);
-    }
-    .timeline-item h3 { font-size: 1.12rem; }
-    .timeline-item .date { color: var(--cyan); font-size: .82rem; margin: 6px 0; }
-    .timeline-item p { font-size: .92rem; }
-
-    /* Projects */
-    .project-card { overflow: hidden; padding: 0; }
-    .project-visual {
-      min-height: 155px; display: grid; place-items: center;
-      background: radial-gradient(ellipse at top, #294d94, #10182b 70%);
-      font: 700 2.4rem "Space Grotesk"; color: #d8e6ff;
-      border-bottom: 1px solid var(--line);
-    }
-    .project-content { padding: 23px; }
-    .project-content h3 { margin-bottom: 10px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 16px 0; }
-    .tag {
-      font-size: .72rem; color: #b9d9ff; padding: 5px 9px;
-      border: 1px solid rgba(99,229,255,.2); border-radius: 8px;
-      background: rgba(77,141,255,.07);
-    }
-    .project-link { color: var(--cyan); font-size: .86rem; font-weight: 700; }
-
-    /* Skills */
-    .skills { display: flex; flex-wrap: wrap; gap: 12px; }
-    .skill {
-      padding: 12px 16px; border: 1px solid var(--line);
-      background: var(--surface); border-radius: 12px;
-      color: #d5e2f9; transition: .2s;
-    }
-    .skill:hover { border-color: var(--cyan); transform: translateY(-3px); }
-
-    /* Contact & footer */
-    .contact-box {
-      padding: clamp(28px, 6vw, 60px);
-      text-align: center;
-      border: 1px solid rgba(99, 229, 255, .25);
-      border-radius: 26px;
-      background: radial-gradient(ellipse at top, rgba(77, 141, 255, .18), transparent 70%), linear-gradient(160deg, #101a30, #090e1d);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-    }
-    .contact-box p.contact-desc { max-width: 600px; margin: 0 auto 36px; font-size: 0.98rem; }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 25px;
-      text-align: left;
-    }
-
-    .contact-card {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 18px 20px;
-      border-radius: 16px;
-      background: linear-gradient(145deg, rgba(20, 31, 54, 0.85), rgba(12, 18, 34, 0.85));
-      border: 1px solid var(--line);
-      color: var(--text);
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-      text-decoration: none;
-      position: relative;
-    }
-
-    .contact-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(99, 229, 255, 0.5);
-      background: linear-gradient(145deg, rgba(26, 40, 70, 0.95), rgba(16, 25, 46, 0.95));
-      box-shadow: 0 12px 28px rgba(77, 141, 255, 0.16);
-    }
-
-    .contact-icon {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: rgba(77, 141, 255, 0.14);
-      border: 1px solid rgba(99, 229, 255, 0.25);
-      color: var(--cyan);
-      font-size: 1.25rem;
-      flex-shrink: 0;
-    }
-
-    .contact-card:hover .contact-icon {
-      background: rgba(99, 229, 255, 0.2);
-      border-color: var(--cyan);
-      color: #fff;
-    }
-
-    .contact-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .contact-info small {
-      display: block;
-      color: var(--muted);
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 3px;
-    }
-
-    .contact-info strong {
-      display: block;
-      color: #fff;
-      font-size: 0.88rem;
-      font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .contact-arrow {
-      color: var(--cyan);
-      font-size: 1.1rem;
-      transition: transform 0.25s ease, color 0.25s ease;
-      margin-left: auto;
-    }
-
-    .contact-card:hover .contact-arrow {
-      color: #fff;
-      transform: translate(3px, -3px);
-    }
-
-    .contact-card.highlight-card {
-      border-color: rgba(99, 229, 255, 0.4);
-      background: linear-gradient(145deg, rgba(28, 45, 80, 0.9), rgba(16, 26, 48, 0.9));
-    }
-
-    footer { padding: 28px 0; border-top: 1px solid var(--line); }
-    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    footer p, footer a { font-size: .8rem; }
-
-    /* Reveal animation */
-    .reveal { opacity: 0; transform: translateY(22px); transition: .7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    @keyframes float { 0%,100% { transform: translateY(0) rotate(2deg); } 50% { transform: translateY(-12px) rotate(0); } }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0d12" />
+    <meta
+      name="description"
+      content="E-CV Jovi Febrian — aspiring copywriter dan writer yang tertarik pada copywriting, content writing, dan storytelling."
+    />
+    <title>Jovi Febrian — Writer & Aspiring Copywriter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b0d12;
+        --panel: #11141c;
+        --panel2: #151923;
+        --line: #282d39;
+        --text: #f1f2f5;
+        --muted: #9a9eab;
+        --accent: #c4f36b;
+        --accent2: #b7a1ff;
+        --mono: "DM Mono", monospace;
+        --sans: "Manrope", sans-serif;
       }
-      .reveal { opacity: 1; transform: none; }
-    }
-
-    @media (max-width: 1024px) {
-      .container { width: 92%; }
-      .hero-grid { gap: 40px; }
-      .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    }
-
-    @media (max-width: 850px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 45px; text-align: center; }
-      .hero-copy { max-width: 680px; margin-inline: auto; }
-      .availability { margin-inline: auto; }
-      .hero-meta { justify-content: center; }
-      .btn-row { justify-content: center; }
-      .portrait-wrap { width: min(290px, 85%); margin-top: 15px; }
-      .card-one { left: -10px; }
-      .card-two { right: -10px; }
-      .hero h1 { letter-spacing: -2px; }
-    }
-
-    @media (max-width: 768px) {
-      section { padding: 75px 0; }
-      .section-head { margin-bottom: 28px; }
-      .grid-3 { grid-template-columns: repeat(2, 1fr); }
-      .certificates-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-      .timeline-item { padding: 0 0 28px 24px; }
-      .contact-box { padding: 35px 24px; }
-    }
-
-    @media (max-width: 640px) {
-      section { padding: 60px 0; }
-      nav { min-height: 65px; }
-      .menu-btn { display: block; }
-      .nav-links {
-        display: none; position: absolute; top: 68px; left: 4%; right: 4%;
-        padding: 16px; border: 1px solid var(--line);
-        border-radius: 18px; background: rgba(16, 24, 43, 0.98);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-        flex-direction: column; align-items: stretch; gap: 4px;
-        z-index: 100;
+      * {
+        box-sizing: border-box;
       }
-      .nav-links.open { display: flex; animation: navFadeIn 0.25s ease; }
-      .nav-links a {
-        padding: 12px 14px;
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 90px;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font: inherit;
+      }
+      .wrap {
+        width: min(1120px, calc(100% - 48px));
+        margin-inline: auto;
+      }
+      .ambient {
+        position: absolute;
+        pointer-events: none;
+        filter: blur(100px);
+        opacity: 0.12;
+        border-radius: 50%;
+        z-index: -1;
+      }
+      .ambient-one {
+        width: 450px;
+        height: 450px;
+        background: #a7e95a;
+        top: 80px;
+        right: -160px;
+      }
+      .ambient-two {
+        width: 380px;
+        height: 380px;
+        background: #8d70ff;
+        top: 850px;
+        left: -220px;
+      }
+      .topbar {
+        height: 88px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #ffffff0c;
+        position: relative;
+        z-index: 5;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+      }
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        border: 1px solid #c4f36b66;
         border-radius: 10px;
-        font-size: 0.95rem;
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: -0.08em;
       }
-      .nav-links a:hover {
-        background: rgba(77, 141, 255, 0.1);
-        color: var(--cyan);
+      .brand-muted {
+        color: #8d92a0;
+        margin-left: 4px;
       }
-      .hero { min-height: auto; padding-top: 110px; padding-bottom: 60px; }
-      .hero h1 { font-size: clamp(2.4rem, 11vw, 3.8rem); margin: 18px 0 14px; }
-      .grid-3 { grid-template-columns: 1fr; }
-      .certificates-grid { grid-template-columns: 1fr; }
-      .panel { padding: 20px; }
-      .float-card {
-        padding: 8px 12px;
-        font-size: 0.75rem;
+      .nav {
+        display: flex;
+        gap: 30px;
+        color: #a5a8b2;
+        font-size: 12px;
       }
-      .card-one { top: 12%; left: -8px; }
-      .card-two { bottom: 8%; right: -8px; }
-      .hero-meta { gap: 8px 14px; }
-      .hero-meta span { font-size: 0.78rem; }
-      .btn { width: 100%; justify-content: center; }
-      .btn-row { width: 100%; flex-direction: column; gap: 10px; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .contact-card { padding: 15px 16px; }
-      .contact-icon { width: 38px; height: 38px; font-size: 1.1rem; }
-      .skills { gap: 8px; }
-      .skill { padding: 9px 13px; font-size: 0.82rem; }
-    }
-
-    @keyframes navFadeIn {
-      from { opacity: 0; transform: translateY(-8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .profile-photo {
-      width: 180px;
-      height: 180px;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: 50%;
-      border: 4px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 0 45px rgba(77, 141, 255, 0.3);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-    }
-
-    .profile-photo:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 60px rgba(99, 229, 255, 0.4);
-    }
-
-    .profile-fallback {
-      margin: auto;
-    }
-
-    @media (max-width: 640px) {
-      .profile-photo {
-        width: 150px;
-        height: 150px;
+      .nav a:hover,
+      .hero-meta a:hover {
+        color: var(--accent);
       }
-    }
-    
-    /* =========================================
-      INTERACTIVE 3D PROFILE CARD
-      Muhammad Rizky Nurrohman
-      ========================================= */
-
-    /* Container kartu */
-    .portrait-wrap {
-      position: relative;
-      width: 100%;
-      max-width: 310px;
-      margin-inline: auto;
-      perspective: 1200px;
-      isolation: isolate;
-    }
-
-    /* Kartu utama */
-    .flip-card {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      perspective: 1200px;
-      cursor: grab;
-      outline: none;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: none;
-      transform-origin: top center;
-      will-change: transform;
-    }
-
-    .flip-card.is-dragging {
-      cursor: grabbing;
-      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.45));
-    }
-
-    /* Mesin animasi 3D */
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transform: rotateY(0deg);
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d;
-      transition: transform 0.8s cubic-bezier(.2, .75, .25, 1);
-      filter: none;
-    }
-
-    /* Putar hanya ketika kartu diklik */
-    .flip-card.is-flipped .flip-card-inner {
-      transform: rotateY(180deg);
-      -webkit-transform: rotateY(180deg);
-    }
-
-    /* Jangan memicu efek putar saat hover */
-    .flip-card:hover .flip-card-inner {
-      filter: none;
-    }
-
-    /* Sisi depan dan belakang */
-    .flip-card-face {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      border: 1px solid rgba(99, 229, 255, 0.35);
-      border-radius: 24px;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-
-    /* =========================================
-      LANYARD HANGER DECORATION
-      ========================================= */
-
-    /* Extra top room for the lanyard rope canvas + clip */
-    .portrait-wrap {
-      padding-top: 80px;
-    }
-
-    /* Canvas yang menggambar tali lanyard secara dinamis */
-    #lanyard-canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    /* Klip logam yang terpasang di ujung tali — ikut bergerak bersama kartu */
-    .lanyard-clip {
-      position: absolute;
-      /* posisi default tepat di atas lubang kartu; JS akan memperbaruinya tiap frame */
-      top: 77px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 22px;
-      height: 16px;
-      background: linear-gradient(135deg, #e0ecff, #8aacda, #f5f9ff);
-      border-radius: 4px 4px 5px 5px;
-      border: 1px solid rgba(200, 230, 255, 0.85);
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.55), 0 0 12px rgba(99, 229, 255, 0.35);
-      z-index: 15;
-      pointer-events: none;
-      will-change: transform;
-    }
-
-    /* Kait bawah klip */
-    .lanyard-clip::after {
-      content: "";
-      position: absolute;
-      bottom: -6px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 12px;
-      height: 7px;
-      border: 2px solid #b6cced;
-      border-top: none;
-      border-radius: 0 0 8px 8px;
-    }
-
-    /* Slot lubang ID Card — satu elemen, ditempel ke kartu via JS */
-    .id-card-slot {
-      position: absolute;
-      /* Disesuaikan di JS agar selalu di atas kartu */
-      top: 80px;           /* = padding-top portrait-wrap */
-      left: 50%;
-      transform: translateX(-50%);
-      width: 34px;
-      height: 7px;
-      background: rgba(4, 10, 24, 0.85);
-      border: 1px solid rgba(99, 229, 255, 0.45);
-      border-radius: 10px;
-      box-shadow: inset 0 1px 4px rgba(0,0,0,0.9), 0 0 8px rgba(99,229,255,0.2);
-      z-index: 16;
-      pointer-events: none;
-      will-change: transform;
-    }
-
-    /* =========================================
-      FRONT CARD - FOTO PROFIL
-      ========================================= */
-
-    .flip-card-front {
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 20px 20px 22px;
-      background: #102343;
-      transform: rotateY(0deg);
-      -webkit-transform: rotateY(0deg);
-    }
-
-    /* Foto memenuhi kartu */
-    .flip-card-front .profile-photo {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: inherit;
-      pointer-events: none;
-      -webkit-user-drag: none;
-      user-select: none;
-    }
-
-    /* Gradient agar tulisan tetap terbaca jelas di bagian bawah */
-    .flip-card-front::after {
-      content: "";
-      position: absolute;
-      inset: 40% 0 0;
-      z-index: 1;
-      background: linear-gradient(
-        to bottom,
-        transparent,
-        rgba(5, 12, 28, 0.96) 80%,
-        rgba(4, 9, 22, 0.99) 100%
-      );
-      pointer-events: none;
-    }
-
-    /* Tata letak nama dan petunjuk pada bagian bawah kartu */
-    .flip-card-front .front-caption {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin: 0 0 4px;
-      text-align: center;
-      color: #ffffff;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 0.88rem;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-    }
-
-    .flip-card-front .front-caption span:not(.front-status) {
-      font-weight: 800;
-      color: #f8fafc;
-    }
-
-    .flip-card-front .flip-hint {
-      position: relative;
-      z-index: 2;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      font-size: 0.68rem;
-      line-height: 1.4;
-      color: #94a3b8;
-    }
-    
-    /* =========================================
-      BACK CARD - SPACING REFINEMENT
-      ========================================= */
-
-    .flip-card-back {
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 16px;
-
-      /* Ruang rapi dan proporsional untuk seluruh identitas */
-      padding: 24px 22px;
-
-      color: #f3f6ff;
-      background:
-        radial-gradient(
-          ellipse at top right,
-          rgba(77, 141, 255, 0.22),
-          transparent 55%
-        ),
-        linear-gradient(145deg, #14294b, #080d1b 80%);
-
-      transform: rotateY(180deg);
-      -webkit-transform: rotateY(180deg);
-    }
-
-    .back-top {
-      margin: 0;
-      text-align: center;
-    }
-
-    .back-label {
-      display: block;
-      margin-bottom: 10px;
-      color: #63e5ff;
-      font-size: 0.62rem;
-      letter-spacing: 2px;
-    }
-
-    .back-avatar {
-      display: grid;
-      place-items: center;
-      width: 46px;
-      height: 46px;
-      margin: 0 auto 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 14px;
-      background: linear-gradient(135deg, #4385ff, #6c5cff, #4de0f5);
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    .back-top h3 {
-      margin: 0;
-      color: #fff;
-      font-size: 1.05rem;
-      line-height: 1.4;
-    }
-
-    .back-role {
-      margin: 6px 0 0;
-      color: #9bb7e7;
-      font-size: 0.7rem;
-      line-height: 1.5;
-    }
-
-    .identity-list {
-      display: grid;
-      gap: 9px;
-      width: 100%;
-    }
-
-    .identity-item {
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      width: 100%;
-      min-width: 0;
-      padding: 10px 12px;
-      border: 1px solid rgba(151, 179, 230, 0.16);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.045);
-      text-decoration: none;
-    }
-
-    .identity-icon {
-      display: grid;
-      flex: 0 0 30px;
-      place-items: center;
-      width: 30px;
-      height: 30px;
-      border-radius: 9px;
-      background: rgba(77, 141, 255, 0.14);
-      color: #63e5ff;
-      font-size: 1rem;
-    }
-
-    .identity-item div {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .identity-item small {
-      display: block;
-      margin-bottom: 4px;
-      color: #91a9d3;
-      font-size: 0.65rem;
-    }
-
-    .identity-item strong {
-      display: block;
-      color: #fff;
-      font-size: 0.76rem;
-      line-height: 1.4;
-      overflow-wrap: anywhere;
-    }
-
-    .flip-card-back .flip-hint {
-      padding: 0;
-      margin-top: -3px;
-      color: #91a9d3;
-      font-size: 0.65rem;
-      line-height: 1.4;
-      text-align: center;
-    }
-
-    /* Responsive */
-    @media (max-width: 480px) {
-      .flip-card-back {
-        gap: 12px;
-        padding: 18px 16px;
+      .nav-cta {
+        font-size: 12px;
+        font-weight: 700;
+        border: 1px solid var(--line);
+        padding: 10px 14px;
+        border-radius: 7px;
       }
-
-      .back-avatar {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 9px;
+      .nav-cta span,
+      .button span {
+        color: var(--accent);
+        margin-left: 8px;
       }
-
-      .back-top h3 {
-        font-size: 0.98rem;
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: 1px solid var(--line);
+        color: var(--text);
+        padding: 7px 10px;
+        border-radius: 6px;
       }
-
-      .identity-list {
-        gap: 7px;
+      .hero {
+        min-height: 650px;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 40px;
+        position: relative;
+        padding-top: 42px;
+        padding-bottom: 88px;
       }
-
-      .identity-item {
-        gap: 9px;
-        padding: 8px 10px;
-      }
-    }
-
-    /* =========================================
-      FLOATING CARDS
-      ========================================= */
-
-    .float-card {
-      position: absolute;
-      z-index: 2;
-      padding: 13px;
-      border: 1px solid rgba(99, 229, 255, 0.12);
-      border-radius: 14px;
-      background: rgba(16, 29, 52, 0.96);
-      color: #ffffff;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-      pointer-events: none;
-    }
-
-    .float-card strong,
-    .float-card small {
-      display: block;
-    }
-
-    .float-card strong {
-      margin-bottom: 5px;
-      font-size: 0.75rem;
-    }
-
-    .float-card small {
-      color: #91a9d3;
-      font-size: 0.65rem;
-    }
-
-    .card-one {
-      top: 17%;
-      left: -13%;
-    }
-
-    .card-two {
-      right: -11%;
-      bottom: 15%;
-    }
-
-    /* =========================================
-      RESPONSIVE - TABLET & MOBILE
-      ========================================= */
-
-    @media (max-width: 768px) {
-      .portrait-wrap {
-        max-width: 290px;
-      }
-
-      .card-one {
-        left: -5%;
-      }
-
-      .card-two {
-        right: -5%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .portrait-wrap {
-        max-width: 270px;
-      }
-
-      .flip-card-face {
-        border-radius: 20px;
-      }
-
-      .flip-card-back {
-        padding: 20px 14px;
-        gap: 12px;
-      }
-
+      .eyebrow,
+      .hero-kicker,
+      .section-index,
+      .mini-label,
+      .mono,
+      .tools-label,
+      .scroll-cue,
+      .card-top,
+      .writing-card-footer,
+      .contact-foot,
       .back-top {
-        margin-bottom: 8px;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.12em;
       }
-
-      .back-avatar {
-        width: 40px;
-        height: 40px;
-        margin: 4px auto 8px;
-        font-size: 0.95rem;
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #c0c4ce;
+        border: 1px solid #2b303b;
+        background: #11141bbd;
+        border-radius: 4px;
+        padding: 9px 12px;
       }
-
-      .back-top h3 {
-        font-size: 0.98rem;
+      .status-dot,
+      .live-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 12px #c4f36b88;
       }
-
-      .identity-list {
+      .hero-kicker {
+        color: var(--accent);
+        margin: 34px 0 10px;
+      }
+      .hero h1 {
+        font-size: clamp(42px, 5.2vw, 68px);
+        letter-spacing: -0.065em;
+        line-height: 1.12;
+        margin: 0;
+        font-weight: 800;
+      }
+      .gradient-text {
+        background: linear-gradient(
+          100deg,
+          #d7fba1 5%,
+          #baf06b 46%,
+          #b7a1ff 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .hero-description {
+        color: #a9adba;
+        max-width: 510px;
+        font-size: 14px;
+        line-height: 1.95;
+        margin: 24px 0 26px;
+      }
+      .hero-description strong {
+        color: #f4f5f7;
+      }
+      .hero-actions,
+      .contact-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .button {
+        border-radius: 7px;
+        padding: 13px 17px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 800;
+        transition: transform 0.2s, border-color 0.2s;
+        cursor: pointer;
+      }
+      .button:hover {
+        transform: translateY(-2px);
+      }
+      .button-primary {
+        background: var(--accent);
+        color: #171b12;
+        border: 1px solid var(--accent);
+      }
+      .button-primary span {
+        color: #171b12;
+      }
+      .button-ghost {
+        border: 1px solid #343a47;
+        color: #e0e2e8;
+        background: #10131a;
+      }
+      .button-ghost:hover {
+        border-color: #7c8799;
+      }
+      .hero-meta {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        margin-top: 34px;
+        color: #9b9fac;
+        font-size: 11px;
+      }
+      .hero-meta > div {
+        display: flex;
+        align-items: center;
         gap: 8px;
       }
-
-      .identity-item {
-        gap: 9px;
-        padding: 8px 10px;
+      .meta-icon {
+        color: var(--accent);
+        font-size: 15px;
       }
-
-      .identity-icon {
+      .hero-art {
+        height: 450px;
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+      .hero-card {
+        width: min(350px, 78%);
+        height: 370px;
+        border: 1px solid #ffffff24;
+        border-radius: 15px;
+        background: linear-gradient(145deg, #1c222b, #10131a 68%);
+        box-shadow: 0 30px 100px #0008;
+        position: relative;
+        z-index: 2;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+      }
+      .hero-card:after {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border: 1px solid #c4f36b17;
+        border-radius: 50%;
+        top: 52px;
+        left: 25px;
+        box-shadow: 0 0 0 28px #c4f36b06, 0 0 0 58px #c4f36b04;
+      }
+      .card-top {
+        display: flex;
+        justify-content: space-between;
+        color: #8c929f;
+      }
+      .monogram {
+        font-size: 150px;
+        font-weight: 800;
+        letter-spacing: -0.13em;
+        line-height: 1;
+        color: #f0f2f4;
+        position: relative;
+        z-index: 1;
+        text-align: center;
+      }
+      .monogram span {
+        color: var(--accent);
+      }
+      .monogram i {
+        font-style: normal;
+        color: var(--accent2);
+      }
+      .hero-card-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        position: relative;
+        z-index: 1;
+      }
+      .mini-label {
+        color: var(--accent);
+        margin: 0 0 4px;
+      }
+      .hero-card-bottom h3 {
+        font-size: 17px;
+        margin: 0;
+        letter-spacing: -0.04em;
+      }
+      .card-index {
+        font: 10px var(--mono);
+        color: #727886;
+      }
+      .orbit {
+        position: absolute;
+        border: 1px solid #c4f36b20;
+        border-radius: 50%;
+        transform: rotate(-28deg);
+      }
+      .orbit-a {
+        width: 440px;
+        height: 220px;
+      }
+      .orbit-b {
+        width: 490px;
+        height: 270px;
+        transform: rotate(36deg);
+        border-color: #b7a1ff24;
+      }
+      .floating-note {
+        position: absolute;
+        z-index: 3;
+        background: #171c24;
+        border: 1px solid #333946;
+        padding: 13px 16px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 10px;
+        line-height: 1.6;
+        color: #c7cad2;
+        box-shadow: 0 12px 40px #0005;
+      }
+      .note-top {
+        top: 53px;
+        right: 0;
+      }
+      .note-symbol {
+        font: 36px Georgia;
+        color: var(--accent);
+        line-height: 1;
+      }
+      .note-bottom {
+        bottom: 48px;
+        left: 0;
+      }
+      .spark {
+        font-size: 22px;
+        color: var(--accent2);
+      }
+      .note-bottom b {
+        color: #f3f3f5;
+      }
+      .art-grid {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(#ffffff19 1px, transparent 1px);
+        background-size: 18px 18px;
+        mask-image: linear-gradient(
+          transparent,
+          black 25%,
+          black 70%,
+          transparent
+        );
+        opacity: 0.3;
+      }
+      .scroll-cue {
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+        color: #717786;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .scroll-cue span {
         width: 28px;
-        height: 28px;
-        font-size: 0.9rem;
+        height: 1px;
+        background: var(--accent);
+      }
+      .ticker {
+        overflow: hidden;
+        border-block: 1px solid #ffffff0e;
+        background: #0e1117;
+        padding: 14px 0;
+      }
+      .ticker-track {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 36px;
+        min-width: 900px;
+        color: #969ba8;
+        font: 10px var(--mono);
+        letter-spacing: 0.16em;
+      }
+      .ticker-track b {
+        color: var(--accent);
+        font-size: 14px;
+      }
+      .section {
+        padding-top: 112px;
+        padding-bottom: 112px;
+      }
+      .section-bordered {
+        border-block: 1px solid #ffffff0d;
+        background: #0e1117;
+      }
+      .section-heading {
+        margin-bottom: 46px;
+      }
+      .section-index {
+        color: var(--accent);
+        margin: 0 0 17px;
+      }
+      .section-heading h2,
+      .contact-inner h2 {
+        font-size: clamp(32px, 4vw, 48px);
+        line-height: 1.2;
+        letter-spacing: -0.06em;
+        margin: 0;
+        font-weight: 800;
+      }
+      .muted-heading {
+        color: #737987;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 90px;
+      }
+      .about-lead {
+        font-size: 23px;
+        line-height: 1.55;
+        letter-spacing: -0.04em;
+        margin: 0;
+        max-width: 390px;
+        color: #e8eaf0;
+        font-weight: 600;
+      }
+      .about-body p {
+        font-size: 13px;
+        color: #a4a8b4;
+        margin: 0 0 17px;
+        line-height: 2;
+      }
+      .about-body em {
+        color: var(--accent);
+        font-style: normal;
+      }
+      .quote-line {
+        margin-top: 25px;
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+        color: #d4d6de;
+        font-size: 12px;
+      }
+      .quote-line span {
+        color: var(--accent);
+        margin-right: 8px;
+      }
+      .skills-layout {
+        display: grid;
+        grid-template-columns: 0.7fr 1.3fr;
+        gap: 70px;
+      }
+      .skill-intro {
+        align-self: start;
+        position: sticky;
+        top: 120px;
+      }
+      .big-number {
+        font-size: 90px;
+        letter-spacing: -0.09em;
+        line-height: 1;
+        font-weight: 800;
+        color: var(--accent);
+      }
+      .skill-intro p {
+        max-width: 220px;
+        color: #8d93a0;
+        font-size: 12px;
+      }
+      .skill-list {
+        border-top: 1px solid var(--line);
+      }
+      .skill-item {
+        display: grid;
+        grid-template-columns: 42px 1fr 20px;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 13px;
+        transition: padding 0.2s;
+      }
+      .skill-item:hover {
+        padding-left: 8px;
+      }
+      .skill-num {
+        font: 10px var(--mono);
+        color: #747b89;
+      }
+      .skill-arrow {
+        color: var(--accent);
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .skill-item:hover .skill-arrow {
+        opacity: 1;
+      }
+      .tools-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 36px;
+      }
+      .tools-label {
+        color: #727987;
+        margin-right: 10px;
+      }
+      .tool-chip {
+        border: 1px solid #303541;
+        padding: 7px 11px;
+        border-radius: 5px;
+        color: #b8bdc8;
+        font-size: 11px;
+      }
+      .writing-card {
+        background: linear-gradient(125deg, #171c24, #11141b);
+        border: 1px solid #303642;
+        border-radius: 12px;
+        padding: 25px 28px;
+        margin-bottom: 40px;
+        position: relative;
+        overflow: hidden;
+      }
+      .writing-card:after {
+        content: "";
+        position: absolute;
+        right: -30px;
+        top: 20px;
+        width: 220px;
+        height: 220px;
+        border: 1px solid #c4f36b17;
+        border-radius: 50%;
+        box-shadow: 0 0 0 25px #c4f36b05, 0 0 0 55px #c4f36b04;
+        pointer-events: none;
+      }
+      .writing-card-top,
+      .writing-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #7e8593;
+      }
+      .pill {
+        color: var(--accent);
+        border: 1px solid #c4f36b50;
+        border-radius: 4px;
+        padding: 5px 8px;
+        font-size: 9px;
+      }
+      .writing-card-main {
+        display: grid;
+        grid-template-columns: 65px 1fr;
+        gap: 22px;
+        padding: 28px 0;
+        position: relative;
+        z-index: 1;
+      }
+      .writing-symbol {
+        width: 56px;
+        height: 56px;
+        display: grid;
+        place-items: center;
+        background: #c4f36b12;
+        border: 1px solid #c4f36b35;
+        border-radius: 12px;
+        color: var(--accent);
+        font-size: 28px;
+      }
+      .writing-card h3 {
+        font-size: 25px;
+        letter-spacing: -0.04em;
+        margin: 0;
+      }
+      .writing-subtitle {
+        color: var(--accent);
+        font: 10px var(--mono);
+        margin: 5px 0 16px;
+      }
+      .writing-card-main p:last-child {
+        max-width: 700px;
+        font-size: 12px;
+        color: #a2a8b4;
+        line-height: 2;
+        margin: 0;
+      }
+      .writing-card-footer {
+        border-top: 1px solid var(--line);
+        padding-top: 17px;
+        font-size: 9px;
+      }
+      .footer-dot {
+        width: 6px;
+        height: 6px;
+        background: var(--accent);
+        border-radius: 50%;
+      }
+      .awards-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      .awards-heading h3 {
+        font-size: 16px;
+        letter-spacing: -0.03em;
+      }
+      .awards-heading .mono {
+        color: #737987;
+        font-size: 9px;
+      }
+      .award-list {
+        border-top: 1px solid var(--line);
+      }
+      .award {
+        display: grid;
+        grid-template-columns: 35px 1fr auto;
+        align-items: center;
+        gap: 15px;
+        padding: 19px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .award-icon {
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        border: 1px solid #303642;
+        border-radius: 50%;
+        color: var(--accent);
+      }
+      .award h4 {
+        font-size: 13px;
+        margin: 0 0 4px;
+      }
+      .award p {
+        font-size: 11px;
+        color: #9399a6;
+        margin: 0;
+      }
+      .award-tag {
+        font: 9px var(--mono);
+        color: #969ba8;
+        border: 1px solid #303642;
+        border-radius: 4px;
+        padding: 5px 7px;
+      }
+      .portfolio-note {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        border: 1px dashed #3a414e;
+        border-radius: 9px;
+        padding: 18px 20px;
+        margin-top: 35px;
+      }
+      .portfolio-note-icon {
+        font-size: 24px;
+        color: var(--accent);
+      }
+      .portfolio-note h4 {
+        margin: 0 0 3px;
+        font-size: 12px;
+      }
+      .portfolio-note p {
+        margin: 0;
+        color: #8f95a2;
+        font-size: 11px;
+      }
+      .portfolio-note .mono {
+        margin-left: auto;
+        color: var(--accent);
+        font-size: 9px;
+        white-space: nowrap;
+      }
+      .experience-list {
+        border-top: 1px solid var(--line);
+      }
+      .experience {
+        display: grid;
+        grid-template-columns: 55px 1fr 25px;
+        gap: 20px;
+        padding: 27px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .experience-number {
+        font: 11px var(--mono);
+        color: var(--accent);
+        padding-top: 4px;
+      }
+      .experience-main h3 {
+        margin: 0;
+        font-size: 19px;
+        letter-spacing: -0.04em;
+      }
+      .at-company {
+        color: #9da2ae;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .experience-desc {
+        color: #9ca2af;
+        font-size: 10px;
+        margin: 3px 0 13px;
+      }
+      .experience ul {
+        margin: 0;
+        padding-left: 16px;
+        color: #a9adba;
+        font-size: 12px;
+        line-height: 1.9;
+      }
+      .experience li {
+        padding-left: 4px;
+        margin: 2px 0;
+      }
+      .experience-mark {
+        color: #656d7a;
+      }
+      .education-section {
+        display: grid;
+        grid-template-columns: 1fr 0.7fr;
+        gap: 80px;
+      }
+      .education-content {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-top: 28px;
+      }
+      .education-icon {
+        width: 58px;
+        height: 58px;
+        display: grid;
+        place-items: center;
+        border: 1px solid #c4f36b44;
+        background: #c4f36b0d;
+        color: var(--accent);
+        border-radius: 10px;
+        font-size: 25px;
+      }
+      .education-content h3 {
+        font-size: 17px;
+        margin: 0 0 2px;
+      }
+      .education-content p {
+        font-size: 12px;
+        color: #b3b8c3;
+        margin: 0;
+      }
+      .education-caption {
+        font: 9px var(--mono);
+        color: #7c8391;
+      }
+      .education-aside {
+        border-left: 1px solid var(--line);
+        padding-left: 40px;
+        align-self: center;
+      }
+      .big-quote {
+        font: 70px Georgia;
+        color: var(--accent);
+        line-height: 0.8;
+      }
+      .education-aside p {
+        font-size: 16px;
+        line-height: 1.7;
+        letter-spacing: -0.03em;
+        color: #d6d8e0;
+      }
+      .education-aside .mono {
+        color: #777e8b;
+        font-size: 9px;
+      }
+      .contact-section {
+        background: #11151b;
+        border-block: 1px solid #ffffff10;
+        position: relative;
+        overflow: hidden;
+      }
+      .contact-section:before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        border: 1px solid #c4f36b12;
+        right: -130px;
+        top: -200px;
+        box-shadow: 0 0 0 45px #c4f36b04, 0 0 0 95px #c4f36b03;
+      }
+      .contact-inner {
+        padding-top: 100px;
+        padding-bottom: 35px;
+        position: relative;
+      }
+      .contact-inner > .section-index {
+        margin-bottom: 22px;
+      }
+      .contact-inner h2 {
+        font-size: clamp(38px, 5vw, 62px);
+      }
+      .contact-description {
+        font-size: 13px;
+        color: #9ea4b1;
+        max-width: 470px;
+        margin: 20px 0 27px;
+      }
+      .contact-foot {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        flex-wrap: wrap;
+        border-top: 1px solid var(--line);
+        padding-top: 25px;
+        margin-top: 80px;
+        color: #747b89;
+        font-size: 9px;
+      }
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        gap: 20px;
+      }
+      .footer p {
+        color: #737987;
+        font-size: 10px;
+      }
+      .back-top {
+        color: #9da3af;
+        font-size: 9px;
+      }
+      .back-top:hover {
+        color: var(--accent);
+      }
+      @media (max-width: 800px) {
+        .nav {
+          gap: 15px;
+        }
+        .nav-cta {
+          display: none;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 65px;
+          gap: 15px;
+        }
+        .hero-copy {
+          position: relative;
+          z-index: 2;
+        }
+        .hero-art {
+          height: 390px;
+          margin-top: 5px;
+        }
+        .hero-card {
+          height: 320px;
+          width: 290px;
+        }
+        .monogram {
+          font-size: 125px;
+        }
+        .note-top {
+          right: 4%;
+          top: 28px;
+        }
+        .note-bottom {
+          left: 3%;
+          bottom: 25px;
+        }
+        .orbit-a {
+          width: 380px;
+        }
+        .orbit-b {
+          width: 400px;
+        }
+        .scroll-cue {
+          bottom: 15px;
+        }
+        .about-grid {
+          gap: 40px;
+        }
+        .skills-layout {
+          gap: 35px;
+        }
+        .education-section {
+          gap: 40px;
+        }
+      }
+      @media (max-width: 620px) {
+        .wrap {
+          width: min(100% - 34px, 1120px);
+        }
+        .topbar {
+          height: 72px;
+        }
+        .nav {
+          display: none;
+          position: absolute;
+          top: 71px;
+          left: 0;
+          right: 0;
+          background: #11141c;
+          border: 1px solid var(--line);
+          padding: 15px;
+          border-radius: 8px;
+          flex-direction: column;
+          gap: 0;
+        }
+        .nav.open {
+          display: flex;
+        }
+        .nav a {
+          padding: 10px;
+        }
+        .menu-toggle {
+          display: block;
+        }
+        .hero {
+          padding-top: 47px;
+          padding-bottom: 75px;
+          min-height: auto;
+        }
+        .eyebrow {
+          font-size: 8px;
+          letter-spacing: 0.06em;
+        }
+        .hero-kicker {
+          margin-top: 28px;
+        }
+        .hero h1 {
+          font-size: clamp(39px, 11vw, 55px);
+        }
+        .hero-description {
+          font-size: 13px;
+        }
+        .hero-meta {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .hero-art {
+          height: 350px;
+          margin-top: 5px;
+        }
+        .hero-card {
+          height: 290px;
+          width: 245px;
+          padding: 17px;
+        }
+        .monogram {
+          font-size: 105px;
+        }
+        .note-top {
+          right: -3px;
+          top: 28px;
+          padding: 9px 11px;
+        }
+        .note-bottom {
+          left: -4px;
+          bottom: 18px;
+          padding: 9px 11px;
+        }
+        .orbit-a {
+          width: 310px;
+          height: 190px;
+        }
+        .orbit-b {
+          width: 340px;
+          height: 220px;
+        }
+        .ticker-track {
+          gap: 23px;
+          justify-content: flex-start;
+          padding-left: 20px;
+        }
+        .section {
+          padding-top: 76px;
+          padding-bottom: 76px;
+        }
+        .section-heading {
+          margin-bottom: 30px;
+        }
+        .section-heading h2 {
+          font-size: 34px;
+        }
+        .about-grid,
+        .skills-layout,
+        .education-section {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .about-lead {
+          font-size: 20px;
+        }
+        .about-body p {
+          font-size: 12px;
+        }
+        .skill-intro {
+          position: static;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        }
+        .big-number {
+          font-size: 64px;
+        }
+        .skill-intro p {
+          max-width: 230px;
+        }
+        .skill-item {
+          font-size: 12px;
+          grid-template-columns: 30px 1fr 15px;
+          gap: 10px;
+        }
+        .tools-row {
+          gap: 7px;
+        }
+        .tools-label {
+          width: 100%;
+          margin-bottom: 4px;
+        }
+        .writing-card {
+          padding: 18px;
+        }
+        .writing-card-main {
+          grid-template-columns: 1fr;
+          gap: 15px;
+          padding: 23px 0;
+        }
+        .writing-card h3 {
+          font-size: 23px;
+        }
+        .writing-card-main p:last-child {
+          font-size: 11px;
+        }
+        .writing-card:after {
+          right: -100px;
+        }
+        .awards-heading {
+          align-items: flex-start;
+          gap: 10px;
+        }
+        .awards-heading h3 {
+          font-size: 14px;
+          margin: 0;
+        }
+        .awards-heading .mono {
+          white-space: nowrap;
+          margin-top: 4px;
+        }
+        .award {
+          grid-template-columns: 30px 1fr;
+          gap: 10px;
+        }
+        .award-tag {
+          grid-column: 2;
+          justify-self: start;
+        }
+        .award h4 {
+          font-size: 12px;
+        }
+        .award p {
+          font-size: 10px;
+        }
+        .portfolio-note {
+          align-items: flex-start;
+          gap: 10px;
+          padding: 14px;
+        }
+        .portfolio-note .mono {
+          display: none;
+        }
+        .experience {
+          grid-template-columns: 30px 1fr 15px;
+          gap: 10px;
+        }
+        .experience-main h3 {
+          font-size: 16px;
+        }
+        .at-company {
+          display: block;
+          font-size: 12px;
+        }
+        .experience ul {
+          font-size: 11px;
+          padding-left: 14px;
+        }
+        .education-aside {
+          padding-left: 20px;
+        }
+        .contact-inner {
+          padding-top: 75px;
+        }
+        .contact-inner h2 {
+          font-size: 40px;
+        }
+        .contact-description {
+          font-size: 12px;
+        }
+        .contact-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .contact-foot {
+          margin-top: 55px;
+          flex-direction: column;
+        }
+        .footer {
+          align-items: flex-start;
+          flex-wrap: wrap;
+        }
+        .footer p {
+          order: 3;
+          width: 100%;
+          margin: 0;
+        }
+        .back-top {
+          margin-left: auto;
+        }
+      }
+      @media print {
+        body {
+          background: #fff;
+          color: #17191f;
+        }
+        .ambient,
+        .topbar,
+        .ticker,
+        .hero-art,
+        .scroll-cue,
+        .contact-section,
+        .footer,
+        .hero-actions {
+          display: none !important;
+        }
+        .wrap {
+          width: 100%;
+        }
+        .hero {
+          min-height: 0;
+          display: block;
+          padding: 25px 0;
+        }
+        .hero h1 {
+          font-size: 38px;
+          color: #111;
+        }
+        .gradient-text {
+          color: #343b27;
+          -webkit-text-fill-color: #343b27;
+        }
+        .hero-description,
+        .hero-meta,
+        .about-body p,
+        .experience ul,
+        .award p,
+        .writing-card-main p:last-child,
+        .education-aside p {
+          color: #333;
+        }
+        .section,
+        .section-bordered {
+          padding: 30px 0;
+          background: #fff;
+          border-color: #ddd;
+        }
+        .section-heading h2 {
+          font-size: 30px;
+          color: #111;
+        }
+        .muted-heading {
+          color: #666;
+        }
+        .writing-card,
+        .portfolio-note {
+          background: #fff;
+          border-color: #ccc;
+        }
+        .writing-card h3,
+        .experience-main h3,
+        .award h4,
+        .education-content h3 {
+          color: #111;
+        }
+        .skill-item,
+        .award,
+        .experience,
+        .skill-list,
+        .experience-list,
+        .award-list {
+          border-color: #ddd;
+        }
+        .skill-num,
+        .experience-number,
+        .section-index,
+        .mini-label {
+          color: #52652d;
+        }
+        .skills-layout {
+          gap: 25px;
+        }
+        .skill-intro {
+          position: static;
+        }
+        .contact-foot {
+          color: #444;
+        }
       }
 
-      .card-one {
-        left: -3%;
+      /* Certificate preview modal */
+      .certificate-trigger {
+        width: 100%;
+        text-align: left;
+        color: inherit;
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid var(--line);
+        font: inherit;
+        cursor: pointer;
+        transition: background 0.2s, padding 0.2s;
       }
-
-      .card-two {
-        right: -3%;
+      .certificate-trigger:hover {
+        background: #ffffff05;
+        padding-left: 8px;
       }
-    }
-
-    /* Hormati preferensi pengguna untuk animasi minimal */
-    @media (prefers-reduced-motion: reduce) {
-      .flip-card-inner {
-        transition-duration: 0.01ms;
+      .certificate-trigger .award-copy {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        min-width: 0;
       }
-    }
+      .certificate-trigger .award-title {
+        font-size: 13px;
+        font-weight: 800;
+        color: var(--text);
+      }
+      .certificate-trigger .award-description {
+        font-size: 11px;
+        color: #9399a6;
+        font-weight: 400;
+      }
+      .certificate-trigger .award-tag {
+        white-space: nowrap;
+      }
+      .certificate-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 22px;
+      }
+      .certificate-modal.is-open {
+        display: flex;
+      }
+      .certificate-backdrop {
+        position: absolute;
+        inset: 0;
+        background: #030407df;
+        backdrop-filter: blur(9px);
+      }
+      .certificate-dialog {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 1000px);
+        height: min(88vh, 850px);
+        background: #11141c;
+        border: 1px solid #343b49;
+        border-radius: 14px;
+        box-shadow: 0 25px 100px #0009;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .certificate-modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 18px 22px;
+        border-bottom: 1px solid var(--line);
+      }
+      .certificate-modal-header .section-index {
+        font-size: 9px;
+        margin: 0 0 3px;
+        display: block;
+      }
+      .certificate-modal-header h3 {
+        font-size: 17px;
+        line-height: 1.4;
+        margin: 0;
+        letter-spacing: -0.03em;
+      }
+      .certificate-close {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+        border: 1px solid #353c49;
+        background: #191e28;
+        color: #e8eaf0;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .certificate-close:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .certificate-frame-wrap {
+        flex: 1;
+        min-height: 0;
+        background: #20242d;
+      }
+      .certificate-frame-wrap iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: #20242d;
+      }
+      .certificate-modal-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 13px 20px;
+        border-top: 1px solid var(--line);
+        font-size: 10px;
+        color: #8f96a4;
+      }
+      .certificate-modal-footer a {
+        color: var(--accent);
+        font-weight: 800;
+        white-space: nowrap;
+      }
+      body.modal-open {
+        overflow: hidden;
+      }
+      @media (max-width: 620px) {
+        .certificate-modal {
+          padding: 9px;
+        }
+        .certificate-dialog {
+          height: 92vh;
+          border-radius: 10px;
+        }
+        .certificate-modal-header {
+          padding: 14px;
+        }
+        .certificate-modal-header h3 {
+          font-size: 14px;
+        }
+        .certificate-modal-footer {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 8px;
+          padding: 12px 14px;
+        }
+        .certificate-trigger {
+          grid-template-columns: 30px 1fr;
+          gap: 10px;
+        }
+        .certificate-trigger .award-tag {
+          grid-column: 2;
+          justify-self: start;
+        }
+        .certificate-trigger .award-title {
+          font-size: 12px;
+        }
+      }
+      @media print {
+        .certificate-modal {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <header class="topbar wrap">
+      <a class="brand" href="#home" aria-label="Jovi Febrian home"
+        ><span class="brand-mark">JF</span
+        ><span>JOVI<span class="brand-muted">FEBRIAN</span></span></a
+      >
+      <nav class="nav">
+        <a href="#about">Tentang</a>
+        <a href="#skills">Keahlian</a>
+        <a href="#work">Kepenulisan</a>
+        <a href="#experience">Pengalaman</a>
+      </nav>
+      <a class="nav-cta" href="mailto:Jovifebrian13@gmail.com"
+        >Hubungi saya <span>↗</span></a
+      >
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Buka navigasi"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+    </header>
 
-    
-/* ==============================
-   SECTION SERTIFIKAT
-================================= */
-
-.certificates-section {
-    position: relative;
-    padding: 95px 0;
-}
-
-.certificates-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-    align-items: stretch;
-}
-
-.certificate-card {
-    background: linear-gradient(145deg, rgba(20, 31, 54, .88), rgba(13, 20, 38, .88));
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
-}
-
-.certificate-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(99, 229, 255, .4);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
-}
-
-.certificate-card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 16px;
-}
-
-.cert-icon {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    border-radius: 12px;
-    background: rgba(77, 141, 255, .13);
-    color: var(--cyan);
-    font-size: 1.2rem;
-    flex-shrink: 0;
-}
-
-.cert-type-badge {
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 20px;
-    border: 1px solid rgba(99, 229, 255, .25);
-    background: rgba(77, 141, 255, .08);
-    color: var(--cyan);
-    letter-spacing: 0.5px;
-}
-
-.cert-type-badge.offline {
-    border-color: rgba(76, 230, 160, .3);
-    background: rgba(76, 230, 160, .08);
-    color: #4ce6a0;
-}
-
-.certificate-card h3 {
-    font-size: 1.1rem;
-    line-height: 1.45;
-    margin-bottom: 10px;
-    color: var(--text);
-}
-
-.certificate-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 20px;
-    font-size: 0.88rem;
-}
-
-.certificate-organizer {
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 7px;
-    color: #c4d4f0;
-    line-height: 1.4;
-}
-
-.certificate-organizer span.icon-bullet {
-    color: var(--cyan);
-    font-size: 0.95rem;
-}
-
-.certificate-date {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    color: var(--muted);
-    font-size: 0.82rem;
-}
-
-.certificate-date span.icon-bullet {
-    color: var(--blue);
-}
-
-.certificate-card-bottom {
-    margin-top: auto;
-    padding-top: 14px;
-    border-top: 1px solid var(--line);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.certificate-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--cyan);
-    font-size: 0.86rem;
-    font-weight: 700;
-    transition: color .2s, transform .2s;
-}
-
-.certificate-link:hover {
-    color: #fff;
-    transform: translateX(3px);
-}
-
-.certificate-cta-card {
-    background: radial-gradient(ellipse at top, rgba(77, 141, 255, .15), transparent 70%), linear-gradient(145deg, rgba(20, 31, 54, .92), rgba(13, 20, 38, .92));
-    border: 1px dashed rgba(99, 229, 255, .4);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 24px;
-}
-
-.certificate-cta-card:hover {
-    border-color: var(--cyan);
-    border-style: solid;
-}
-
-.certificate-cta-card h3 {
-    margin-top: 10px;
-}
-
-.certificate-cta-card p {
-    font-size: 0.88rem;
-    margin-bottom: 18px;
-    color: var(--muted);
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-    .certificates-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 640px) {
-    .certificates-grid {
-        grid-template-columns: 1fr;
-    }
-}
-  </style>
-</head>
-
-<body>
-  <header>
-    <nav class="container" aria-label="Navigasi utama">
-      <a href="#home" class="logo">flexin<span>_</span>01</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">☰</button>
-    <div class="nav-links" id="navLinks">
-      <a href="#about">Tentang</a>
-      <a href="#experience">Pengalaman Kerja</a>
-      <a href="#education">Pendidikan</a>
-      <a href="#sertifikat">Sertifikat</a>
-      <a href="#projects">Proyek</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Kontak</a>
-    </div>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <div class="availability"><span class="dot"></span> Mahasiswa SI · SEO Intern di BSW</div>
-          <p class="eyebrow" style="margin-top:28px">Hello, I'm</p>
-          <h1>Muhammad Rizky <span class="gradient-text">Nurrohman.</span></h1>
-          <p class="hero-copy">
-            Mahasiswa Sistem Informasi yang tertarik pada UI/UX Design,
-            pengembangan aplikasi, SEO, dan teknologi digital.
-            Senang belajar, membangun solusi, dan mengembangkan ide menjadi proyek nyata.
+    <main>
+      <section class="hero wrap" id="home">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="status-dot"></span> OPEN TO COPYWRITER TRAINEE
+            OPPORTUNITIES
+          </div>
+          <p class="hero-kicker">E-CV / PERSONAL PORTFOLIO</p>
+          <h1>
+            Kata yang tepat.<br /><span class="gradient-text"
+              >Pesan yang melekat.</span
+            >
+          </h1>
+          <p class="hero-description">
+            Halo, saya <strong>Jovi Febrian</strong> — penulis yang tertarik
+            pada copywriting, content writing, dan storytelling. Saya suka
+            mengolah ide menjadi tulisan yang punya karakter, rasa, dan tujuan.
           </p>
-          <div class="btn-row">
-            <a class="btn btn-primary" href="#projects">Jelajahi Proyek ↗</a>
-            <a class="btn btn-secondary" href="#contact">Hubungi Saya</a>
+          <div class="hero-actions">
+            <a
+              class="button button-primary"
+              href="mailto:Jovifebrian13@gmail.com"
+              >Mari terhubung <span>↗</span></a
+            >
+            <button class="button button-ghost" onclick="window.print()">
+              Simpan CV / Print <span>↓</span>
+            </button>
           </div>
           <div class="hero-meta">
-            <span>📍 Surakarta, Indonesia</span>
-            <span>🎓 UBSI PSDKU Solo</span>
-            <span>📈 IPK 3,96 (semester 1–4)</span>
-          </div>
-        </div>
-
-        <div class="portrait-wrap" id="portraitWrap">
-          <!-- Tali lanyard digambar oleh canvas dinamis -->
-          <canvas id="lanyard-canvas" aria-hidden="true"></canvas>
-
-          <!-- Klip logam (ikut bergerak saat kartu ditarik) -->
-          <div class="lanyard-clip" id="lanyardClip"></div>
-
-          <!-- Slot lubang kartu (ikut bergerak saat kartu ditarik) -->
-          <div class="id-card-slot" id="cardSlot"></div>
-
-          <div class="flip-card" id="profileCard"
-              role="button"
-              tabindex="0"
-              aria-label="Balik kartu profil"
-              aria-pressed="false">
-
-            <div class="flip-card-inner">
-
-              <!-- DEPAN: FOTO PROFIL -->
-              <div class="flip-card-face flip-card-front">
-                <img
-                  class="profile-photo"
-                  src="foto.jpeg"
-                  alt="Foto profil Muhammad Rizky Nurrohman"
-                  draggable="false"
-                >
-
-                <div class="front-caption">
-                  <span class="front-status"></span>
-                  <span>MUHAMMAD RIZKY NURROHMAN</span>
-                </div>
-
-                <div class="flip-hint">↻ Klik untuk melihat identitas</div>
-              </div>
-
-              <!-- BELAKANG: IDENTITAS -->
-              <div class="flip-card-face flip-card-back">
-                <div class="back-top">
-                  <div class="back-avatar">Rzk</div>
-                  <h3>Muhammad Rizky<br>Nurrohman</h3>
-                  <p class="back-role">Information Systems Student</p>
-                </div>
-
-                <div class="identity-list">
-                  <div class="identity-item">
-                    <span class="identity-icon">▤</span>
-                    <div>
-                      <small>NIM</small>
-                      <strong>19240401</strong>
-                    </div>
-                  </div>
-
-                  <div class="identity-item">
-                    <span class="identity-icon">⌂</span>
-                    <div>
-                      <small>Asal Kampus</small>
-                      <strong>UBSI Solo</strong>
-                    </div>
-                  </div>
-
-                  <a
-                    class="identity-item instagram-link"
-                    href="https://www.instagram.com/flexin_01/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Buka Instagram flexin_01"
-                  >
-                    <span class="identity-icon">◎</span>
-                    <div>
-                      <small>Instagram</small>
-                      <strong>@flexin_01 ↗</strong>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
+            <div>
+              <span class="meta-icon">⌖</span><span>Surakarta, Indonesia</span>
+            </div>
+            <div>
+              <span class="meta-icon">✉</span
+              ><a href="mailto:Jovifebrian13@gmail.com"
+                >Jovifebrian13@gmail.com</a
+              >
             </div>
           </div>
-
-            <div class="float-card card-one">
-            <strong>UI/UX Design</strong>
-            <small>Figma · Prototyping</small>
-          </div>
-
-          <div class="float-card card-two">
-            <strong>SEO Intern</strong>
-            <small>Berkah Solo Web</small>
-          </div>
         </div>
-      </div>
-    </section>
+        <div class="hero-art">
+          <div class="orbit orbit-a"></div>
+          <div class="orbit orbit-b"></div>
+          <div class="hero-card">
+            <div class="card-top">
+              <span>CREATIVE MINDSET</span><span class="live-dot"></span>
+            </div>
+            <div class="monogram">J<span>F</span><i>.</i></div>
+            <div class="hero-card-bottom">
+              <div>
+                <p class="mini-label">FOCUS</p>
+                <h3>Words & Stories</h3>
+              </div>
+              <div class="card-index">01 / 04</div>
+            </div>
+          </div>
+          <div class="floating-note note-top">
+            <span class="note-symbol">“</span
+            ><span>Find the feeling.<br />Write the message.</span>
+          </div>
+          <div class="floating-note note-bottom">
+            <span class="spark">✳</span
+            ><span>Curious by nature<br /><b>Writer by practice</b></span>
+          </div>
+          <div class="art-grid"></div>
+        </div>
+        <div class="scroll-cue"><span></span> SCROLL TO EXPLORE</div>
+      </section>
 
-    <section id="about">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">01 / About me</p>
-          <h2>Mengenal <span class="gradient-text">Rizky.</span></h2>
-          <p>
-            Saya mahasiswa semester 5 Program Studi Sistem Informasi di
-            Universitas Bina Sarana Informatika PSDKU Solo. Saya memiliki
-            minat pada desain antarmuka, pengembangan aplikasi, serta optimasi
-            mesin pencari. Saat ini saya menjalani magang di Berkah Solo Web
-            untuk memperluas pengalaman dan mengembangkan keterampilan di dunia kerja.
+      <section class="ticker" aria-label="Bidang minat">
+        <div class="ticker-track">
+          <span>COPYWRITING</span><b>✳</b><span>CONTENT WRITING</span><b>✳</b
+          ><span>STORYTELLING</span><b>✳</b><span>WORDPLAY</span><b>✳</b
+          ><span>COPYWRITING</span><b>✳</b><span>CONTENT WRITING</span><b>✳</b
+          ><span>STORYTELLING</span><b>✳</b>
+        </div>
+      </section>
+
+      <section class="section wrap" id="about">
+        <div class="section-heading">
+          <p class="section-index">01 — PROFIL</p>
+          <h2>
+            Menulis bukan cuma<br /><span class="muted-heading"
+              >merangkai kata.</span
+            >
+          </h2>
+        </div>
+        <div class="about-grid">
+          <p class="about-lead">
+            Bagi saya, tulisan yang baik adalah tulisan yang tahu apa yang ingin
+            disampaikan — dan bagaimana membuat orang merasakannya.
           </p>
-        </div>
-        <div class="grid-3">
-          <article class="panel reveal">
-            <div class="icon">✦</div>
-            <h3>UI/UX & Design</h3>
-            <p>Menyusun user flow, wireframe, dan prototipe antarmuka yang berorientasi pada pengguna.</p>
-          </article>
-          <article class="panel reveal">
-            <div class="icon">⌘</div>
-            <h3>Application Development</h3>
-            <p>Mempelajari pengembangan aplikasi dengan Flutter, Dart, Supabase, dan basis data.</p>
-          </article>
-          <article class="panel reveal">
-            <div class="icon">↗</div>
-            <h3>SEO & Content</h3>
-            <p>Riset topik, penulisan artikel, dan optimasi konten agar lebih mudah ditemukan audiens.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    
-    <section id="experience">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">02 / Work Experience</p>
-          <h2>Pengalaman <span class="gradient-text">Kerja.</span></h2>
-          <p>Pengalaman profesional, magang, dan aktivitas kerja yang membangun keterampilan saya.</p>
-        </div>
-
-        <div class="timeline reveal">
-          <article class="timeline-item">
-            <h3>SEO Intern — Berkah Solo Web (BSW)</h3>
-            <div class="date">7 September – 11 Desember 2026</div>
+          <div class="about-body">
             <p>
-              Menjalani program magang pada bagian SEO, meliputi riset topik,
-              penyusunan artikel, optimasi konten website, serta mendukung
-              aktivitas pengelolaan konten digital.
+              Penulis pemula dengan ketertarikan pada copywriting, content
+              writing, dan storytelling. Saya terbiasa mengembangkan ide menjadi
+              tulisan melalui proyek pribadi berupa puisi dan cerpen yang
+              dipublikasikan melalui Wattpad serta mengikuti berbagai event
+              kepenulisan.
             </p>
-          </article>
-
-          <article class="timeline-item">
-            <h3>Jurnalis & SEO — SoloHitz.com</h3>
-            <div class="date">Pengalaman penulisan konten</div>
             <p>
-              Menulis artikel berita, melakukan riset topik, mengoptimalkan
-              SEO on-page, dan mengelola konten informatif sesuai kebutuhan website.
+              Saya tertarik pada permainan kata, penyusunan frasa, dan
+              penggunaan gaya bahasa untuk membangun pesan serta karakter
+              tulisan. Saat ini, saya ingin mengembangkan kemampuan menulis ke
+              bidang copywriting melalui pengalaman profesional sebagai
+              <em>Copywriter Trainee</em>.
             </p>
-          </article>
-
-          <article class="timeline-item">
-            <h3>Usaha Retail Kecil — Token Listrik & Pulsa</h3>
-            <div class="date">Pengalaman usaha mandiri</div>
-            <p>
-              Melayani pelanggan, menangani transaksi, serta melakukan
-              pencatatan transaksi dan laporan keuangan sederhana.
-            </p>
-          </article>
-
-          <article class="timeline-item">
-            <h3>Waiters / Pelayan Restoran</h3>
-            <div class="date">Pengalaman pelayanan</div>
-            <p>
-              Memberikan pelayanan kepada pelanggan, bekerja sama dalam tim,
-              serta menjaga kebersihan dan kenyamanan area kerja.
-            </p>
-          </article>
-
-          <article class="timeline-item">
-            <h3>Freelance di Pabrik Kosmetik</h3>
-            <div class="date">Pengalaman operasional</div>
-            <p>
-              Membantu pekerjaan operasional dan pengemasan produk kosmetik
-              sesuai standar perusahaan.
-            </p>
-          </article>
-
-          <article class="timeline-item">
-            <h3>Magang / PKL — Apotek Kimia Farma Gentan & Puskesmas Sangkrah</h3>
-            <div class="date">Pengalaman praktik kerja</div>
-            <p>
-              Mempelajari proses pelayanan kesehatan, manajemen obat,
-              dan administrasi di lingkungan apotek serta puskesmas.
-            </p>
-          </article>
+            <div class="quote-line">
+              <span>✳</span> Dari ide sederhana, menjadi pesan yang berarti.
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="education">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">03 / Education</p>
-          <h2>Riwayat <span class="gradient-text">Pendidikan.</span></h2>
-          <p>Perjalanan akademik dan pendidikan yang telah saya tempuh.</p>
-        </div>
-
-        <div class="timeline reveal">
-          <article class="timeline-item">
-            <h3>Universitas Bina Sarana Informatika</h3>
-            <div class="date">2024 – Sekarang</div>
-            <p>
-              Program Studi Sistem Informasi, PSDKU Solo.
-              IPK semester 1–4: 3,96.
-            </p>
-          </article>
-
-          <article class="timeline-item">
-            <h3>SMK Muhammadiyah 4 Surakarta</h3>
-            <div class="date">2021 – 2024</div>
-            <p>Jurusan Farmasi.</p>
-          </article>
-
-          <article class="timeline-item">
-            <h3>SMP Muhammadiyah 8 Surakarta</h3>
-            <div class="date">2018 – 2021</div>
-            <p>Pendidikan menengah pertama.</p>
-          </article>
-
-          <article class="timeline-item">
-            <h3>SDI Sunan Kalijaga Baluwarti</h3>
-            <div class="date">2012 – 2018</div>
-            <p>Pendidikan sekolah dasar.</p>
-          </article>
-
-          <article class="timeline-item">
-            <h3>TK Aisyiyah 48 Kemlayan</h3>
-            <div class="date">2010 – 2012</div>
-            <p>Pendidikan taman kanak-kanak.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-
-<!-- SECTION SERTIFIKAT -->
-    <section id="sertifikat" class="certificates-section">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">04 / Certifications & Achievements</p>
-          <h2>Sertifikasi & <span class="gradient-text">Pencapaian.</span></h2>
-          <p>Daftar sertifikat keikutsertaan, pelatihan, dan uji kompetensi terverifikasi yang pernah saya ikuti.</p>
-        </div>
-
-        <div class="certificates-grid">
-
-          <!-- SERTIFIKAT 1 (Terbaru): 28 s/d 29 Juli 2026 -->
-          <article class="certificate-card reveal">
-            <div>
-              <div class="certificate-card-top">
-                <div class="cert-icon">🏆</div>
-                <span class="cert-type-badge">Online</span>
-              </div>
-              <h3>Kompetisi Pekan Inovasi Nasional UMB 2026</h3>
-              <div class="certificate-meta">
-                <div class="certificate-organizer">
-                  <span class="icon-bullet">🏛</span>
-                  <span>Universitas Mercu Buana</span>
-                </div>
-                <div class="certificate-date">
-                  <span class="icon-bullet">📅</span>
-                  <span>28 s/d 29 Juli 2026</span>
-                </div>
-              </div>
-            </div>
-            <div class="certificate-card-bottom">
-              <a
-                href="https://drive.google.com/file/d/1r7w-soSSwvSqDv6r1uxIHIlofNEsgse5/view?usp=drive_link"
-                class="certificate-link"
-                target="_blank"
-                rel="noopener noreferrer"
+      <section class="section section-bordered" id="skills">
+        <div class="wrap">
+          <div class="section-heading">
+            <p class="section-index">02 — KEAHLIAN</p>
+            <h2>
+              Tools utama saya:<br /><span class="muted-heading"
+                >rasa bahasa & rasa ingin tahu.</span
               >
-                Buka Dokumen Drive <span>↗</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- SERTIFIKAT 2: 29 s/d 30 Juni 2026 -->
-          <article class="certificate-card reveal">
-            <div>
-              <div class="certificate-card-top">
-                <div class="cert-icon">✓</div>
-                <span class="cert-type-badge">Online</span>
-              </div>
-              <h3>Sertifikasi Kompetensi Software Quality Assurance</h3>
-              <div class="certificate-meta">
-                <div class="certificate-organizer">
-                  <span class="icon-bullet">🏛</span>
-                  <span>PT. Tanjung Mulia Informatika</span>
-                </div>
-                <div class="certificate-date">
-                  <span class="icon-bullet">📅</span>
-                  <span>29 s/d 30 Juni 2026</span>
-                </div>
-              </div>
-            </div>
-            <div class="certificate-card-bottom">
-              <a
-                href="https://drive.google.com/file/d/1NZuC0DpO75y_n4klU5eD54e0HtNioI3l/view?usp=drive_link"
-                class="certificate-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Buka Dokumen Drive <span>↗</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- SERTIFIKAT 3: 4 Februari s/d 4 Juni 2026 -->
-          <article class="certificate-card reveal">
-            <div>
-              <div class="certificate-card-top">
-                <div class="cert-icon">🔬</div>
-                <span class="cert-type-badge">Online</span>
-              </div>
-              <h3>Peserta Kompetensi Riset Perguruan Tinggi Kota Surakarta 2026</h3>
-              <div class="certificate-meta">
-                <div class="certificate-organizer">
-                  <span class="icon-bullet">🏛</span>
-                  <span>Badan Riset dan Inovasi Daerah (BRIDA) Kota Surakarta</span>
-                </div>
-                <div class="certificate-date">
-                  <span class="icon-bullet">📅</span>
-                  <span>4 Februari s/d 4 Juni 2026</span>
-                </div>
-              </div>
-            </div>
-            <div class="certificate-card-bottom">
-              <a
-                href="https://drive.google.com/file/d/1rq-w1q2trz6laEgixAi6gVs-CKRSiUqI/view?usp=drive_link"
-                class="certificate-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Buka Dokumen Drive <span>↗</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- SERTIFIKAT 4: 9 April 2026 -->
-          <article class="certificate-card reveal">
-            <div>
-              <div class="certificate-card-top">
-                <div class="cert-icon">📑</div>
-                <span class="cert-type-badge">Online</span>
-              </div>
-              <h3>Pemakalah Seminar Nasional Inovatif 2026</h3>
-              <div class="certificate-meta">
-                <div class="certificate-organizer">
-                  <span class="icon-bullet">🏛</span>
-                  <span>BSI Convention Center UBSI Kaliabang</span>
-                </div>
-                <div class="certificate-date">
-                  <span class="icon-bullet">📅</span>
-                  <span>9 April 2026</span>
-                </div>
-              </div>
-            </div>
-            <div class="certificate-card-bottom">
-              <a
-                href="https://drive.google.com/file/d/1-LWta07jDIyz3sBLeRVTEaC9FvRfxj_s/view?usp=drive_link"
-                class="certificate-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Buka Dokumen Drive <span>↗</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- SERTIFIKAT 5: 6 Maret 2026 -->
-          <article class="certificate-card reveal">
-            <div>
-              <div class="certificate-card-top">
-                <div class="cert-icon">🎖</div>
-                <span class="cert-type-badge offline">Offline</span>
-              </div>
-              <h3>Sertifikasi Uji Kompetensi LSP Database Administrator</h3>
-              <div class="certificate-meta">
-                <div class="certificate-organizer">
-                  <span class="icon-bullet">🏛</span>
-                  <span>Badan Nasional Sertifikasi Profesi (BNSP)</span>
-                </div>
-                <div class="certificate-date">
-                  <span class="icon-bullet">📅</span>
-                  <span>6 Maret 2026</span>
-                </div>
-              </div>
-            </div>
-            <div class="certificate-card-bottom">
-              <a
-                href="https://drive.google.com/file/d/1z_CuEbbfC68L0NlL2PLFJAXrrAAOPcr4/view?usp=drive_link"
-                class="certificate-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Buka Dokumen Drive <span>↗</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- SERTIFIKAT 6: 26 s/d 28 November 2025 -->
-          <article class="certificate-card reveal">
-            <div>
-              <div class="certificate-card-top">
-                <div class="cert-icon">⚡</div>
-                <span class="cert-type-badge">Online</span>
-              </div>
-              <h3>Mini Bootcamp Kerja Remote</h3>
-              <div class="certificate-meta">
-                <div class="certificate-organizer">
-                  <span class="icon-bullet">🏛</span>
-                  <span>SGB VA Course</span>
-                </div>
-                <div class="certificate-date">
-                  <span class="icon-bullet">📅</span>
-                  <span>26 s/d 28 November 2025</span>
-                </div>
-              </div>
-            </div>
-            <div class="certificate-card-bottom">
-              <a
-                href="https://drive.google.com/file/d/1JHjW4lPXXds4Dsp8YiEHtvS1d265oIfF/view?usp=drive_link"
-                class="certificate-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Buka Dokumen Drive <span>↗</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- SERTIFIKAT 7: 25 Juni 2025 -->
-          <article class="certificate-card reveal">
-            <div>
-              <div class="certificate-card-top">
-                <div class="cert-icon">🗄</div>
-                <span class="cert-type-badge offline">Offline</span>
-              </div>
-              <h3>Uji Kompetensi Berbasis Industri Bidang Basis Data</h3>
-              <div class="certificate-meta">
-                <div class="certificate-organizer">
-                  <span class="icon-bullet">🏛</span>
-                  <span>Sadasa Academy</span>
-                </div>
-                <div class="certificate-date">
-                  <span class="icon-bullet">📅</span>
-                  <span>25 Juni 2025</span>
-                </div>
-              </div>
-            </div>
-            <div class="certificate-card-bottom">
-              <a
-                href="https://drive.google.com/file/d/1qoswn7GoZAVNdIrVqjXibfBsG4caQPdZ/view?usp=drive_link"
-                class="certificate-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Buka Dokumen Drive <span>↗</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- SERTIFIKAT 8 (Terlama): 27 Mei 2025 -->
-          <article class="certificate-card reveal">
-            <div>
-              <div class="certificate-card-top">
-                <div class="cert-icon">✦</div>
-                <span class="cert-type-badge offline">Offline</span>
-              </div>
-              <h3>Digital Entrepreneurship Academy</h3>
-              <div class="certificate-meta">
-                <div class="certificate-organizer">
-                  <span class="icon-bullet">🏛</span>
-                  <span>BPSDMP Yogyakarta</span>
-                </div>
-                <div class="certificate-date">
-                  <span class="icon-bullet">📅</span>
-                  <span>27 Mei 2025</span>
-                </div>
-              </div>
-            </div>
-            <div class="certificate-card-bottom">
-              <a
-                href="https://drive.google.com/file/d/1wnoUVKA_aJetPZM9EVVRtpDZO6SVD09z/view?usp=drive_link"
-                class="certificate-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Buka Dokumen Drive <span>↗</span>
-              </a>
-            </div>
-          </article>
-
-          <!-- KARTU SERTIFIKAT LAINNYA / GOOGLE DRIVE PORTOFOLIO -->
-          <article class="certificate-card certificate-cta-card reveal">
-            <div>
-              <div class="cert-icon">📂</div>
-              <h3>Sertifikat & Portofolio Lainnya</h3>
+            </h2>
+          </div>
+          <div class="skills-layout">
+            <div class="skill-intro">
+              <span class="big-number">09</span>
               <p>
-                Dokumentasi sertifikat, penghargaan akademik, pelatihan, dan arsip karya lengkap saya tersimpan di Google Drive.
+                kemampuan yang terus diasah lewat latihan, eksplorasi, dan
+                pengalaman.
               </p>
             </div>
-            <div class="certificate-card-bottom" style="width: 100%;">
-              <a
-                href="https://bit.ly/MuhammadRizky_portofolio"
-                class="certificate-link"
-                target="_blank"
-                rel="noopener noreferrer"
+            <div class="skill-list">
+              <div class="skill-item">
+                <span class="skill-num">01</span><span>Copywriting dasar</span
+                ><span class="skill-arrow">↗</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-num">02</span><span>Content writing</span
+                ><span class="skill-arrow">↗</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-num">03</span><span>Storytelling</span
+                ><span class="skill-arrow">↗</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-num">04</span
+                ><span>Pemilihan & pengolahan kata</span
+                ><span class="skill-arrow">↗</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-num">05</span
+                ><span>Penyusunan frasa dan kalimat</span
+                ><span class="skill-arrow">↗</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-num">06</span><span>Gaya bahasa / majas</span
+                ><span class="skill-arrow">↗</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-num">07</span><span>Komunikasi</span
+                ><span class="skill-arrow">↗</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-num">08</span
+                ><span>Kreativitas mengembangkan ide</span
+                ><span class="skill-arrow">↗</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-num">09</span
+                ><span>Ketelitian dalam penulisan</span
+                ><span class="skill-arrow">↗</span>
+              </div>
+            </div>
+          </div>
+          <div class="tools-row">
+            <span class="tools-label">TOOLS I USE</span
+            ><span class="tool-chip">Google Docs</span
+            ><span class="tool-chip">Microsoft Word</span
+            ><span class="tool-chip">CapCut</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section wrap" id="work">
+        <div class="section-heading">
+          <p class="section-index">03 — PROYEK & KEPENULISAN</p>
+          <h2>
+            Latihan yang membentuk<br /><span class="muted-heading"
+              >cara saya bercerita.</span
+            >
+          </h2>
+        </div>
+        <div class="writing-card">
+          <div class="writing-card-top">
+            <span class="pill">PERSONAL PROJECT</span
+            ><span class="mono">WRITING / 001</span>
+          </div>
+          <div class="writing-card-main">
+            <div class="writing-symbol">✳</div>
+            <div>
+              <h3>Puisi & Cerpen</h3>
+              <p class="writing-subtitle">Penulis independen · Wattpad</p>
+              <p>
+                Menulis dan mengembangkan karya berupa puisi dan cerpen,
+                mengolah ide dengan memperhatikan pilihan kata, struktur
+                kalimat, dan penyampaian pesan. Bereksperimen dengan gaya bahasa
+                serta permainan frasa untuk membangun suasana dan karakter
+                tulisan.
+              </p>
+            </div>
+          </div>
+          <div class="writing-card-footer">
+            <span>IDE → DRAFT → REVISI → CERITA</span
+            ><span class="footer-dot"></span>
+          </div>
+        </div>
+        <div class="awards-heading">
+          <h3>Sertifikat & pencapaian kepenulisan</h3>
+          <span class="mono">KLIK UNTUK MELIHAT SERTIFIKAT ↗</span>
+        </div>
+        <div class="award-list certificate-list">
+          <button
+            class="award certificate-trigger"
+            type="button"
+            data-certificate="https://drive.google.com/file/d/12LonHUqRkCSx8IsAyFXKLZzYhr2inFdO/preview"
+            data-title="Lomba Cipta Puisi 48 (LCP48)"
+          >
+            <span class="award-icon">↗</span>
+            <span class="award-copy"
+              ><span class="award-title">Lomba Cipta Puisi 48 (LCP48)</span
+              ><span class="award-description"
+                >Terpilih sebagai salah satu penulis dalam event Lomba Cipta
+                Puisi 48.</span
+              ></span
+            >
+            <span class="award-tag">LIHAT SERTIFIKAT ↗</span>
+          </button>
+          <button
+            class="award certificate-trigger"
+            type="button"
+            data-certificate="https://drive.google.com/file/d/1wjsC1EoNWlO0nmPtP-OfOKDAZzS-NdF6/preview"
+            data-title="Lomba Inovasi Rima dan Imajinasi Karya (LIRIKA 12)"
+          >
+            <span class="award-icon">↗</span>
+            <span class="award-copy"
+              ><span class="award-title"
+                >Lomba Inovasi Rima dan Imajinasi Karya (LIRIKA 12)</span
+              ><span class="award-description"
+                >Sertifikat kepenulisan LIRIKA 12.</span
+              ></span
+            >
+            <span class="award-tag">LIHAT SERTIFIKAT ↗</span>
+          </button>
+                    <button
+            class="award certificate-trigger"
+            type="button"
+            data-certificate="https://drive.google.com/file/d/1XXyCqJR_ovbARRXKVVVPLyDZgw0bmslz/preview"
+            data-title="Event Menulis Batch 6 — Pena Penulis"
+          >
+            <span class="award-icon">↗</span>
+            <span class="award-copy"
+              ><span class="award-title">Event Menulis Batch 6 — Pena Penulis</span
+              ><span class="award-description"
+                >Terpilih sebagai salah satu penulis dalam event menulis yang
+                diselenggarakan oleh Pena Penulis.</span
+              ></span
+            >
+            <span class="award-tag">LIHAT SERTIFIKAT ↗</span>
+          </button>
+          <button
+            class="award certificate-trigger"
+            type="button"
+            data-certificate="https://drive.google.com/file/d/1Qdc5yteVJZSBIS-9WfLykaIW4q_Kn9He/preview"
+            data-title="Event Inspirasi Menulis"
+          >
+            <span class="award-icon">↗</span>
+            <span class="award-copy"
+              ><span class="award-title">Event Inspirasi Menulis</span
+              ><span class="award-description"
+                >Terpilih sebagai salah satu penulis dalam event kepenulisan yang
+                diselenggarakan oleh Inspirasi Menulis.</span
+              ></span
+            >
+            <span class="award-tag">LIHAT SERTIFIKAT ↗</span>
+          </button>
+        </div>
+        <div class="portfolio-note">
+          <div class="portfolio-note-icon">＋</div>
+          <div>
+            <h4>Portofolio copywriting sedang dikembangkan</h4>
+            <p>
+              Ruang ini akan diisi dengan contoh headline, caption, product
+              copy, dan karya tulisan pilihan.
+            </p>
+          </div>
+          <span class="mono">COMING SOON</span>
+        </div>
+      </section>
+
+      <section class="section section-bordered" id="experience">
+        <div class="wrap">
+          <div class="section-heading">
+            <p class="section-index">04 — PENGALAMAN KERJA</p>
+            <h2>
+              Belajar dari lapangan,<br /><span class="muted-heading"
+                >bertumbuh lewat proses.</span
               >
-                Buka Drive Portofolio Lengkap <span>↗</span>
-              </a>
-            </div>
-          </article>
-
+            </h2>
+          </div>
+          <div class="experience-list">
+            <article class="experience">
+              <div class="experience-number">01</div>
+              <div class="experience-main">
+                <h3>Waiter</h3>
+                <p class="experience-desc">Pelayanan pelanggan</p>
+                <ul>
+                  <li>
+                    Melayani pelanggan dan berkomunikasi secara langsung dalam
+                    lingkungan kerja yang dinamis.
+                  </li>
+                  <li>Memastikan kebutuhan pelanggan ditangani dengan baik.</li>
+                  <li>
+                    Bekerja sama dengan tim untuk menjaga kelancaran
+                    operasional.
+                  </li>
+                </ul>
+              </div>
+              <span class="experience-mark">↗</span>
+            </article>
+            <article class="experience">
+              <div class="experience-number">02</div>
+              <div class="experience-main">
+                <h3>
+                  Attendant <span class="at-company">| PT. Centre Park</span>
+                </h3>
+                <p class="experience-desc">Operasional & layanan</p>
+                <ul>
+                  <li>
+                    Melaksanakan tugas operasional sesuai prosedur yang
+                    ditetapkan.
+                  </li>
+                  <li>
+                    Berinteraksi dengan pelanggan dan lingkungan kerja secara
+                    profesional.
+                  </li>
+                  <li>
+                    Menjaga ketelitian dan tanggung jawab dalam menjalankan
+                    tugas.
+                  </li>
+                </ul>
+              </div>
+              <span class="experience-mark">↗</span>
+            </article>
+            <article class="experience">
+              <div class="experience-number">03</div>
+              <div class="experience-main">
+                <h3>Teknisi Cuci Sepatu</h3>
+                <p class="experience-desc">
+                  Perawatan produk & layanan pelanggan
+                </p>
+                <ul>
+                  <li>
+                    Menangani proses perawatan dan pencucian sepatu sesuai
+                    kondisi dan kebutuhan pelanggan.
+                  </li>
+                  <li>
+                    Berkomunikasi dengan pelanggan mengenai layanan yang
+                    diberikan.
+                  </li>
+                  <li>
+                    Memperhatikan detail dalam proses pengerjaan untuk menjaga
+                    kualitas hasil.
+                  </li>
+                </ul>
+              </div>
+              <span class="experience-mark">↗</span>
+            </article>
+          </div>
         </div>
-      </div>
-    </section>
-    <!-- AKHIR SECTION SERTIFIKAT -->
+      </section>
 
-
-    <section id="projects">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">05 / Selected work</p>
-          <h2>Proyek <span class="gradient-text">Pilihan.</span></h2>
-          <p>Beberapa proyek yang pernah dikerjakan. Detail dan tautan demo dapat ditambahkan setelah dipublikasikan.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="panel project-card reveal">
-            <div class="project-visual">01 / FACE ID</div>
-            <div class="project-content">
-              <h3>Aplikasi Absensi Karyawan</h3>
-              <p>Aplikasi absensi berbasis verifikasi wajah dan geofencing untuk membantu pencatatan kehadiran.</p>
-              <div class="tags"><span class="tag">Flutter</span><span class="tag">Supabase</span><span class="tag">Google ML Kit</span></div>
+      <section class="section wrap education-section" id="education">
+        <div class="education-block">
+          <p class="section-index">05 — PENDIDIKAN</p>
+          <div class="education-content">
+            <div class="education-icon">⌂</div>
+            <div>
+              <h3>Sekolah Menengah Kejuruan</h3>
+              <p>Teknik Sepeda Motor</p>
+              <span class="education-caption">SMK · Surakarta</span>
             </div>
-          </article>
-
-          <article class="panel project-card reveal">
-            <div class="project-visual">02 / PAYROLL</div>
-            <div class="project-content">
-              <h3>Sistem Payroll Otomatis</h3>
-              <p>Konsep sistem penggajian dengan alur pengolahan data dan pembuatan dokumen PDF.</p>
-              <div class="tags"><span class="tag">Flutter</span><span class="tag">Supabase</span><span class="tag">PDF</span></div>
-            </div>
-          </article>
-
-          <article class="panel project-card reveal">
-            <div class="project-visual">03 / DESIGN</div>
-            <div class="project-content">
-              <h3>UI/UX Design Website</h3>
-              <p>Perancangan user flow, struktur halaman, dan prototipe desain antarmuka website.</p>
-              <div class="tags"><span class="tag">Figma</span><span class="tag">Wireframe</span><span class="tag">Prototype</span></div>
-            </div>
-          </article>
-
-          <article class="panel project-card reveal">
-            <div class="project-visual">04 / GREEN</div>
-            <div class="project-content">
-              <h3>Kota Bersih Surakarta</h3>
-              <p>Konsep smart waste management dengan fokus pada pengalaman pengguna dan rancangan sistem.</p>
-              <div class="tags"><span class="tag">UI/UX</span><span class="tag">System Prototype</span></div>
-            </div>
-          </article>
-
-          <article class="panel project-card reveal">
-            <div class="project-visual">05 / SEO</div>
-            <div class="project-content">
-              <h3>SEO & Content Workflow</h3>
-              <p>Pengalaman riset kata kunci, penyusunan artikel, dan optimasi konten untuk website.</p>
-              <div class="tags"><span class="tag">SEO</span><span class="tag">Content</span><span class="tag">WordPress</span></div>
-            </div>
-          </article>
-
-          <article class="panel project-card reveal">
-            <div class="project-visual">06 / MORE</div>
-            <div class="project-content">
-              <h3>Explore My Portfolio</h3>
-              <p>Lihat informasi portofolio lebih lanjut melalui tautan yang digunakan pada CV saya.</p>
-              <div class="tags"><span class="tag">Portfolio</span><span class="tag">Projects</span></div>
-              <a class="project-link" href="https://bit.ly/MuhammadRizky_portofolio" target="_blank" rel="noopener noreferrer">Buka portofolio ↗</a>
-            </div>
-          </article>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">06 / Toolkit</p>
-          <h2>Skills & <span class="gradient-text">Tools.</span></h2>
-          <p>Teknologi dan keterampilan yang saya gunakan serta terus kembangkan.</p>
-        </div>
-        <div class="skills reveal">
-          <span class="skill">Figma / UI/UX</span>
-          <span class="skill">Flutter</span>
-          <span class="skill">Dart</span>
-          <span class="skill">Supabase</span>
-          <span class="skill">SQL Database</span>
-          <span class="skill">SEO On-Page</span>
-          <span class="skill">Keyword Research</span>
-          <span class="skill">Content Writing</span>
-          <span class="skill">WordPress</span>
-          <span class="skill">Microsoft Word</span>
-          <span class="skill">Microsoft Excel</span>
-          <span class="skill">Microsoft PowerPoint</span>
-          <span class="skill">Communication</span>
-          <span class="skill">Teamwork</span>
-          <span class="skill">Problem Solving</span>
-        </div>
-
-        <div class="section-head reveal" style="margin-top:55px;margin-bottom:25px">
-          <p class="eyebrow">07 / Beyond the classroom</p>
-          <h2>Organisasi & <span class="gradient-text">Leadership.</span></h2>
-        </div>
-        <div class="grid-3">
-          <article class="panel reveal">
-            <h3>HIMSI</h3>
-            <p>Bendahara Himpunan Mahasiswa Sistem Informasi · 2024–sekarang.</p>
-          </article>
-          <article class="panel reveal">
-            <h3>Karang Taruna</h3>
-            <p>Anggota Karang Taruna pada 2023–2024.</p>
-          </article>
-          <article class="panel reveal">
-            <h3>PC IPM</h3>
-            <p>Anggota Pimpinan Cabang Ikatan Pelajar Muhammadiyah Bidang PIP pada 2023–2024.</p>
-          </article>
-          <article class="panel reveal">
-            <h3>PR IPM</h3>
-            <p>Anggota Pimpinan Ranting Ikatan Pelajar Muhammadiyah Bidang PIP · 2022–2023.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="contact-box reveal">
-          <p class="eyebrow">08 / Let's connect</p>
-          <h2 style="margin-top:15px">Mari terhubung & membangun sesuatu <span class="gradient-text">bersama.</span></h2>
-          <p class="contact-desc">
-            Saya terbuka untuk diskusi kolaborasi proyek, peluang magang, freelance UI/UX Design, pengembangan aplikasi, hingga optimasi SEO.
+        <div class="education-aside">
+          <span class="big-quote">“</span>
+          <p>
+            Skill bisa terus diasah. Yang penting, selalu punya rasa ingin tahu
+            dan keberanian untuk mulai.
           </p>
+          <span class="mono">A NOTE TO MYSELF</span>
+        </div>
+      </section>
 
-          <!-- Grid Kartu Kontak Interaktif -->
-          <div class="contact-grid">
-
-            <!-- EMAIL -->
-            <a href="mailto:mrizkynurrohman.mail@gmail.com" class="contact-card highlight-card" aria-label="Kirim Email">
-              <div class="contact-icon">✉</div>
-              <div class="contact-info">
-                <small>Email Resmi</small>
-                <strong>mrizkynurrohman.mail@gmail.com</strong>
-              </div>
-              <span class="contact-arrow">↗</span>
-            </a>
-
-            <!-- LINKEDIN -->
-            <a href="https://www.linkedin.com/in/muhammad-rizky-nurrohman-152962372/" target="_blank" rel="noopener noreferrer" class="contact-card" aria-label="Buka LinkedIn">
-              <div class="contact-icon">in</div>
-              <div class="contact-info">
-                <small>LinkedIn</small>
-                <strong>Muhammad Rizky Nurrohman</strong>
-              </div>
-              <span class="contact-arrow">↗</span>
-            </a>
-
-            <!-- GITHUB -->
-            <a href="https://github.com/MuhammadRizkyNurrohman" target="_blank" rel="noopener noreferrer" class="contact-card" aria-label="Buka GitHub">
-              <div class="contact-icon">⌘</div>
-              <div class="contact-info">
-                <small>GitHub</small>
-                <strong>MuhammadRizkyNurrohman</strong>
-              </div>
-              <span class="contact-arrow">↗</span>
-            </a>
-
-            <!-- INSTAGRAM -->
-            <a href="https://www.instagram.com/flexin_01/" target="_blank" rel="noopener noreferrer" class="contact-card" aria-label="Buka Instagram">
-              <div class="contact-icon">◎</div>
-              <div class="contact-info">
-                <small>Instagram</small>
-                <strong>@flexin_01</strong>
-              </div>
-              <span class="contact-arrow">↗</span>
-            </a>
-
-            <!-- LOKASI -->
-            <div class="contact-card" style="cursor: default;" aria-label="Lokasi Tempat Tinggal">
-              <div class="contact-icon">📍</div>
-              <div class="contact-info">
-                <small>Domisili / Lokasi</small>
-                <strong>Surakarta, Jawa Tengah</strong>
-              </div>
-            </div>
-
+      <section class="contact-section" id="contact">
+        <div class="wrap contact-inner">
+          <p class="section-index">LET'S CREATE SOMETHING MEANINGFUL</p>
+          <h2>
+            Punya cerita?<br /><span class="gradient-text"
+              >Mari rangkai bersama.</span
+            >
+          </h2>
+          <p class="contact-description">
+            Saya terbuka untuk kesempatan belajar, berkolaborasi, dan bertumbuh
+            di bidang copywriting maupun content writing.
+          </p>
+          <div class="contact-actions">
+            <a
+              class="button button-primary"
+              href="mailto:Jovifebrian13@gmail.com"
+              >Jovifebrian13@gmail.com <span>↗</span></a
+            ><a
+              class="button button-ghost"
+              href="https://wa.me/6285759801620"
+              target="_blank"
+              rel="noopener noreferrer"
+              >WhatsApp <span>↗</span></a
+            >
           </div>
-
-          <!-- Quick Action Buttons -->
-          <div class="btn-row" style="justify-content:center; margin-top: 36px;">
-            <a class="btn btn-primary" href="mailto:mrizkynurrohman.mail@gmail.com">Kirim Pesan Email ↗</a>
-            <a class="btn btn-secondary" href="https://bit.ly/MuhammadRizky_portofolio" target="_blank" rel="noopener noreferrer">Dokumen Portofolio ↗</a>
+          <div class="contact-foot">
+            <span>JOVI FEBRIAN · WRITER / ASPIRING COPYWRITER</span
+            ><span>SURAKARTA, INDONESIA</span>
           </div>
         </div>
+      </section>
+    </main>
+
+    <div
+      class="certificate-modal"
+      id="certificateModal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="certificateModalTitle"
+    >
+      <div class="certificate-backdrop" data-close-certificate></div>
+      <div class="certificate-dialog">
+        <div class="certificate-modal-header">
+          <div>
+            <span class="section-index">CERTIFICATE PREVIEW</span>
+            <h3 id="certificateModalTitle">Sertifikat Kepenulisan</h3>
+          </div>
+          <button
+            class="certificate-close"
+            type="button"
+            aria-label="Tutup sertifikat"
+            data-close-certificate
+          >
+            ✕
+          </button>
+        </div>
+        <div class="certificate-frame-wrap">
+          <iframe
+            id="certificateFrame"
+            title="Pratinjau sertifikat"
+            src="about:blank"
+            allow="autoplay"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="certificate-modal-footer">
+          <span
+            >Jika pratinjau tidak muncul, buka sertifikat langsung di Google
+            Drive.</span
+          ><a
+            id="certificateOpenOriginal"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Buka di Google Drive ↗</a
+          >
+        </div>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-row">
-      <a href="#home" class="logo">flexin<span>_</span>01</a>
-      <p>© <span id="year"></span> Muhammad Rizky Nurrohman.</p>
-      <a href="#home">Kembali ke atas ↑</a>
     </div>
-  </footer>
+    <footer class="footer wrap">
+      <a class="brand" href="#home"
+        ><span class="brand-mark">JF</span
+        ><span>JOVI<span class="brand-muted">FEBRIAN</span></span></a
+      >
+      <p>Dibuat dengan rasa ingin tahu dan banyak kata.</p>
+      <a href="#home" class="back-top">KEMBALI KE ATAS ↑</a>
+    </footer>
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const nav = document.querySelector(".nav");
 
-  <script>
-    // Mobile navigation
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
-
-    menuBtn.addEventListener("click", () => {
-      const open = navLinks.classList.toggle("open");
-      menuBtn.setAttribute("aria-expanded", String(open));
-      menuBtn.textContent = open ? "✕" : "☰";
-    });
-
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuBtn.setAttribute("aria-expanded", "false");
-        menuBtn.textContent = "☰";
-      });
-    });
-
-    // Reveal sections when they enter the viewport
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    const profileCard = document.getElementById("profileCard");
-
-    function flipProfileCard() {
-      const flipped = profileCard.classList.toggle("is-flipped");
-      profileCard.setAttribute("aria-pressed", String(flipped));
-    }
-
-    // =========================================
-    // RUBBER ELASTIC DRAG + LANYARD CANVAS ROPE
-    // =========================================
-    (function initRubberElasticCard() {
-      const lanyardClip  = document.getElementById("lanyardClip");
-      const cardSlot     = document.getElementById("cardSlot");
-      const lanyardCvs   = document.getElementById("lanyard-canvas");
-      const portraitWrap = document.getElementById("portraitWrap");
-      const lCtx = lanyardCvs ? lanyardCvs.getContext("2d") : null;
-
-      // ---- Canvas ukuran dinamis mengikuti portrait-wrap ----
-      function resizeLanyardCanvas() {
-        if (!lanyardCvs || !portraitWrap) return;
-        const w = portraitWrap.offsetWidth  || 220;
-        const h = portraitWrap.offsetHeight || 400;
-        lanyardCvs.width  = w;
-        lanyardCvs.height = h;
-        lanyardCvs.style.width  = w + "px";
-        lanyardCvs.style.height = h + "px";
-        lanyardCvs.style.top  = "0px";
-        lanyardCvs.style.left = "0px";
-        lanyardCvs.style.transform = "none";
-      }
-      resizeLanyardCanvas();
-      window.addEventListener("resize", resizeLanyardCanvas);
-
-      function getAnchorX() { return lanyardCvs ? lanyardCvs.width / 2 : 110; }
-      const ANCHOR_Y = 4;
-
-      // ---- Portrait-wrap layout ----
-      // padding-top: 80px  → kartu mulai dari y=80 px di dalam wrap
-      // Slot lubang: top 10px di dalam kartu → card-top + 10px + 3px (½ tinggi slot)
-      // Saat tidak bergerak, slot center = 80 + 10 + 3.5 = ~93.5 px dari atas wrap
-      const CARD_TOP   = 80;    // = portrait-wrap padding-top (px)
-      const SLOT_INSET = 10;    // = id-card-slot top di dalam kartu (px)
-      const SLOT_H     = 7;     // tinggi slot (px)
-
-      let isDragging = false;
-      let startX = 0, startY = 0;
-      let currentX = 0, currentY = 0;
-      let velocityX = 0, velocityY = 0;
-      let lastMoveTime = 0;
-      let animationId = null;
-
-      const stiffness = 0.14;
-      const damping   = 0.72;
-
-      /* ---- Gambar tali & update posisi aksesori ---- */
-      function updateLanyard(cardOffsetX, cardOffsetY, cardRot) {
-        if (!lCtx || !lanyardCvs) return;
-
-        const CW = lanyardCvs.width;
-        const CH = lanyardCvs.height;
-        const AX = getAnchorX();
-
-        // Canvas is positioned at left:0, top:0 inside portrait-wrap
-        // Canvas pixel coords == portrait-wrap coords directly
-        const holeX = CW / 2 + cardOffsetX;              // cx of wrap + card shift
-        const holeY = CARD_TOP + SLOT_INSET + SLOT_H / 2 + cardOffsetY;
-
-        // Gambar tali (kurva bezier melengkung)
-        lCtx.clearRect(0, 0, CW, CH);
-
-        lCtx.save();
-        lCtx.shadowColor = "rgba(77,141,255,0.25)";
-        lCtx.shadowBlur  = 6;
-
-        // Tali utama — garis tebal navy/biru
-        const cpX = AX + (holeX - AX) * 0.4;
-        const cpY = ANCHOR_Y + (holeY - ANCHOR_Y) * 0.55;
-
-        lCtx.beginPath();
-        lCtx.moveTo(AX, ANCHOR_Y);
-        lCtx.quadraticCurveTo(cpX, cpY, holeX, holeY);
-        lCtx.lineWidth   = 8;
-        lCtx.strokeStyle = "#1b3a6b";
-        lCtx.lineCap     = "round";
-        lCtx.stroke();
-
-        // Garis strip warna di tengah tali
-        lCtx.beginPath();
-        lCtx.moveTo(AX, ANCHOR_Y);
-        lCtx.quadraticCurveTo(cpX, cpY, holeX, holeY);
-        lCtx.lineWidth   = 3;
-        lCtx.strokeStyle = "rgba(99,229,255,0.55)";
-        lCtx.setLineDash([4, 6]);
-        lCtx.stroke();
-        lCtx.setLineDash([]);
-
-        lCtx.restore();
-
-        // ---- Posisi klip — tepat di atas lubang kartu ----
-        if (lanyardClip) {
-          const clipW  = 22;
-          const clipH  = 16;
-          // Klip bergerak bersama kartu secara horizontal, tetap di atas slot
-          lanyardClip.style.left      = holeX + "px";
-          lanyardClip.style.top       = (holeY - clipH) + "px";
-          lanyardClip.style.transform = `translateX(-50%)`;
-        }
-
-        // ---- Posisi slot lubang ----
-        if (cardSlot) {
-          cardSlot.style.top  = (CARD_TOP + SLOT_INSET + cardOffsetY) + "px";
-          // Horizontal: mengikuti pergeseran kartu
-          cardSlot.style.left = "50%";
-          cardSlot.style.transform = `translateX(calc(-50% + ${cardOffsetX}px))`;
-        }
-      }
-
-      /* ---- Terapkan posisi kartu + update lanyard ---- */
-      function applyTransform(x, y, rot) {
-        profileCard.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rot}deg)`;
-        updateLanyard(x, y, rot);
-      }
-
-      /* Gambar posisi awal (kartu diam) */
-      applyTransform(0, 0, 0);
-
-      function startDrag(e) {
-        if (e.target.closest("a")) return;
-        if (e.type === "mousedown") e.preventDefault();
-
-        isDragging = true;
-        profileCard.classList.add("is-dragging");
-        if (animationId) cancelAnimationFrame(animationId);
-
-        const point = e.touches ? e.touches[0] : e;
-        startX = point.clientX - currentX;
-        startY = point.clientY - currentY;
-        lastMoveTime = performance.now();
-        velocityX = 0;
-        velocityY = 0;
-      }
-
-      function onMove(e) {
-        if (!isDragging) return;
-        const point = e.touches ? e.touches[0] : e;
-        const rawX  = point.clientX - startX;
-        const rawY  = point.clientY - startY;
-
-        const dist   = Math.hypot(rawX, rawY);
-        const factor = 1 / (1 + dist * 0.006);
-        currentX = rawX * factor;
-        currentY = rawY * factor;
-
-        const angle = currentX * 0.12;
-        applyTransform(currentX, currentY, angle);
-
-        const now = performance.now();
-        const dt  = Math.max(1, now - lastMoveTime);
-        velocityX = (currentX / dt) * 16;
-        velocityY = (currentY / dt) * 16;
-        lastMoveTime = now;
-      }
-
-      function endDrag(e) {
-        if (!isDragging) return;
-        isDragging = false;
-        profileCard.classList.remove("is-dragging");
-
-        const dragDistance = Math.hypot(currentX, currentY);
-        if (dragDistance < 6) {
-          flipProfileCard();
-          currentX = 0; currentY = 0;
-          applyTransform(0, 0, 0);
-          return;
-        }
-
-        let posX = currentX, posY = currentY;
-        let velX = velocityX * 0.4, velY = velocityY * 0.4;
-
-        function springBounce() {
-          velX = (velX - stiffness * posX) * damping;
-          velY = (velY - stiffness * posY) * damping;
-          posX += velX;
-          posY += velY;
-
-          const rot = posX * 0.14;
-          applyTransform(posX, posY, rot);
-
-          if (Math.abs(posX) < 0.2 && Math.abs(posY) < 0.2 &&
-              Math.abs(velX) < 0.2 && Math.abs(velY) < 0.2) {
-            currentX = 0; currentY = 0;
-            applyTransform(0, 0, 0);
-            cancelAnimationFrame(animationId);
-            return;
-          }
-          animationId = requestAnimationFrame(springBounce);
-        }
-        animationId = requestAnimationFrame(springBounce);
-      }
-
-      profileCard.addEventListener("mousedown",  startDrag);
-      window.addEventListener("mousemove",  onMove);
-      window.addEventListener("mouseup",    endDrag);
-      profileCard.addEventListener("touchstart", startDrag, { passive: false });
-      window.addEventListener("touchmove",  onMove, { passive: true });
-      window.addEventListener("touchend",   endDrag);
-      window.addEventListener("touchcancel",endDrag);
-    })();
-
-    profileCard.addEventListener("keydown", (event) => {
-      if (event.target.closest("a")) return;
-
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        flipProfileCard();
-      }
-    });
-
-    // =========================================
-    // LUXURY BLUE CURSOR & SPARKLE PARTICLES
-    // =========================================
-    (function initLuxuryCursor() {
-      const cursorDot = document.getElementById("cursorDot");
-      const cursorRing = document.getElementById("cursorRing");
-      const canvas = document.getElementById("sparkle-canvas");
-      if (!cursorDot || !cursorRing || !canvas) return;
-
-      const ctx = canvas.getContext("2d");
-      let mouseX = -100;
-      let mouseY = -100;
-      let ringX = -100;
-      let ringY = -100;
-      let isVisible = false;
-      let particles = [];
-
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-      resizeCanvas();
-      window.addEventListener("resize", resizeCanvas);
-
-      class Sparkle {
-        constructor(x, y) {
-          this.x = x + (Math.random() - 0.5) * 8;
-          this.y = y + (Math.random() - 0.5) * 8;
-          this.size = Math.random() * 3 + 1.2;
-          this.alpha = 1;
-          this.decay = Math.random() * 0.03 + 0.02;
-          this.vx = (Math.random() - 0.5) * 1.5;
-          this.vy = (Math.random() - 0.5) * 1.5 - 0.2;
-          const colors = [
-            "rgba(99, 229, 255,",
-            "rgba(77, 141, 255,",
-            "rgba(147, 215, 255,",
-            "rgba(255, 255, 255,"
-          ];
-          this.color = colors[Math.floor(Math.random() * colors.length)];
-          this.spikes = Math.random() > 0.4 ? 4 : 0;
-        }
-
-        update() {
-          this.x += this.vx;
-          this.y += this.vy;
-          this.alpha -= this.decay;
-          this.size *= 0.96;
-        }
-
-        draw(ctx) {
-          if (this.alpha <= 0) return;
-          ctx.save();
-          ctx.translate(this.x, this.y);
-          ctx.fillStyle = `${this.color} ${this.alpha})`;
-          ctx.shadowBlur = 10;
-          ctx.shadowColor = "#63e5ff";
-
-          if (this.spikes === 4) {
-            ctx.beginPath();
-            const s = this.size * 2;
-            ctx.moveTo(0, -s);
-            ctx.quadraticCurveTo(0, 0, s, 0);
-            ctx.quadraticCurveTo(0, 0, 0, s);
-            ctx.quadraticCurveTo(0, 0, -s, 0);
-            ctx.quadraticCurveTo(0, 0, 0, -s);
-            ctx.fill();
-          } else {
-            ctx.beginPath();
-            ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-            ctx.fill();
-          }
-          ctx.restore();
-        }
-      }
-
-      window.addEventListener("mousemove", (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        if (!isVisible) {
-          cursorDot.style.opacity = "1";
-          cursorRing.style.opacity = "1";
-          ringX = mouseX;
-          ringY = mouseY;
-          isVisible = true;
-        }
-
-        cursorDot.style.left = `${mouseX}px`;
-        cursorDot.style.top = `${mouseY}px`;
-
-        // Buat partikel kerlip setiap kursor digerakkan
-        for (let i = 0; i < 2; i++) {
-          particles.push(new Sparkle(mouseX, mouseY));
-        }
+      menuToggle?.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.textContent = isOpen ? "✕" : "☰";
       });
 
-      document.addEventListener("mouseleave", () => {
-        cursorDot.style.opacity = "0";
-        cursorRing.style.opacity = "0";
-        isVisible = false;
-      });
-
-      document.addEventListener("mouseenter", () => {
-        cursorDot.style.opacity = "1";
-        cursorRing.style.opacity = "1";
-        isVisible = true;
-      });
-
-      // Hover efek pada elemen interaktif
-      const interactiveSelector = "a, button, [role='button'], .skill, .certificate-card, .panel, input, textarea";
-      document.querySelectorAll(interactiveSelector).forEach((el) => {
-        el.addEventListener("mouseenter", () => {
-          cursorRing.classList.add("cursor-hover");
-          cursorDot.classList.add("cursor-hover");
-        });
-        el.addEventListener("mouseleave", () => {
-          cursorRing.classList.remove("cursor-hover");
-          cursorDot.classList.remove("cursor-hover");
+      nav?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("open");
+          menuToggle?.setAttribute("aria-expanded", "false");
+          if (menuToggle) menuToggle.textContent = "☰";
         });
       });
 
-      // Render loop untuk smooth follow & sparkle particles
-      function render() {
-        if (isVisible) {
-          ringX += (mouseX - ringX) * 0.18;
-          ringY += (mouseY - ringY) * 0.18;
-          cursorRing.style.left = `${ringX}px`;
-          cursorRing.style.top = `${ringY}px`;
-        }
+      const certificateModal = document.getElementById("certificateModal");
+      const certificateFrame = document.getElementById("certificateFrame");
+      const certificateModalTitle = document.getElementById(
+        "certificateModalTitle"
+      );
+      const certificateOpenOriginal = document.getElementById(
+        "certificateOpenOriginal"
+      );
+      const certificateTriggers = document.querySelectorAll(
+        ".certificate-trigger"
+      );
 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = particles.length - 1; i >= 0; i--) {
-          const p = particles[i];
-          p.update();
-          p.draw(ctx);
-          if (p.alpha <= 0) {
-            particles.splice(i, 1);
-          }
-        }
-
-        requestAnimationFrame(render);
+      function openCertificate(trigger) {
+        const previewUrl = trigger.dataset.certificate;
+        certificateModalTitle.textContent =
+          trigger.dataset.title || "Sertifikat Kepenulisan";
+        certificateFrame.src = previewUrl;
+        certificateOpenOriginal.href = previewUrl.replace("/preview", "/view");
+        certificateModal.classList.add("is-open");
+        certificateModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-open");
+        document.querySelector(".certificate-close")?.focus();
       }
-      requestAnimationFrame(render);
-    })();
-  </script>
-
-  <!-- Luxury Blue Cursor Elements -->
-  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
-  <canvas id="sparkle-canvas" aria-hidden="true"></canvas>
-</body>
+      function closeCertificate() {
+        certificateModal.classList.remove("is-open");
+        certificateModal.setAttribute("aria-hidden", "true");
+        certificateFrame.src = "about:blank";
+        document.body.classList.remove("modal-open");
+      }
+      certificateTriggers.forEach((trigger) =>
+        trigger.addEventListener("click", () => openCertificate(trigger))
+      );
+      certificateModal
+        ?.querySelectorAll("[data-close-certificate]")
+        .forEach((el) => el.addEventListener("click", closeCertificate));
+      document.addEventListener("keydown", (event) => {
+        if (
+          event.key === "Escape" &&
+          certificateModal?.classList.contains("is-open")
+        )
+          closeCertificate();
+      });
+    </script>
+  </body>
 </html>
