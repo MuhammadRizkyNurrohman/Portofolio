@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1A237E">
+  <meta name="description" content="Jepang-In — Website Resmi Aplikasi Belajar Bahasa Jepang Interaktif & Gamifikasi Duolingo-style. Dari Nol sampai Lulus JLPT N5-N1!">
+  <meta name="keywords" content="Jepang-In, Belajar Bahasa Jepang, JLPT N5, Hiragana, Katakana, Kanji, Tokutei Ginou, SSW, Gamifikasi">
+  <title>Jepang-In — Official Company & App Platform | Belajar Bahasa Jepang Seru & Interaktif</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="assets/images/logo.png" type="image/png">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement">
+    <div class="wrap ann-content">
+      <span class="badge-pill">UPDATE RESMI 🚀</span>
+      <span>Aplikasi <strong>Jepang-In v1.0.0</strong> kini siap diunduh! Mulai petualangan belajarmu sekarang.</span>
+      <span class="jp-tag">日本語を楽しくマスターしよう！</span>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="nav wrap">
+      <a class="brand" href="#home">
+        <img src="assets/images/logo.png" alt="Logo Jepang-In" class="logo-img">
+        <div class="brand-text">
+          <span class="brand-name">Jepang<span class="brand-accent">-In</span></span>
+          <small class="brand-tagline">日本語学習ゲームプラットフォーム</small>
+        </div>
+      </a>
+
+      <button class="menu-btn" aria-label="Buka Menu Navigasi">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="links">
+        <a href="#features">Fitur Unggulan</a>
+        <a href="#roadmap">Jalur Roadmap</a>
+        <a href="#curriculum">Kurikulum JLPT</a>
+        <a href="#gamification">Gamifikasi</a>
+        <a href="#company">Tentang Perusahaan</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-download-btn" href="#download">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Unduh APK (62.5 MB)
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero wrap" id="home">
+      <div class="hero-copy">
+        <div class="hero-chip">
+          <span class="sparkle">✨</span>
+          <span>PLATFORM RESMI PEMBELAJARAN JEPANG-IN</span>
+        </div>
+        <h1>
+          Kuasai Bahasa Jepang,<br>
+          <span class="hero-gradient">Seru & Bikin Ketagihan!</span>
+        </h1>
+        <p class="hero-desc">
+          Gabungan kurikulum terstruktur <strong>JLPT N5 hingga N1</strong>, persiapan kerja di Jepang (Tokutei Ginou/SSW), dengan sensasi <strong>gamifikasi interaktif Duolingo-style</strong>: Streak harian, kuis taktis, peti harta karun +50 EXP, dan maskot Kitsune setia yang menemanimu!
+        </p>
+
+        <div class="hero-cta-group">
+          <a class="btn-primary" href="#download">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Unduh Aplikasi Gratis</span>
+            <small class="btn-subtext">Direct APK v1.0.0 • Android</small>
+          </a>
+          <a class="btn-secondary" href="#roadmap">
+            <span>Lihat Roadmap Interaktif</span>
+            <span class="arrow-right">→</span>
+          </a>
+        </div>
+
+        <div class="hero-stats-banner">
+          <div class="stat-pill">
+            <span class="icon">🔥</span>
+            <div>
+              <strong>Streak Harian</strong>
+              <small>Bangun Kebiasaan</small>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <span class="icon">⭐</span>
+            <div>
+              <strong>Sistem EXP & Lv</strong>
+              <small>Reward Belajar</small>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <span class="icon">🎯</span>
+            <div>
+              <strong>Misi Harian</strong>
+              <small>Target Harian Jelas</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Interactive Visual: Phone Mockup with App Theme -->
+      <div class="hero-visual">
+        <div class="ambient-glow"></div>
+
+        <!-- Floating Mascot Badge -->
+        <div class="floating-badge mascot-float">
+          <img src="assets/images/maskot/Senang.png" alt="Maskot Jepang-In Senang" class="badge-mascot-img">
+          <div>
+            <strong>Kitsune-kun</strong>
+            <small>Siap membimbingmu! 🦊</small>
+          </div>
+        </div>
+
+        <!-- Floating XP Toast -->
+        <div class="floating-badge xp-float">
+          <span class="badge-icon">🎁</span>
+          <div>
+            <strong>Peti Harta Terbuka!</strong>
+            <small>+50 EXP didapatkan</small>
+          </div>
+        </div>
+
+        <!-- App Frame Mockup -->
+        <div class="phone-frame">
+          <div class="phone-camera-island">
+            <span class="camera-lens"></span>
+            <span class="camera-sensor"></span>
+          </div>
+
+          <div class="phone-inner">
+            <!-- App Header Mock -->
+            <div class="app-header-mock">
+              <div class="app-user-mock">
+                <img src="assets/images/logo.png" alt="Logo" class="mini-logo">
+                <div>
+                  <span class="user-greeting">Hai, Sahabat 🤗</span>
+                  <span class="user-target">Target: JLPT N5</span>
+                </div>
+              </div>
+              <div class="stats-capsule-mock">
+                <span>🔥 7</span>
+                <span class="sep">|</span>
+                <span>⭐ 350</span>
+                <span class="sep">|</span>
+                <span>🛡️ L3</span>
+              </div>
+              <div class="mission-btn-mock">🎯<span class="dot">2</span></div>
+            </div>
+
+            <!-- Level Selector Bar (Pinned) -->
+            <div class="level-tabs-mock">
+              <span class="tab-item active">N5</span>
+              <span class="tab-item">N4</span>
+              <span class="tab-item">N3</span>
+              <span class="tab-item">N2</span>
+              <span class="tab-item">N1</span>
+            </div>
+
+            <!-- Roadmap Preview In Phone -->
+            <div class="roadmap-mock-scroll">
+              <div class="unit-banner-mock">
+                <span class="unit-icon">🎌</span>
+                <div>
+                  <h4>Unit 1: Fondasi Sistem Huruf</h4>
+                  <small>Hiragana, Katakana & Vokal Dasar</small>
+                </div>
+              </div>
+
+              <!-- Node zigzag -->
+              <div class="nodes-container-mock">
+                <div class="node-mock node-active pulse-glow">
+                  <span>あ</span>
+                  <small class="node-tooltip">Aktif • Pelajaran 1</small>
+                </div>
+                <div class="node-path-dash"></div>
+                <div class="node-mock node-locked">
+                  <span>い</span>
+                </div>
+                <div class="node-path-dash"></div>
+                <div class="node-mock node-chest">
+                  <span>🎁</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Navigation Bar Mock -->
+            <div class="app-bottom-nav-mock">
+              <div class="nav-mock-item active">
+                <span>🏠</span>
+                <small>Beranda</small>
+              </div>
+              <div class="nav-mock-item">
+                <span>📖</span>
+                <small>Belajar</small>
+              </div>
+              <div class="nav-mock-item">
+                <span>📚</span>
+                <small>Kamus</small>
+              </div>
+              <div class="nav-mock-item">
+                <span>🏆</span>
+                <small>Peringkat</small>
+              </div>
+              <div class="nav-mock-item">
+                <span>👤</span>
+                <small>Profil</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHT STATS TICKER -->
+    <section class="quick-facts-bar">
+      <div class="wrap facts-grid">
+        <div class="fact-card">
+          <div class="fact-num">N5 — N1</div>
+          <div class="fact-label">Kurikulum Standar JLPT Lengkap & Terstruktur</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-num">100% Gratis</div>
+          <div class="fact-label">Materi, Latihan, Kuis & Simulator Ujian</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-num">Gamifikasi</div>
+          <div class="fact-label">EXP, Level, Streak, Chest Box & Daily Quest</div>
+        </div>
+        <div class="fact-card">
+          <div class="fact-num">Siap Karir</div>
+          <div class="fact-label">Modul Tokutei Ginou / SSW & Etika Bisnis</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES SECTION -->
+    <section class="section" id="features">
+      <div class="wrap">
+        <div class="section-header text-center">
+          <span class="section-tag">FITUR UNGGULAN APLIKASI</span>
+          <h2>Dirancang Khusus untuk <span class="highlight-text">Kemudahan Belajarmu</span></h2>
+          <p class="section-subtitle">
+            Bukan sekadar membaca kamus kering, tapi pengalaman imersif yang membuatmu ingin membuka aplikasi setiap hari tanpa rasa jenuh.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Feature 1 -->
+          <article class="feature-card royal-blue-card">
+            <div class="feature-icon-wrapper blue-grad">
+              <img src="assets/images/maskot/Semangat.png" alt="Maskot Semangat" class="feature-mascot-icon">
+            </div>
+            <div class="feature-tag">DUOLINGO-STYLE ROADMAP</div>
+            <h3>Jalur Belajar Berkelok & Terarah</h3>
+            <p>
+              Setiap langkah terpetakan dalam roadmap visual interaktif. Selesaikan satu modul untuk membuka modul berikutnya, klaim Peti Harta Karun berisi <strong>+50 EXP</strong>, dan kumpulkan bintang prestasi!
+            </p>
+            <div class="feature-pill-list">
+              <span>Zig-zag Steps</span>
+              <span>Peti Karun +50 EXP</span>
+              <span>Level Pinned Header</span>
+            </div>
+          </article>
+
+          <!-- Feature 2 -->
+          <article class="feature-card red-card">
+            <div class="feature-icon-wrapper red-grad">
+              <span class="card-large-icon">🎌</span>
+            </div>
+            <div class="feature-tag">LEVEL ZERO TO JLPT</div>
+            <h3>Fondasi Dasar Pemula Terlengkap</h3>
+            <p>
+              Belum pernah belajar huruf Jepang sama sekali? Mulai dari 3 Unit Fondasi Dasar: Mengenal Hiragana, Katakana, Kanji, Vokal A-I-U-E-O, susunan kalimat S-O-P (predikat di akhir), serta etika membungkuk <em>Ojigi</em>.
+            </p>
+            <div class="feature-pill-list">
+              <span>Sistem Huruf 46 Karakter</span>
+              <span>Rumus Kalimat SOP</span>
+              <span>Etika & Angka Dasar</span>
+            </div>
+          </article>
+
+          <!-- Feature 3 -->
+          <article class="feature-card amber-card">
+            <div class="feature-icon-wrapper amber-grad">
+              <span class="card-large-icon">⚡</span>
+            </div>
+            <div class="feature-tag">SISTEM GAMIFIKASI & SOUND FX</div>
+            <h3>Streak, Nyawa & Audio Interaktif</h3>
+            <p>
+              Dilengkapi audio efek kemenangan, benar, salah, dan reward audio yang menyenangkan. Jaga streak apimu agar tidak padam dan kumpulkan EXP untuk naik level dari Novice sampai Master!
+            </p>
+            <div class="feature-pill-list">
+              <span>5 Hati / Nyawa Kuis</span>
+              <span>Sound Effects Game</span>
+              <span>Leaderboard Peringkat</span>
+            </div>
+          </article>
+
+          <!-- Feature 4 -->
+          <article class="feature-card green-card">
+            <div class="feature-icon-wrapper green-grad">
+              <span class="card-large-icon">🈁</span>
+            </div>
+            <div class="feature-tag">KAMUS LENGKAP & KOSAKATA</div>
+            <h3>Kamus & Simulator Ujian JLPT</h3>
+            <p>
+              Akses cepat ribuan kosakata, kanji lengkap dengan stroke order (urutan goresan), tata bahasa per level, serta simulator ujian JLPT resmi untuk mengukur kesiapanmu sebelum ujian sesungguhnya.
+            </p>
+            <div class="feature-pill-list">
+              <span>Hiragana & Katakana Audio</span>
+              <span>Kanji Stroke Order</span>
+              <span>Mock Exam JLPT</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP INTERACTIVE SPOTLIGHT -->
+    <section class="section roadmap-section" id="roadmap">
+      <div class="wrap">
+        <div class="roadmap-layout">
+          <div class="roadmap-copy">
+            <span class="section-tag">METODE ROADMAP</span>
+            <h2>Belajar Step-by-Step Tanpa Merasa Terbebani</h2>
+            <p>
+              Dengan sistem peta petualangan, kamu selalu tahu di mana posisimu sekarang dan apa yang perlu dipelajari berikutnya. Setiap unit memiliki banner materi, checkpoint kuis taktis, dan reward peti harta.
+            </p>
+
+            <div class="roadmap-steps-list">
+              <div class="r-step">
+                <span class="r-step-num">01</span>
+                <div>
+                  <h4>Fondasi Dasar Pemula</h4>
+                  <p>Mengenal sistem tulisan, pelafalan vokal, struktur S-O-P dan budaya santun.</p>
+                </div>
+              </div>
+              <div class="r-step">
+                <span class="r-step-num">02</span>
+                <div>
+                  <h4>Unit Salam & Pola Kalimat N5</h4>
+                  <p>Percakapan harian, kata sifat, kata kerja bentuk ~Masu, dan partikel dasar.</p>
+                </div>
+              </div>
+              <div class="r-step">
+                <span class="r-step-num">03</span>
+                <div>
+                  <h4>Klaim Peti Harta & Uji Pemahaman</h4>
+                  <p>Setiap menyelesaikan unit kunci, klaim bonus +50 EXP dan buka materi lanjutan.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="roadmap-action">
+              <a href="#download" class="btn-primary">
+                <span>Coba Jalur Belajar Sekarang</span>
+                <span class="arrow-right">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Interactive Showcase Box -->
+          <div class="roadmap-interactive-box">
+            <div class="interactive-top-header">
+              <span class="circle-dot red"></span>
+              <span class="circle-dot yellow"></span>
+              <span class="circle-dot green"></span>
+              <span class="box-title">Simulasi Roadmap Jepang-In (Klik Node untuk Coba!)</span>
+            </div>
+
+            <div class="interactive-body">
+              <div class="interactive-level-selector">
+                <button class="lvl-btn active" data-level="N5">N5 (Pemula)</button>
+                <button class="lvl-btn" data-level="N4">N4</button>
+                <button class="lvl-btn" data-level="N3">N3</button>
+                <button class="lvl-btn" data-level="N2">N2</button>
+                <button class="lvl-btn" data-level="N1">N1</button>
+              </div>
+
+              <div class="interactive-unit-banner" id="interactiveBanner">
+                <span class="banner-icon">🎌</span>
+                <div class="banner-info">
+                  <h4 id="bannerTitle">Unit Fondasi 1: Sistem Huruf & Pelafalan</h4>
+                  <p id="bannerDesc">Kenali 3 aksara utama & 5 vokal dasar Jepang</p>
+                </div>
+                <span class="banner-badge">3 Modul</span>
+              </div>
+
+              <!-- Interactive Node Tree -->
+              <div class="interactive-tree" id="interactiveTree">
+                <div class="demo-node active-node" data-title="3 Jenis Huruf & Romaji" data-xp="20" data-desc="Pahami Hiragana, Katakana, dan Kanji yang saling melengkapi.">
+                  <span class="node-letter">あ</span>
+                  <span class="node-badge">Selesai ✓</span>
+                </div>
+                <div class="tree-dash-line"></div>
+                <div class="demo-node active-node current-node" data-title="5 Bunyi Vokal A-I-U-E-O" data-xp="20" data-desc="Lafal murni 5 vokal dasar dan ketukan vokal panjang.">
+                  <span class="node-letter">い</span>
+                  <span class="node-badge pulse">Sedang Belajar 👆</span>
+                </div>
+                <div class="tree-dash-line"></div>
+                <div class="demo-node chest-node" data-title="Peti Harta Karun Fondasi" data-xp="50" data-desc="Klaim hadiah 50 EXP untuk pencapaian fondasimu!">
+                  <span class="node-letter">🎁</span>
+                  <span class="node-badge gold">Klaim +50 EXP</span>
+                </div>
+              </div>
+
+              <!-- Node Feedback Card -->
+              <div class="node-feedback-card" id="nodeFeedback">
+                <div class="feedback-header">
+                  <img src="assets/images/maskot/Fokus.png" alt="Maskot Fokus" class="feedback-mascot" id="feedbackMascot">
+                  <div>
+                    <h5 id="feedbackTitle">5 Bunyi Vokal A-I-U-E-O</h5>
+                    <span class="xp-tag" id="feedbackXp">+20 EXP Reward</span>
+                  </div>
+                </div>
+                <p id="feedbackDesc">Kunci mutlak pelafalan bahasa Jepang yang jernih, konsisten, dan memahami ketukan vokal panjang (chouon).</p>
+                <a href="#download" class="demo-start-btn">Mulai Belajar di Aplikasi 🚀</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURRICULUM LEVELS SECTION -->
+    <section class="section curriculum-section" id="curriculum">
+      <div class="wrap">
+        <div class="section-header text-center">
+          <span class="section-tag">KURIKULUM STANDAR NASIONAL & INTERNASIONAL</span>
+          <h2>Dari Level Pemula Hingga Mahir</h2>
+          <p class="section-subtitle">
+            Disusun berdasarkan standar Japan Foundation & JLPT (Japanese Language Proficiency Test).
+          </p>
+        </div>
+
+        <div class="curriculum-grid">
+          <!-- Card N5 -->
+          <div class="curriculum-card curr-n5">
+            <div class="curr-header">
+              <span class="curr-badge">LEVEL N5</span>
+              <h3>Pemula & Dasar</h3>
+              <p class="jp-sub">初級（しょきゅう）</p>
+            </div>
+            <ul class="curr-topics">
+              <li>✓ Fondasi Huruf Hiragana & Katakana</li>
+              <li>✓ 100+ Kanji Dasar & 800+ Kosakata</li>
+              <li>✓ Pola Kalimat Dasar S-O-P & Partikel</li>
+              <li>✓ Salam, Waktu, Angka & Etika Kerja</li>
+            </ul>
+            <div class="curr-footer">
+              <span class="curr-duration">± 2-3 Bulan Belajar</span>
+            </div>
+          </div>
+
+          <!-- Card N4 -->
+          <div class="curriculum-card curr-n4">
+            <div class="curr-header">
+              <span class="curr-badge">LEVEL N4</span>
+              <h3>Menengah Awal</h3>
+              <p class="jp-sub">初中級（しょちゅうきゅう）</p>
+            </div>
+            <ul class="curr-topics">
+              <li>✓ 300+ Kanji & 1,500+ Kosakata</li>
+              <li>✓ Kalimat Pengandaian (Tara, Nara, Ba)</li>
+              <li>✓ Pasif (Ukemi) & Kausatif (Shieki)</li>
+              <li>✓ Standar Minimal Tokutei Ginou (SSW)</li>
+            </ul>
+            <div class="curr-footer">
+              <span class="curr-duration">± 3-4 Bulan Belajar</span>
+            </div>
+          </div>
+
+          <!-- Card N3 -->
+          <div class="curriculum-card curr-n3">
+            <div class="curr-header">
+              <span class="curr-badge">LEVEL N3</span>
+              <h3>Menengah / Terampil</h3>
+              <p class="jp-sub">中級（ちゅうきゅう）</p>
+            </div>
+            <ul class="curr-topics">
+              <li>✓ 650+ Kanji & 3,500+ Kosakata</li>
+              <li>✓ Memahami Artikel & Berita Jepang</li>
+              <li>✓ Percakapan Natural Kehidupan Nyata</li>
+              <li>✓ Pintu Gerbang Bekerja di Perusahaan Jepang</li>
+            </ul>
+            <div class="curr-footer">
+              <span class="curr-duration">± 4-6 Bulan Belajar</span>
+            </div>
+          </div>
+
+          <!-- Card N2 & N1 -->
+          <div class="curriculum-card curr-n1">
+            <div class="curr-header">
+              <span class="curr-badge">LEVEL N2 – N1</span>
+              <h3>Mahir & Profesional</h3>
+              <p class="jp-sub">上級（じょうきゅう）</p>
+            </div>
+            <ul class="curr-topics">
+              <li>✓ 1,000 - 2,000+ Kanji Mahir</li>
+              <li>✓ Keigo (Sonkeigo, Kenjougo) Tingkat Tinggi</li>
+              <li>✓ Pemahaman Dokumen Bisnis & Legal</li>
+              <li>✓ Standar Karir Global / Interpreter</li>
+            </ul>
+            <div class="curr-footer">
+              <span class="curr-duration">Level Tingkat Lanjut</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMIFICATION & MASCOT SHOWCASE -->
+    <section class="section gamification-section" id="gamification">
+      <div class="wrap">
+        <div class="gamification-layout">
+          <div class="mascot-gallery">
+            <!-- Kartu Interaktif Maskot Utama -->
+            <div class="mascot-card-stage">
+              <!-- Balon Dialog di Atas Maskot -->
+              <div class="speech-bubble-wrapper">
+                <div class="mascot-speech-bubble" id="mascotSpeech">
+                  "Setiap karakter yang kamu pelajari adalah satu langkah lebih dekat ke impianmu di Jepang! Ayo semangat!" 🌟
+                </div>
+                <div class="bubble-tail"></div>
+              </div>
+
+              <!-- Maskot Karakter Utama (Dynamic PNG) -->
+              <div class="mascot-avatar-container">
+                <div class="mascot-bg-aura"></div>
+                <img src="assets/images/maskot/Senang.png" alt="Maskot Jepang-In" class="mascot-hero-render" id="mascotHeroImg">
+                <div class="mascot-name-plate">
+                  <span class="mascot-name">Kitsune-kun 🦊</span>
+                  <span class="mascot-sub" id="mascotStatusText">Mode: Senang</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tombol Pilihan Ekspresi Interaktif -->
+            <div class="mascot-emotions-control">
+              <span class="control-label">Pilih Ekspresi Maskot:</span>
+              <div class="mascot-emotions-row">
+                <button class="emotion-item active" data-emotion="Senang" data-src="assets/images/maskot/Senang.png" title="Senang">
+                  <img src="assets/images/maskot/Senang.png" alt="Senang">
+                  <span>Senang</span>
+                </button>
+                <button class="emotion-item" data-emotion="Tekad" data-src="assets/images/maskot/Determinasi.png" title="Tekad">
+                  <img src="assets/images/maskot/Determinasi.png" alt="Determinasi">
+                  <span>Tekad</span>
+                </button>
+                <button class="emotion-item" data-emotion="Fokus" data-src="assets/images/maskot/Fokus.png" title="Fokus">
+                  <img src="assets/images/maskot/Fokus.png" alt="Fokus">
+                  <span>Fokus</span>
+                </button>
+                <button class="emotion-item" data-emotion="Gembira" data-src="assets/images/maskot/Tertawa.png" title="Gembira">
+                  <img src="assets/images/maskot/Tertawa.png" alt="Gembira">
+                  <span>Gembira</span>
+                </button>
+                <button class="emotion-item" data-emotion="Membara" data-src="assets/images/maskot/Semangat.png" title="Membara">
+                  <img src="assets/images/maskot/Semangat.png" alt="Membara">
+                  <span>Membara</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="gamification-copy">
+            <span class="section-tag">FITUR MOTIVASI BELAJAR</span>
+            <h2>Belajar Bahasa Jepang Terasa Seperti Bermain RPG</h2>
+            <p>
+              Kami mengerti bahwa tantangan terbesar belajar bahasa asing adalah rasa bosan dan inkonsistensi. Sistem gamifikasi Jepang-In diciptakan untuk menjaga dopamin belajarmu tetap mengalir!
+            </p>
+
+            <div class="gamify-features-list">
+              <div class="g-item">
+                <div class="g-icon fire">🔥</div>
+                <div>
+                  <h4>Streak Tracker Tanpa Putus</h4>
+                  <p>Latihan minimal 5 menit sehari menjaga streak apimu menyala. Jangan biarkan apimu padam!</p>
+                </div>
+              </div>
+
+              <div class="g-item">
+                <div class="g-icon star">⭐</div>
+                <div>
+                  <h4>EXP & Kenaikan Tingkat (Leveling)</h4>
+                  <p>Kumpulkan EXP dari kuis dan modul, naikkan rank dari Novice (L1) hingga Master.</p>
+                </div>
+              </div>
+
+              <div class="g-item">
+                <div class="g-icon chest">🎁</div>
+                <div>
+                  <h4>Peti Harta Karun (+50 EXP)</h4>
+                  <p>Klaim reward langsung saat menyelesaikan pos checkpoint penting di roadmap.</p>
+                </div>
+              </div>
+
+              <div class="g-item">
+                <div class="g-icon target">🎯</div>
+                <div>
+                  <h4>3 Misi Harian Pop-up</h4>
+                  <p>Selesaikan target misi harian di header aplikasi untuk bonus EXP ekstra!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPANY / ABOUT SECTION -->
+    <section class="section company-section" id="company">
+      <div class="wrap">
+        <div class="company-card">
+          <div class="company-grid">
+            <div class="company-brand-col">
+              <img src="assets/images/logo.png" alt="Logo Jepang-In Resmi" class="company-logo-large">
+              <h3>Jepang-In Official</h3>
+              <p class="company-slogan">Membuka Gerbang Masa Depan ke Negeri Sakura</p>
+              <div class="company-pills">
+                <span>🇮🇩 Indonesia</span>
+                <span>🇯🇵 Jepang</span>
+                <span>EduTech & AI</span>
+              </div>
+            </div>
+
+            <div class="company-text-col">
+              <span class="section-tag">TENTANG PROYEK & PERUSAHAAN</span>
+              <h2>Misi Kami: Mempermudah Akses Bahasa Jepang untuk Semua Generasi</h2>
+              <p>
+                <strong>Jepang-In</strong> dikembangkan dengan visi mulia: membantu talenta, pelajar, tenaga kerja (SSW/Tokutei Ginou), serta pecinta budaya Jepang di Indonesia untuk menguasai bahasa Jepang secara mandiri, efektif, dan tanpa biaya mahal.
+              </p>
+              <p>
+                Dengan memadukan pendekatan pedagogi modern dan desain antarmuka gamifikasi, aplikasi ini menghilangkan ketakutan terhadap huruf Kanji dan tata bahasa Jepang yang rumit. Mulai langkahmu hari ini, dari huruf pertama hingga mimpi besarmu terwujud!
+              </p>
+
+              <div class="company-values">
+                <div class="c-val">
+                  <strong>100% Inklusif</strong>
+                  <small>Bisa dipelajari siapa pun dari usia berapa pun.</small>
+                </div>
+                <div class="c-val">
+                  <strong>Berbasis Standar Nyata</strong>
+                  <small>Disesuaikan dengan kebutuhan kerja & ujian JLPT.</small>
+                </div>
+                <div class="c-val">
+                  <strong>Komitmen Berkelanjutan</strong>
+                  <small>Terus diperbarui dengan materi dan fitur terdepan.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section faq-section" id="faq">
+      <div class="wrap">
+        <div class="section-header text-center">
+          <span class="section-tag">PERTANYAAN UMUM</span>
+          <h2>Pertanyaan yang Sering Diajukan</h2>
+          <p class="section-subtitle">Semua informasi penting mengenai aplikasi dan cara mengunduhnya.</p>
+        </div>
+
+        <div class="faq-container">
+          <details class="faq-item" open>
+            <summary>
+              <span>Apakah aplikasi Jepang-In ini sepenuhnya gratis?</span>
+              <span class="faq-toggle-icon">＋</span>
+            </summary>
+            <div class="faq-body">
+              <p>Ya! Seluruh materi dasar, kurikulum N5-N1, kamus huruf, latihan interaktif, dan kuis gamifikasi dapat diakses secara gratis oleh seluruh pengguna.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Bagaimana cara menginstal file APK Jepang-In di HP Android?</span>
+              <span class="faq-toggle-icon">＋</span>
+            </summary>
+            <div class="faq-body">
+              <p>Cukup klik tombol <strong>"Unduh APK Sekarang"</strong> pada bagian bawah website ini. Setelah file <code>Jepang-In.apk</code> selesai diunduh, buka file tersebut di perangkat Android Anda, izinkan instalasi dari sumber terpercaya (Unknown Sources jika diminta), lalu ikuti panduan instalasi hingga selesai.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Apakah aplikasi ini cocok untuk orang yang belum tahu huruf Jepang sama sekali?</span>
+              <span class="faq-toggle-icon">＋</span>
+            </summary>
+            <div class="faq-body">
+              <p>Sangat cocok! Kami telah merancang modul khusus <strong>Unit Fondasi Dasar Pemula (Zero to N5)</strong> yang mengajarkan huruf Hiragana, Katakana, vokal dasar, pelafalan audio, hingga susunan kalimat dari nol mutlak.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Apakah aplikasi ini membantu persiapan program Tokutei Ginou (SSW) atau Magang ke Jepang?</span>
+              <span class="faq-toggle-icon">＋</span>
+            </summary>
+            <div class="faq-body">
+              <p>Tentu saja! Materi mencakup kosakata lingkungan kerja, sopan santun komunikasi bisnis (*Aisatsu & Ojigi*), serta kurikulum standar JLPT N5 dan N4 yang menjadi syarat utama program SSW.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Berapa ukuran file unduhan aplikasi Jepang-In?</span>
+              <span class="faq-toggle-icon">＋</span>
+            </summary>
+            <div class="faq-body">
+              <p>Ukuran file installer resmi <code>Jepang-In.apk</code> adalah sekitar <strong>62.5 MB</strong>, sudah mencakup seluruh aset materi offline, audio sfx, kamus, dan modul visual.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD SECTION (MAIN CTA) -->
+    <section class="download-section" id="download">
+      <div class="wrap download-wrapper">
+        <div class="download-content">
+          <div class="download-badge">VERSI RESMI v1.0.0 SIAP UNDUH</div>
+          <h2>Mulai Perjalanan Bahasa Jepangmu Hari Ini!</h2>
+          <p>
+            Unduh langsung paket instalasi resmi <strong>Jepang-In.apk</strong> untuk perangkat Android Anda. Nikmati belajar yang menyenangkan, interaktif, dan penuh motivasi!
+          </p>
+
+          <div class="apk-download-box">
+            <div class="apk-meta-info">
+              <div class="apk-icon-col">
+                <img src="assets/images/logo.png" alt="App Icon" class="apk-icon">
+              </div>
+              <div class="apk-details">
+                <span class="apk-filename">Jepang-In.apk</span>
+                <span class="apk-specs">Android 6.0+ • Ukuran: ~62.5 MB • Rilis v1.0.0 Resmi</span>
+              </div>
+            </div>
+
+            <!-- Direct Download Button linking to the APK file -->
+            <a href="assets/downloads/Jepang-In.apk" download="Jepang-In.apk" class="btn-download-direct">
+              <div class="btn-download-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              </div>
+              <div class="btn-download-text">
+                <strong>Unduh APK Sekarang</strong>
+                <small>Klik untuk mulai mendownload langsung</small>
+              </div>
+            </a>
+          </div>
+
+          <div class="download-guarantees">
+            <span>🛡️ 100% Aman & Terverifikasi</span>
+            <span>⚡ Instalasi Cepat Tanpa Ribet</span>
+            <span>📱 Kompatibel untuk Semua HP Android</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap footer-content">
+      <div class="footer-brand-col">
+        <a class="brand" href="#home">
+          <img src="assets/images/logo.png" alt="Logo Jepang-In" class="logo-img">
+          <div class="brand-text">
+            <span class="brand-name">Jepang<span class="brand-accent">-In</span></span>
+            <small class="brand-tagline">日本語学習ゲームプラットフォーム</small>
+          </div>
+        </a>
+        <p class="footer-desc">
+          Platform edukasi bahasa Jepang interaktif berbasis gamifikasi. Menghubungkan potensi talenta Indonesia dengan masa depan di Jepang.
+        </p>
+        <div class="footer-socials">
+          <span class="social-chip">Facebook</span>
+          <span class="social-chip">Instagram</span>
+          <span class="social-chip">YouTube</span>
+          <span class="social-chip">TikTok</span>
+        </div>
+      </div>
+
+      <div class="footer-nav-col">
+        <h5>Navigasi Fitur</h5>
+        <a href="#features">Fitur Unggulan</a>
+        <a href="#roadmap">Jalur Roadmap Duolingo</a>
+        <a href="#curriculum">Kurikulum JLPT N5-N1</a>
+        <a href="#gamification">Gamifikasi & Maskot</a>
+      </div>
+
+      <div class="footer-nav-col">
+        <h5>Tentang & Dukungan</h5>
+        <a href="#company">Tentang Perusahaan</a>
+        <a href="#faq">Pertanyaan Umum (FAQ)</a>
+        <a href="#download">Unduh APK Resmi</a>
+        <a href="mailto:official@jepang-in.com">Kontak Pengembang</a>
+      </div>
+    </div>
+
+    <div class="wrap copyright-row">
+      <div>
+        © <span id="currentYear"></span> <strong>Jepang-In Official</strong>. All Rights Reserved.
+      </div>
+      <div class="made-with-love">
+        Dibuat dengan ❤️ & 🎌 untuk seluruh pembelajar bahasa Jepang di Indonesia.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
